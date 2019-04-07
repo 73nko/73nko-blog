@@ -23,7 +23,7 @@ const BlogPostTemplate: React.FunctionComponent<BlogPostTemplateProps> = ({
   const { markdownRemark: post, site } = data;
   const { title: siteTitle } = site.siteMetadata;
   const { previous, next } = pageContext;
-  const publicUrl = `https://www.no.lol${post.fields.slug}`;
+  const publicUrl = `https://www.73nko.dev${post.fields.slug}`;
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -83,7 +83,7 @@ const BlogPostTemplate: React.FunctionComponent<BlogPostTemplateProps> = ({
           <a
             target="_blank"
             rel="nofollow noopener noreferrer"
-            href={`https://github.com/poteto/no.lol/tree/master/content/blog${
+            href={`https://github.com/73nko/73nko-blog/tree/master/content/blog${
               post.fields.slug
             }`}
           >

@@ -72,8 +72,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `no.lol`,
-        short_name: `no.lol`,
+        name: `73nko.dev`,
+        short_name: `73nko.dev`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#ff7a60`,

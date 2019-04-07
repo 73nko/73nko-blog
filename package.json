@@ -61,19 +61,19 @@
     "typescript": "3.3.3333",
     "wait-for-netlify-preview": "1.2.0"
   },
-  "homepage": "https://github.com/poteto/no.lol",
+  "homepage": "https://github.com/73nko/73nko-blog",
   "keywords": [
     "gatsby",
     "blog",
-    "lauren tan",
-    "sugarpirate",
-    "no.lol"
+    "Alex Perez",
+    "73nko",
+    "73nko.dev"
   ],
   "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/poteto/no.lol.git"
+    "url": "git+https://github.com/73nko/73nko-blog"
   },
   "scripts": {
     "build": "gatsby build",

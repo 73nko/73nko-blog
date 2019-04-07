@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `73Nko's Blog`,
+    title: `Nko's Blog`,
     author: `Álex Pérez`,
     description: `Álex Pérez's personal blog`,
     siteUrl: `https://www.73nko.dev`,
@@ -76,9 +76,9 @@ module.exports = {
         short_name: `73nko.dev`,
         start_url: `/`,
         background_color: `#ffffff`,
-        theme_color: `#ff7a60`,
+        theme_color: `#0d8044`,
         display: `minimal-ui`,
-        icon: `content/assets/donut-solid.png`,
+        icon: `content/assets/logo-73.svg`,
       },
     },
     `gatsby-plugin-offline`,

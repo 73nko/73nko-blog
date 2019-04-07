@@ -40,7 +40,7 @@ Wordpress2016.overrideThemeStyles = () => ({
     boxShadow: 'none',
   },
   'a.anchor svg[aria-hidden="true"]': {
-    stroke: 'var(--gray)',
+    stroke: 'var(--secondary-color)',
   },
   // TODO: why tho
   'h1 code, h2 code, h3 code, h4 code, h5 code, h6 code': {
@@ -60,11 +60,11 @@ Wordpress2016.overrideThemeStyles = () => ({
     'justify-content': 'space-between',
   },
   small: {
-    color: 'var(--gray)',
+    color: 'var(--main-color)',
   },
   '.blog-post figcaption': {
     fontSize: '0.8rem',
-    color: 'var(--gray)',
+    color: 'var(--secondary-color)',
     textAlign: 'center',
   },
 });

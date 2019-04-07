@@ -55,7 +55,7 @@ const Bio: React.FunctionComponent<{}> = () => {
               Madrid, Spain.
               {` `}
               <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow her on Twitter
+                You should follow him on Twitter
               </a>
             </p>
           </div>

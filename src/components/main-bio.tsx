@@ -40,13 +40,10 @@ const MainBio: React.FunctionComponent<{}> = () => {
             }}
           >
             <div className="main-bio">
-              <h1 className="heroine" style={{ marginBottom: rhythm(1 / 5) }}>
-                <span role="img" aria-label="woman technologist">
-                  👩🏻‍💻
-                </span>{' '}
-                Hello! Alex Pérez is a leader, and software engineer{' '}
-                <span role="img" aria-label="sparkles">
-                  ✨
+              <h1 className="front-end" style={{ marginBottom: rhythm(1 / 5) }}>
+                Hello! Alex Pérez is a frontEnd senior developer!{' '}
+                <span role="img" aria-label="fire">
+                  🔥
                 </span>
               </h1>
               <ul
@@ -58,7 +55,7 @@ const MainBio: React.FunctionComponent<{}> = () => {
                     <a className="u-no-box-shadow" href={s.url}>
                       <FontAwesomeIcon
                         icon={s.icon}
-                        color="var(--gray)"
+                        color="var(--secondary-light)"
                         title={`Link to my ${s.kind}`}
                       />
                     </a>
@@ -77,7 +74,7 @@ const MainBio: React.FunctionComponent<{}> = () => {
                 marginBottom: 0,
                 minWidth: 250,
                 borderRadius: `100%`,
-                border: `8px solid var(--blue)`,
+                border: `8px solid var(--secondary-color)`,
               }}
               imgStyle={{
                 borderRadius: `50%`,

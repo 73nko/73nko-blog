@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 import { rhythm, scale } from '../utils/typography';
-import Logo from '../../content/assets/donut.svg';
+import Logo from '../../content/assets/logo-73.svg';
 import SOCIAL from '../constants/social';
 
 interface LayoutProps {
@@ -92,12 +92,14 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
         <main>{children}</main>
         <footer>
           © {new Date().getFullYear()} Alex Pérez
-          {SOCIAL.map((s, idx) => (
-            <React.Fragment key={s.kind}>
-              <a href={s.url}>{s.kind}</a>
-              {idx === SOCIAL.length - 1 ? '' : <span> / </span>}
-            </React.Fragment>
-          ))}
+          <div>
+            {SOCIAL.map((s, idx) => (
+              <React.Fragment key={s.kind}>
+                <a href={s.url}>{s.kind}</a>
+                {idx === SOCIAL.length - 1 ? '' : <span> / </span>}
+              </React.Fragment>
+            ))}
+          </div>
         </footer>
       </div>
     </>

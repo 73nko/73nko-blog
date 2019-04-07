@@ -15,7 +15,7 @@
 
 code[class*='language-'],
 pre[class*='language-'] {
-  color: var(--gray-medium);
+  color: var(--secondary-light);
   background: none;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
   font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
@@ -70,7 +70,7 @@ pre[class*='language-'] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-  color: var(--red);
+  color: var(--help);
 }
 
 .token.boolean,
@@ -102,7 +102,7 @@ pre[class*='language-'] {
 .token.atrule,
 .token.attr-value,
 .token.function {
-  color: var(--coral);
+  color: var(--main-light);
 }
 
 .token.class-name {
@@ -110,7 +110,7 @@ pre[class*='language-'] {
 }
 
 .token.keyword {
-  color: var(--pink-medium);
+  color: var(--main-light);
 }
 
 .token.regex,

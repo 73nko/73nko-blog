@@ -64,11 +64,13 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
   }
   return (
     <>
+      <div className="bg" />
       <header
         style={{
           padding: rhythm(1),
           marginTop: 0,
           marginBottom: 0,
+          opacity: 1,
         }}
       >
         <div className="logo">
@@ -83,13 +85,26 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
       </header>
       <div
         style={{
+          opacity: 1,
           marginLeft: `auto`,
           marginRight: `auto`,
-          maxWidth: rhythm(24),
+          maxWidth: rhythm(30),
           padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
         }}
       >
-        <main>{children}</main>
+        <main
+          style={{
+            opacity: 1,
+            backgroundColor: `var(--white)`,
+            borderRadius: `${rhythm(1)}`,
+            marginLeft: `auto`,
+            marginRight: `auto`,
+            maxWidth: rhythm(30),
+            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+          }}
+        >
+          {children}
+        </main>
         <footer>
           © {new Date().getFullYear()} Alex Pérez
           <div>

@@ -19,7 +19,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
   const rootPath = `${__PATH_PREFIX__}/`; // eslint-disable-line no-undef
   let header;
 
-  if (location.pathname === rootPath) {
+ /* if (location.pathname === rootPath) {
     header = (
       <h2
         style={{
@@ -62,10 +62,12 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
       </h2>
     );
   }
+*/
   return (
     <>
       <div className="bg" />
-      <header
+      { /*
+       <header
         style={{
           padding: rhythm(1),
           marginTop: 0,
@@ -83,6 +85,8 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
           {header}
         </div>
       </header>
+        */
+      } 
       <div
         style={{
           opacity: 1,

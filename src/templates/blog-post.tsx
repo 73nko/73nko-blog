@@ -83,9 +83,7 @@ const BlogPostTemplate: React.FunctionComponent<BlogPostTemplateProps> = ({
           <a
             target="_blank"
             rel="nofollow noopener noreferrer"
-            href={`https://github.com/73nko/73nko-blog/tree/master/content/blog${
-              post.fields.slug
-            }`}
+            href={`https://github.com/73nko/73nko-blog/tree/master/content/blog${post.fields.slug}`}
           >
             Edit this post on GitHub
           </a>

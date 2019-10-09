@@ -1,73 +1,61 @@
 import React from 'react';
-import { Link } from 'gatsby';
 
-import { rhythm, scale } from '../utils/typography';
-import Logo from '../../content/assets/logo-73.svg';
+import { rhythm } from '../utils/typography';
 import SOCIAL from '../constants/social';
 
 interface LayoutProps {
-  location: Location;
-  title: string;
   children: React.ReactNode;
 }
 
-const Layout: React.FunctionComponent<LayoutProps> = ({
-  location,
-  title,
-  children,
-}) => {
-  const rootPath = `${__PATH_PREFIX__}/`; // eslint-disable-line no-undef
-  let header;
+const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
+  // if (location.pathname === rootPath) {
+  //   header = (
+  //     <h2
+  //       style={{
+  //         ...scale(0.3),
+  //         fontStyle: 'italic',
+  //         display: 'inline',
+  //       }}
+  //     >
+  //       <Link
+  //         style={{
+  //           boxShadow: `none`,
+  //           textDecoration: `none`,
+  //           color: `inherit`,
+  //         }}
+  //         to={`/`}
+  //       >
+  //         {title}
+  //       </Link>
+  //     </h2>
+  //   );
+  // } else {
+  //   header = (
+  //     <h2
+  //       style={{
+  //         ...scale(0.3),
+  //         fontStyle: 'italic',
+  //         display: 'inline',
+  //       }}
+  //     >
+  //       <Link
+  //         style={{
+  //           boxShadow: `none`,
+  //           textDecoration: `none`,
+  //           color: `inherit`,
+  //         }}
+  //         to={`/`}
+  //       >
+  //         {title}
+  //       </Link>
+  //     </h2>
+  //   );
+  // }
 
- /* if (location.pathname === rootPath) {
-    header = (
-      <h2
-        style={{
-          ...scale(0.3),
-          fontStyle: 'italic',
-          display: 'inline',
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h2>
-    );
-  } else {
-    header = (
-      <h2
-        style={{
-          ...scale(0.3),
-          fontStyle: 'italic',
-          display: 'inline',
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h2>
-    );
-  }
-*/
   return (
     <>
       <div className="bg" />
-      { /*
-       <header
+      {/* <header
         style={{
           padding: rhythm(1),
           marginTop: 0,
@@ -84,9 +72,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
           />
           {header}
         </div>
-      </header>
-        */
-      } 
+      </header> */}
       <div
         style={{
           opacity: 1,

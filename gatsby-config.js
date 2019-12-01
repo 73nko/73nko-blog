@@ -3,7 +3,7 @@ module.exports = {
     title: `Nko's Blog`,
     author: `Álex Pérez`,
     description: `Álex Pérez's personal blog`,
-    siteUrl: `https://www.73nko.dev`,
+    siteUrl: `https://www.73nko.es`,
     social: {
       github: `73nko`,
       twitter: `73nko`,
@@ -72,8 +72,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `73nko.dev`,
-        short_name: `73nko.dev`,
+        name: `73nko.es`,
+        short_name: `73nko.es`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#0d8044`,

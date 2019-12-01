@@ -1,7 +1,9 @@
 html {
   height: 100%;
+  width: 100%;
   overflow: hidden;
 }
+
 body {
   --bg: #fff;
   --main-color: #093a3e;
@@ -16,7 +18,10 @@ body {
   --textLink: var(--black);
   --hr: var(--gray-medium);
 
-  overflow: scroll;
+  height: 100%;
+  padding: 0;
+  overflow: auto;
+  margin: 0;
   background: linear-gradient(95deg, #001011 0%, #97c8eb 50%, #001011 100%);
   background-position: center;
   background-attachment: fixed;

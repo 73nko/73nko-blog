@@ -263,3 +263,117 @@ a.squiggly:hover {
     filter: hue-rotate(-360deg);
   }
 }
+
+/* particles */
+.particle {
+  width: 100px;
+  height: 100px;
+  top: -20%;
+  position: absolute;
+  border-radius: 50%;
+  animation: fall 15s infinite;
+  z-index: -1;
+}
+
+@keyframes fall {
+  0% {
+    top: -20%;
+  }
+  20% {
+    top: 0%;
+  }
+  80% {
+    top: 85%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+.particle:nth-of-type(2n) {
+  background-color: #f07e6e;
+  width: 60px;
+  height: 60px;
+}
+
+.particle:nth-of-type(3n) {
+  background-color: #84cdfa;
+  width: 120px;
+  height: 120px;
+}
+
+.particle:nth-of-type(1) {
+  color: #84cdfa;
+  left: 30%;
+  animation-delay: 1s;
+}
+
+.particle:nth-of-type(2) {
+  left: 60%;
+  animation-delay: 2s;
+}
+
+.particle:nth-of-type(3) {
+  left: 25%;
+  animation-delay: 3s;
+}
+
+.particle:nth-of-type(4) {
+  left: 75%;
+  animation-delay: 4s;
+}
+
+.particle:nth-of-type(5) {
+  left: 15%;
+  animation-delay: 5s;
+}
+
+.particle:nth-of-type(6) {
+  left: 50%;
+  animation-delay: 6s;
+}
+
+.particle:nth-of-type(7) {
+  left: 20%;
+  animation-delay: 7s;
+}
+
+.particle:nth-of-type(8) {
+  left: 35%;
+  animation-delay: 8s;
+}
+
+.particle:nth-of-type(9) {
+  left: 55%;
+  animation-delay: 9s;
+}
+
+.particle:nth-of-type(10) {
+  left: 10%;
+  animation-delay: 10s;
+}
+
+.particle:nth-of-type(11) {
+  left: 35%;
+  animation-delay: 11s;
+}
+
+.particle:nth-of-type(12) {
+  left: 85%;
+  animation-delay: 12s;
+}
+
+.particle:nth-of-type(13) {
+  left: 70%;
+  animation-delay: 13s;
+}
+
+.particle:nth-of-type(14) {
+  left: 40%;
+  animation-delay: 14s;
+}
+
+.particle:nth-of-type(15) {
+  left: 60%;
+  animation-delay: 15s;
+}

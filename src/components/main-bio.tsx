@@ -39,6 +39,9 @@ const MainBio: React.FunctionComponent<{}> = () => {
               marginBottom: rhythm(2.5),
             }}
           >
+            {[...Array(15).keys()].map(() => (
+              <div className="particle"></div>
+            ))}
             <div className="main-bio">
               <h1 className="front-end" style={{ marginBottom: rhythm(1 / 5) }}>
                 Hello! Alex Pérez is a frontEnd senior developer!{' '}

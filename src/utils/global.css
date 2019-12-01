@@ -16,6 +16,7 @@ body {
   --textLink: var(--black);
   --hr: var(--gray-medium);
 
+  overflow: scroll;
   background: linear-gradient(95deg, #001011 0%, #97c8eb 50%, #001011 100%);
   background-position: center;
   background-attachment: fixed;

@@ -1,78 +1,15 @@
 import React from 'react';
 
 import { rhythm } from '../utils/typography';
-import SOCIAL from '../constants/social';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
-  // if (location.pathname === rootPath) {
-  //   header = (
-  //     <h2
-  //       style={{
-  //         ...scale(0.3),
-  //         fontStyle: 'italic',
-  //         display: 'inline',
-  //       }}
-  //     >
-  //       <Link
-  //         style={{
-  //           boxShadow: `none`,
-  //           textDecoration: `none`,
-  //           color: `inherit`,
-  //         }}
-  //         to={`/`}
-  //       >
-  //         {title}
-  //       </Link>
-  //     </h2>
-  //   );
-  // } else {
-  //   header = (
-  //     <h2
-  //       style={{
-  //         ...scale(0.3),
-  //         fontStyle: 'italic',
-  //         display: 'inline',
-  //       }}
-  //     >
-  //       <Link
-  //         style={{
-  //           boxShadow: `none`,
-  //           textDecoration: `none`,
-  //           color: `inherit`,
-  //         }}
-  //         to={`/`}
-  //       >
-  //         {title}
-  //       </Link>
-  //     </h2>
-  //   );
-  // }
-
   return (
     <>
       <div className="bg" />
-      {/* <header
-        style={{
-          padding: rhythm(1),
-          marginTop: 0,
-          marginBottom: 0,
-          opacity: 1,
-        }}
-      >
-        <div className="logo">
-          <Logo
-            style={{
-              verticalAlign: 'middle',
-              marginRight: rhythm(1 / 4),
-            }}
-          />
-          {header}
-        </div>
-      </header> */}
       <div
         style={{
           opacity: 1,
@@ -86,6 +23,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
           style={{
             opacity: 1,
             backgroundColor: `var(--white)`,
+            boxShadow: `8px 8px 14px #01001`,
             borderRadius: `${rhythm(1)}`,
             marginLeft: `auto`,
             marginRight: `auto`,
@@ -95,17 +33,6 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
         >
           {children}
         </main>
-        <footer>
-          © {new Date().getFullYear()} Alex Pérez
-          <div>
-            {SOCIAL.map((s, idx) => (
-              <React.Fragment key={s.kind}>
-                <a href={s.url}>{s.kind}</a>
-                {idx === SOCIAL.length - 1 ? '' : <span> / </span>}
-              </React.Fragment>
-            ))}
-          </div>
-        </footer>
       </div>
     </>
   );

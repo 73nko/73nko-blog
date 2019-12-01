@@ -12,21 +12,18 @@ import pluralizeReadingTime from '../utils/pluralize-reading-time';
 interface BlogPostTemplateProps {
   data: any;
   pageContext: any;
-  location: Location;
 }
 
 const BlogPostTemplate: React.FunctionComponent<BlogPostTemplateProps> = ({
   data,
   pageContext,
-  location,
 }) => {
-  const { markdownRemark: post, site } = data;
-  const { title: siteTitle } = site.siteMetadata;
+  const { markdownRemark: post } = data;
   const { previous, next } = pageContext;
   const publicUrl = `https://www.73nko.dev${post.fields.slug}`;
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout>
       <SEO
         title={`${post.frontmatter.title}`}
         description={post.frontmatter.description || post.excerpt}

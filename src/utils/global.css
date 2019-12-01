@@ -1,10 +1,10 @@
 body {
   --bg: #fff;
-  --main-color: #f286a0;
-  --main-light: #b3ebf2;
+  --main-color: #093a3e;
+  --main-light: #3aafb9;
   --help: #f4cde1;
-  --secondary-color: #fdc588;
-  --secondary-light: #bfb77a;
+  --secondary-color: #97c8eb;
+  --secondary-light: #64e9ee;
   --gray: #717171;
   --gray-medium: #dfe3e6;
   --white: #fff;
@@ -12,12 +12,13 @@ body {
 
   --textLink: var(--black);
   --hr: var(--gray-medium);
-  background: linear-gradient(45deg, #f286a0 0%, #fdc588 100%);
+  background: linear-gradient(95deg, #001011 0%, #97c8eb 50%, #001011 100%);
   background-position: center;
   background-attachment: fixed;
   background-clip: padding-box;
   /* reduce flash of top/bottom borders when body initially loads with no height */
   min-height: calc(100vh);
+  border-top: 5px solid var(--secondary-color);
 }
 .bg {
   background-repeat: repeat;
@@ -29,6 +30,9 @@ body {
   background-size: 314px;
   background-position-y: -15px;
   background-position-x: -15px;
+}
+h1 {
+  text-shadow: 2px 2px 4px var(--main-light);
 }
 
 /* header */
@@ -140,6 +144,9 @@ header {
 }
 
 /* footer */
+footer {
+  padding: 0 2em;
+}
 @media (max-width: 375px) {
   footer {
     display: block;

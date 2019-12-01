@@ -14,15 +14,11 @@ interface BlogIndexProps {
   location: Location;
 }
 
-const BlogIndex: React.FunctionComponent<BlogIndexProps> = ({
-  data,
-  location,
-}) => {
-  const siteTitle = data.site.siteMetadata.title;
+const BlogIndex: React.FunctionComponent<BlogIndexProps> = ({ data }) => {
   const posts = data.allMarkdownRemark.edges;
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout>
       <SEO
         title="Writing"
         keywords={[
@@ -34,7 +30,7 @@ const BlogIndex: React.FunctionComponent<BlogIndexProps> = ({
           `react`,
           `Alex Pérez`,
           `73nko`,
-          `73nko.dev`,
+          `73nko.es`,
         ]}
       />
       <MainBio />

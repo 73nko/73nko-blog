@@ -74,8 +74,7 @@ const MainBio: React.FunctionComponent<{}> = () => {
                 marginBottom: 0,
                 minWidth: 250,
                 borderRadius: `100%`,
-                border: `8px solid var(--secondary-color)`,
-                boxShadow: `10px 15px 10px 0px var(--main-color)`,
+                border: `8px solid var(--white)`,
               }}
               imgStyle={{
                 borderRadius: `50%`,

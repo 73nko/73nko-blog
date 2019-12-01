@@ -24,7 +24,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
             opacity: 1,
             backgroundColor: `var(--white)`,
             boxShadow: `8px 8px 14px #01001`,
-            borderRadius: `${rhythm(1)}`,
+            borderRadius: `${rhythm(0.5)}`,
             marginLeft: `auto`,
             marginRight: `auto`,
             maxWidth: rhythm(30),

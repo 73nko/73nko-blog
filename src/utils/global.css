@@ -1,3 +1,7 @@
+html {
+  height: 100%;
+  overflow: hidden;
+}
 body {
   --bg: #fff;
   --main-color: #093a3e;
@@ -9,16 +13,17 @@ body {
   --gray-medium: #dfe3e6;
   --white: #fff;
   --black: #000;
-
   --textLink: var(--black);
   --hr: var(--gray-medium);
+
   background: linear-gradient(95deg, #001011 0%, #97c8eb 50%, #001011 100%);
   background-position: center;
   background-attachment: fixed;
   background-clip: padding-box;
   /* reduce flash of top/bottom borders when body initially loads with no height */
   min-height: calc(100vh);
-  border-top: 5px solid var(--secondary-color);
+  border-top: 10px solid var(--secondary-color);
+  border-radius: 2px;
 }
 .bg {
   background-repeat: repeat;

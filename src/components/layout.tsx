@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Logo from '../components/logo';
 import { rhythm } from '../utils/typography';
 
 interface LayoutProps {
@@ -19,6 +20,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
           padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
         }}
       >
+        <Logo />
         <main
           style={{
             opacity: 1,

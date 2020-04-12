@@ -6,11 +6,12 @@ html {
 
 body {
   --bg: #fff;
-  --main-color: #093a3e;
-  --main-light: #3aafb9;
+  --main-color: #55c57a;
+  --main-light: #7ed56f;
+  --main-dark: #28b485;
   --help: #f4cde1;
-  --secondary-color: #97c8eb;
-  --secondary-light: #64e9ee;
+  --secondary-color: #5643fa;
+  --secondary-light: #2998ff;
   --gray: #717171;
   --gray-medium: #dfe3e6;
   --white: #fff;
@@ -22,13 +23,16 @@ body {
   padding: 0;
   overflow: auto;
   margin: 0;
-  background: linear-gradient(95deg, #001011 0%, #97c8eb 50%, #001011 100%);
+  background: linear-gradient(
+    to right bottom,
+    var(--secondary-light),
+    var(--secondary-color)
+  );
   background-position: center;
   background-attachment: fixed;
   background-clip: padding-box;
   /* reduce flash of top/bottom borders when body initially loads with no height */
   min-height: calc(100vh);
-  border-top: 10px solid var(--secondary-color);
   border-radius: 2px;
 }
 .bg {
@@ -58,27 +62,23 @@ header {
   }
 }
 
-/* donut */
-.logo > svg {
-  height: 3rem;
-  width: 3rem;
-  background-image: -webkit-linear-gradient(
-    92deg,
-    var(--main-color),
-    var(--main-light)
-  );
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: lavalamp 15s infinite linear;
+.logo {
+  font-family: 'Oracle Script';
+  font-size: 5rem;
+  padding: 0;
+  margin: 0;
+  line-height: 0.3;
 }
-@media (max-width: 320px) {
-  .logo {
-    margin-bottom: 0.5rem;
-  }
-  .logo > svg {
-    height: 2rem;
-    width: 2rem;
-  }
+
+.logo span {
+  background-image: linear-gradient(
+    to right,
+    var(--main-light),
+    var(--main-dark)
+  );
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: -3px -2px 3px rgba(255, 255, 255, 0.2);
 }
 
 /* front-end */

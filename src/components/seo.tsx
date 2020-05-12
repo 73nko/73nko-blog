@@ -1,5 +1,5 @@
 import React from 'react';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 
 interface Meta {
@@ -82,9 +82,9 @@ const SEO: React.FunctionComponent<SEOProps> = ({
         .concat(
           keywords.length > 0
             ? {
-                name: `keywords`,
-                content: keywords.join(`, `),
-              }
+              name: 'keywords',
+              content: keywords.join(`, `),
+            }
             : []
         )
         .concat(meta)}

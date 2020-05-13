@@ -54,16 +54,6 @@ const BlogPostTemplate: React.FunctionComponent<BlogPostTemplateProps> = ({
             marginTop: rhythm(1),
           }}
         />
-        <small>
-          Photo by{' '}
-          <a href={post.frontmatter.coverOriginalUrl}>
-            {post.frontmatter.coverAuthor}
-          </a>{' '}
-          on{' '}
-          <a href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
-            Unsplash
-          </a>
-        </small>
         <div
           style={{ marginTop: rhythm(1) }}
           dangerouslySetInnerHTML={{ __html: post.html }}

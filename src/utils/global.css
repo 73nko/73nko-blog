@@ -42,6 +42,7 @@ body {
   /* reduce flash of top/bottom borders when body initially loads with no height */
   min-height: calc(100vh);
   border-radius: 2px;
+  color: var(--gray);
 }
 
 ::selection {

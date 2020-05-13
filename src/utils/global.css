@@ -60,10 +60,6 @@ body {
   background-position-y: -15px;
   background-position-x: -15px;
 }
-h1 {
-  text-shadow: 2px 2px 4px var(--main-light);
-}
-
 /* header */
 header {
   display: flex;

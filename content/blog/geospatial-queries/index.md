@@ -16,9 +16,9 @@ published: false
 cover: ./geosphere.png
 ---
 
-Este es el primer artículo de mi blog, llevo más de un año con el sitio creado pero no tenía ni idea de qué escribir hasta que hoy me di cuenta de que había estado trabajando con una herramienta muy guay y poco conocida.  
+Este es el primer artículo de mi blog. Llevo más de un año con el sitio creado pero no tenía ni idea de qué escribir hasta que hoy me di cuenta de que había estado trabajando con una herramienta muy guay y poco conocida.  
   
-Vamos a ver las Consultas Geoespaciales y como usarlas en Node.
+Vamos a ver las Consultas Geoespaciales y cómo usarlas en Node.
 
 ## GeoJSON Objets
 
@@ -33,17 +33,17 @@ Vemos que la propiedad `coordinates` la compone un array con dos valores numéri
 
 ## Crear nuestra Base de datos de Mongo
 
-Bien, sabiendo como es la forma que tienen que tener nuestras localizaciones, vamos a crear unas cuantas en nuestra bbdd. Para ello, podríamos usar una BBDD local, pero en lugar de ello, utilizaremos [Atlas](https://cloud.mongodb.com/), que nos permite tener nuestra propia bbdd en la nube y trabajar desde la aplicación web. Mucho más sencillo y no tenemos que complicarnos en instalar nada en nuestro equipo.
+Bien, sabiendo cómo es la forma que tienen que tener nuestras localizaciones, vamos a crear unas cuantas en nuestra BBDD. Para ello, podríamos usar una BBDD local pero, en lugar de ello, utilizaremos [Atlas](https://cloud.mongodb.com/), que nos permite tener nuestra propia BBDD en la nube y trabajar desde la aplicación web. Mucho más sencillo y no tenemos que complicarnos en instalar nada en nuestro equipo.
 
 Para esto vamos a la [página de login](https://www.mongodb.com/cloud/atlas/register), nos registramos y nos encontramos un panel de administración parecido a este:  
   
 ![Dashboard de atlas](./projects-atlas.png)
 
-Aquí creamos un nuevo proyecto, y en la ventana de nuestro proyecto creamos un nuevo Cluster. Seleccionando la opción gratuíta, que es mas que suficiente para nuestra prueba y por último nos permite elegir el proveedor en el que queremos elegir nuestro cluster junto a la región. Las demás opciones podemos dejarlas por defecto.  
+Aquí creamos un nuevo proyecto, y en la ventana de nuestro proyecto creamos un nuevo Cluster seleccionando la opción gratuíta, que es mas que suficiente para nuestra prueba y, por último, nos permite elegir el proveedor en el que queremos elegir nuestro cluster junto a la región. Las demás opciones podemos dejarlas por defecto.  
   
 ![Creación de Cluster](./cluster-create.png)
 
-Nuestro siguiente paso será crear un usuario para nuestra bbdd. Hacemos click en `connect` y rellenamos con la información de nombre de usuario y password. No lo olvides porque lo vamos a necesitar más adelante!
+Nuestro siguiente paso será crear un usuario para nuestra BBDD. Hacemos click en `connect` y rellenamos con la información de nombre de usuario y password. No lo olvides porque lo vamos a necesitar más adelante!
 
 ## Insertamos nuestras primeras localizaciones
 
@@ -105,7 +105,7 @@ Para ello vamos a utilizar el operador `$nearSphere`. Este operador nos permite 
 }
 ```
   
-Lanzamos la query y… <h3 style="color: red">ERROR</h3> Nos dice que no puede encontrar un índice. Si vamos a la [documentación oficial](https://docs.mongodb.com/manual/reference/operator/query/nearSphere/#op._S_nearSphere) nos dice que el operador `$nearSphere` necesita de un índice geo espacial. Este tipo especial de incides calcula geometrías en una esfera como es nuestro planeta (A ver como explicáis esto los terraplanistas).
+Lanzamos la query y… <h3 style="color: red">ERROR</h3> Nos dice que no puede encontrar un índice. Si vamos a la [documentación oficial](https://docs.mongodb.com/manual/reference/operator/query/nearSphere/#op._S_nearSphere) podemos ver que el operador `$nearSphere` necesita de un índice geo espacial. Este tipo especial de incides calcula geometrías en una esfera como es nuestro planeta (A ver como explicáis esto los terraplanistas).
 
 Para crear esté índice es muy sencillo. Vamos a la pestaña de `Indexes` pulsamos en CREATE INDEX y añadimos
 

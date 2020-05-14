@@ -3,8 +3,6 @@
   font-size: 0.8rem;
   margin-bottom: -0.6rem;
   padding: 0.5em 1em;
-  font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
-    monospace;
   background-color: black;
   color: var(--white);
   z-index: 0;
@@ -18,8 +16,6 @@ pre[class*='language-'] {
   color: var(--secondary-light);
   background: none;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-  font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono',
-    monospace;
   text-align: left;
   white-space: pre;
   word-spacing: normal;

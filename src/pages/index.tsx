@@ -20,7 +20,7 @@ const BlogIndex: React.FunctionComponent<BlogIndexProps> = ({ data }) => {
   return (
     <Layout>
       <SEO
-        title="Writing"
+        title="Blog sobre programación web, javascript, node, react, etc..."
         keywords={[
           `blog`,
           `gatsby`,

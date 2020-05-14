@@ -1,8 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `73Nko's Blog`,
+    title: `Blog de 73Nko`,
     author: `Álex Pérez`,
-    description: `Álex Pérez's personal blog`,
+    description: `Blog sobre programación web, javascript, node, react, etc...`,
     siteUrl: `https://www.73nko.es`,
     social: {
       github: `73nko`,

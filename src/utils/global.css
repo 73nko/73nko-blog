@@ -233,21 +233,17 @@ a.squiggly:hover {
   background-color: #ffd4a0;
   color: #a53725;
 }
-.pill--elixir {
+.pill--javascript {
   background-color: #fde876;
   color: #735f00;
 }
-.pill--frontend {
+.pill--typescript {
   background-color: #c0e6ff;
   color: #325c80;
 }
-.pill--javascript {
-  background-color: #b36666;
-  color: var(--white);
-}
-.pill--typescript {
-  background-color: #a7fae6;
-  color: #006d5d;
+.pill--mongodb {
+  background-color: #59ab52bf;
+  color: #452e23;
 }
 
 /* embedded tweets */

@@ -5,6 +5,7 @@ description: >-
 date: '2020-05-13T08:17:13.024Z'
 categories:
   - JavaScript
+  - MongoDB
 keywords:
   - MongoDB
   - GeosSpatial Queries

@@ -12,7 +12,7 @@ keywords:
   - Mongo Atlas
   - NodeJS
   - JavaScript
-published: true
+published: false
 cover: ./geosphere.png
 ---
 

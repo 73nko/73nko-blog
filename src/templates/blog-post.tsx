@@ -64,7 +64,7 @@ const BlogPostTemplate: React.FunctionComponent<BlogPostTemplateProps> = ({
             rel="nofollow noopener noreferrer"
             href={`https://twitter.com/search?q=${publicUrl}`}
           >
-            Discuss on Twitter
+            Comenta en Twitter!
           </a>{' '}
           &middot;{' '}
           <a
@@ -72,7 +72,7 @@ const BlogPostTemplate: React.FunctionComponent<BlogPostTemplateProps> = ({
             rel="nofollow noopener noreferrer"
             href={`https://github.com/73nko/73nko-blog/tree/master/content/blog${post.fields.slug}`}
           >
-            Edit this post on GitHub
+            Editar este post en github
           </a>
         </small>
         <hr

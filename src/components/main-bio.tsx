@@ -33,7 +33,7 @@ const MainBio: React.FunctionComponent<{}> = () => {
           >
             <div className="main-bio">
               <h1 className="front-end" style={{ marginBottom: rhythm(1 / 5) }}>
-                Hello! Alex Pérez is a frontEnd senior developer!
+                Hola! Soy 73Nko, Senior Frontend Engineer.
               </h1>
               <ul
                 className="horizontal-links"
@@ -52,7 +52,14 @@ const MainBio: React.FunctionComponent<{}> = () => {
                 ))}
               </ul>
               <p>
-                I write about JavaScript, TypeScript, Node, and more. Welcome!
+                Ingeniero Informático y actualmente{' '}
+                <b>Senior Frontend Engineer</b> en <b>Eventbrite</b>. Entusiasta
+                de las tecnologías web:{' '}
+                <b>Javacript, Node.js, Deno, React, Mongo</b>, etc..
+              </p>
+              <p>
+                A través del blog espero compartir mi aprendizaje y profundizar
+                compartiendo lo que aprendo en mi día a día.
               </p>
             </div>
             <hr className="divider" />

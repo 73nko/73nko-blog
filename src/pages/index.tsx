@@ -69,7 +69,7 @@ const BlogIndex: React.FunctionComponent<BlogIndexProps> = ({ data }) => {
               }}
             />
             <Link className={`squiggly`} to={node.fields.slug}>
-              Read more
+              Leer más
             </Link>
           </div>
         );

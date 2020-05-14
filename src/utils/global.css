@@ -251,26 +251,8 @@ a.squiggly:hover {
   margin: 0 auto;
 }
 
-/* utils */
-.u-no-box-shadow {
-  box-shadow: none;
-}
-/* https://css-tricks.com/full-width-containers-limited-width-parents/ 
-.u-full-width {
-  width: calc(100vw);
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: calc(-50vw);
-  margin-right: calc(-50vw);
-}
-*/
-/* animations */
-@keyframes lavalamp {
-  from {
-    filter: hue-rotate(0deg);
-  }
-  to {
-    filter: hue-rotate(-360deg);
-  }
+.u-full-width,
+.blog-post img {
+  border-radius: 4px;
+  box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, 0.3) !important;
 }

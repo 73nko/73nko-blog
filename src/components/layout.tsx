@@ -16,7 +16,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
           opacity: 1,
           marginLeft: `auto`,
           marginRight: `auto`,
-          maxWidth: rhythm(30),
+          maxWidth: rhythm(35),
           padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
         }}
       >
@@ -29,8 +29,8 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
             borderRadius: `${rhythm(0.5)}`,
             marginLeft: `auto`,
             marginRight: `auto`,
-            maxWidth: rhythm(30),
-            padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
+            maxWidth: rhythm(35),
+            padding: `${rhythm(1.5)} 0`,
           }}
         >
           {children}

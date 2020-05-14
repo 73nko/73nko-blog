@@ -9,7 +9,7 @@ keywords:
   - MongoDB
   - GeosSpatial Queries
   - GeoJSON
-  - Mongo Atlas
+  - MongoDB Atlas
   - NodeJS
   - JavaScript
 published: false
@@ -18,20 +18,22 @@ cover: ./geosphere.png
 
 Este es el primer artículo de mi blog. Llevo más de un año con el sitio creado pero no tenía ni idea de qué escribir hasta que hoy me di cuenta de que había estado trabajando con una herramienta muy guay y poco conocida.  
   
-Este será el primero de una serie de tres artículos en el que crearemos una app que nos permita buscar lugares cercanos en base a ciertas "tag" y distancia máxima. 
+Este será el primero de una serie de tres artículos en el que crearemos una app que nos permita buscar lugares cercanos en base a ciertas "tag"(como restaurantes, bares, etc...) y distancia máxima a la que buscar.
 
 Pero vamos por partes, lo primero, vamos a crear nuestra base de datos.
 
 ## GeoJSON Objets
 
-Los objetos GeoJSON no son un estándar de MongoDB, pero Mongo soporta varios de los tipos de GeoJSON objects que existen, al menos los más importantes. Nos sirven para definir puntos en un mapa, pero también podemos definir rectas e incluso polígonos u objetos geométricos.  En la [documentación oficial](https://docs.mongodb.com/manual/reference/geojson/) podemos ver una descripción de estos objetos y cómo crearlos.  
+Los objetos GeoJSON no son un estándar de MongoDB, pero MongoDBsoporta varios de los tipos de GeoJSON objects que existen, al menos los más importantes. Nos sirven para definir puntos en un mapa, pero también podemos definir rectas e incluso polígonos u objetos geométricos.  En la [documentación oficial](https://docs.mongodb.com/manual/reference/geojson/) podemos ver una descripción de estos objetos y cómo crearlos.  
 En concreto vamos a trabajar con los más sencillos, los tipo “Point”, que representan un punto en el mapa de coordenadas.  La forma que tienen este tipo de objetos es la siguiente:  
 
 ```js
-{ type: "Point", coordinates: [ 40, 5 ] }
+{ type: "Point", coordinates: [ -3.703339, 40.416729 ] }
 ```
 
-Vemos que la propiedad `coordinates` la compone un array con dos valores numéricos, siendo siempre el primero la longitud y el segundo la latitud.
+Vemos que la propiedad `coordinates` la compone un array con dos valores numéricos, siendo siempre el primero la longitud y el segundo la latitud. En este caso estaríamos en el Parque del retiro
+
+![Mapa del retiro en google maps](./maps-retiro.png)
 
 ## Crear nuestra Base de datos de Mongo
 

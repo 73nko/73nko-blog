@@ -1,6 +1,5 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import Image from 'gatsby-image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import SOCIAL from '../constants/social';
@@ -8,13 +7,6 @@ import { rhythm } from '../utils/typography';
 
 const mainBioQuery = graphql`
   query MainBioQuery {
-    avatar: file(absolutePath: { regex: "/profile-pic2.jpg/" }) {
-      childImageSharp {
-        fixed(width: 250, height: 250, quality: 90) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
     site {
       siteMetadata {
         author
@@ -36,15 +28,12 @@ const MainBio: React.FunctionComponent<{}> = () => {
           <div
             className="main-bio-container"
             style={{
-              marginBottom: rhythm(2.5),
+              marginBottom: rhythm(1.5),
             }}
           >
             <div className="main-bio">
               <h1 className="front-end" style={{ marginBottom: rhythm(1 / 5) }}>
-                Hello! Alex Pérez is a frontEnd senior developer!{' '}
-                <span role="img" aria-label="fire">
-                  🔥
-                </span>
+                Hello! Alex Pérez is a frontEnd senior developer!
               </h1>
               <ul
                 className="horizontal-links"
@@ -63,23 +52,10 @@ const MainBio: React.FunctionComponent<{}> = () => {
                 ))}
               </ul>
               <p>
-                I write about JavaScript, TypeScript, Elixir, and more. Welcome!
+                I write about JavaScript, TypeScript, Node, and more. Welcome!
               </p>
             </div>
-            <Image
-              className="avatar"
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author}
-              style={{
-                marginBottom: 0,
-                minWidth: 250,
-                borderRadius: `100%`,
-                border: `8px solid var(--white)`,
-              }}
-              imgStyle={{
-                borderRadius: `50%`,
-              }}
-            />
+            <hr className="divider" />
           </div>
         );
       }}

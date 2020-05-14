@@ -98,24 +98,9 @@ header {
   text-shadow: -3px -2px 3px rgba(255, 255, 255, 0.1);
 }
 
-/* front-end */
-.front-end {
-  color: var(--main-color);
-}
-@media (max-width: 414px) {
-  .front-end {
-    font-size: 1.75rem;
-  }
-}
-
-@media (max-width: 1024px) {
-  .avatar {
-    margin: 0 auto;
-  }
-}
-
 /* main bio thing */
 .main-bio-container {
+  position: relative;
   display: flex;
 }
 .main-bio {
@@ -127,6 +112,12 @@ header {
 }
 .main-bio-container svg:hover {
   color: var(--secondary-color);
+}
+
+.divider {
+  background-color: var(--gray);
+  position: absolute;
+  bottom: -2.5rem;
 }
 
 @media (max-width: 1024px) {

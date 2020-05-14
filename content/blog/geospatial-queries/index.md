@@ -25,14 +25,14 @@ Pero vamos por partes, lo primero, vamos a crear nuestra base de datos.
 
 ## GeoJSON Objets
 
-Los objetos GeoJSON no son un estándar de MongoDB, pero MongoDBsoporta varios de los tipos de GeoJSON objects que existen, al menos los más importantes. Nos sirven para definir puntos en un mapa, pero también podemos definir rectas e incluso polígonos u objetos geométricos.  En la [documentación oficial](https://docs.mongodb.com/manual/reference/geojson/) podemos ver una descripción de estos objetos y cómo crearlos.  
+Los objetos GeoJSON no son un estándar de MongoDB, pero MongoDB soporta varios de los tipos de GeoJSON objects que existen, al menos los más importantes. Nos sirven para definir puntos en un mapa, pero también podemos definir rectas e incluso polígonos u objetos geométricos.  En la [documentación oficial](https://docs.mongodb.com/manual/reference/geojson/) podemos ver una descripción de estos objetos y cómo crearlos.  
 En concreto vamos a trabajar con los más sencillos, los tipo “Point”, que representan un punto en el mapa de coordenadas.  La forma que tienen este tipo de objetos es la siguiente:  
 
 ```js
 { type: "Point", coordinates: [ -3.703339, 40.416729 ] }
 ```
 
-Vemos que la propiedad `coordinates` la compone un array con dos valores numéricos, siendo siempre el primero la longitud y el segundo la latitud. En este caso estaríamos en el Parque del retiro
+Vemos que la propiedad `coordinates` la compone un array con dos valores numéricos, siendo siempre el primero la longitud y el segundo la latitud. En este caso estaríamos en el Parque del Retiro.
 
 ![Mapa del retiro en google maps](./maps-retiro.png)
 
@@ -107,7 +107,7 @@ Para ello vamos a utilizar el operador `$nearSphere`. Este operador nos permite 
 }
 ```
   
-Lanzamos la query y… <h3 style="color: #D20000">ERROR</h3> Nos dice que no puede encontrar un índice. Si vamos a la [documentación oficial](https://docs.mongodb.com/manual/reference/operator/query/nearSphere/#op._S_nearSphere) podemos ver que el operador `$nearSphere` necesita de un índice geo espacial. Este tipo especial de incides calcula geometrías en una esfera como es nuestro planeta (A ver como explicáis esto los terraplanistas).
+Lanzamos la query y… <span style="font-size: 2.3rem; color: #D20000">ERROR!</span> La aplicación nos dice algo de que no puede encontrar un índice. Si vamos a la [documentación oficial](https://docs.mongodb.com/manual/reference/operator/query/nearSphere/#op._S_nearSphere) podemos ver que el operador `$nearSphere` necesita de un índice geo espacial. Este tipo especial de incides calcula geometrías en una esfera como es nuestro planeta (A ver como explicáis esto los terraplanistas).
 
 Para crear esté índice es muy sencillo. Vamos a la pestaña de `Indexes` pulsamos en CREATE INDEX y añadimos
 
@@ -121,6 +121,6 @@ Con nuestro incídete creado, volvemos a hacer nuestra búsqueda:
 
 ![Resultados de la query](./query-results.png)
 
-Y bum! Nos devuelve los lugares que están a menos de 200m del punto de coordenadas por el que buscamos! En este caso, el parque del Retiro.
+<span style="font-size: 2.3rem; color: var(--main-color)">Boom!</span> Esta vez nos devuelve los lugares que están a menos de 200m del punto de coordenadas por el que buscamos! En este caso, el Parque del Retiro.
 
 Ya tenemos nuestra colección de lugares funcionando y hemos aprendido a buscar. En el siguiente artículo crearemos una API con Node que nos permitirá hacer búsquedas directamente sin utilizar la app web de atlas.

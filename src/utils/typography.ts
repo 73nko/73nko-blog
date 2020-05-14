@@ -1,78 +1,78 @@
-import Typography from "typography";
-import Wordpress2016 from "typography-theme-wordpress-2016";
-import "./global.css";
+import Typography from 'typography';
+import Wordpress2016 from 'typography-theme-wordpress-2016';
+import './global.css';
 
 const HEADER_FONT_FAMILY = [
-  "-apple-system",
-  "BlinkMacSystemFont",
-  "Segoe UI",
-  "Roboto",
-  "Oxygen",
-  "Ubuntu",
-  "Cantarell",
-  "Open Sans",
-  "Helvetica Neue",
-  "sans-serif",
+  '-apple-system',
+  'BlinkMacSystemFont',
+  'Segoe UI',
+  'Roboto',
+  'Oxygen',
+  'Ubuntu',
+  'Cantarell',
+  'Open Sans',
+  'Helvetica Neue',
+  'sans-serif',
 ];
-const BODY_FONT_FAMILY = ["PT Serif", "serif"];
+const BODY_FONT_FAMILY = ['PT Serif', 'serif'];
 
 Wordpress2016.overrideThemeStyles = () => ({
-  "h1, h2, h3, h4, h5, h6": {
+  'h1, h2, h3, h4, h5, h6': {
     marginTop: `2.5rem`,
   },
-  "h1, h2": {
-    fontFamily: HEADER_FONT_FAMILY.join(","),
-    paddingBottom: "0.62rem",
+  'h1, h2': {
+    fontFamily: HEADER_FONT_FAMILY.join(','),
+    paddingBottom: '0.62rem',
   },
-  "h3, h4, h5, h6": {
-    fontFamily: BODY_FONT_FAMILY.join(","),
+  'h3, h4, h5, h6': {
+    fontFamily: BODY_FONT_FAMILY.join(','),
   },
   a: {
-    color: "var(--textLink)",
+    color: 'var(--textLink)',
   },
   hr: {
-    background: "var(--hr)",
+    background: 'var(--hr)',
   },
-  "a.gatsby-resp-image-link": {
-    boxShadow: "none",
+  'a.gatsby-resp-image-link': {
+    boxShadow: 'none',
   },
   // These two are for gatsby-remark-autolink-headers:
-  "a.anchor": {
-    boxShadow: "none",
+  'a.anchor': {
+    boxShadow: 'none',
   },
   'a.anchor svg[aria-hidden="true"]': {
-    stroke: "var(--secondary-color)",
+    stroke: 'var(--secondary-color)',
   },
   // TODO: why tho
-  "h1 code, h2 code, h3 code, h4 code, h5 code, h6 code": {
-    fontSize: "inherit",
+  'h1 code, h2 code, h3 code, h4 code, h5 code, h6 code': {
+    fontSize: 'inherit',
   },
   blockquote: {
-    color: "inherit",
-    borderLeftColor: "inherit",
-    opacity: "0.8",
+    color: 'inherit',
+    borderLeftColor: 'inherit',
+    opacity: '0.8',
   },
-  "blockquote.translation": {
-    fontSize: "1rem",
+  'blockquote.translation': {
+    fontSize: '1rem',
   },
   footer: {
-    fontSize: "0.8rem",
-    display: "flex",
-    "justify-content": "space-between",
+    fontSize: '0.8rem',
+    display: 'flex',
+    'justify-content': 'space-between',
   },
   small: {
-    color: "var(--gray)",
+    color: 'var(--gray)',
   },
-  ".blog-post figcaption": {
-    fontSize: "0.8rem",
-    color: "var(--secondary-color)",
-    textAlign: "center",
+  '.blog-post figcaption': {
+    fontSize: '0.8rem',
+    color: 'var(--secondary-color)',
+    textAlign: 'center',
   },
 });
 
 delete Wordpress2016.googleFonts;
 
-Wordpress2016.baseFontSize = "18px";
+Wordpress2016.baseFontSize = '18px';
 Wordpress2016.headerFontFamily = HEADER_FONT_FAMILY;
 Wordpress2016.bodyFontFamily = BODY_FONT_FAMILY;
 

@@ -19,9 +19,7 @@ interface NotFoundProps {
   location: Location;
 }
 
-const NotFoundPage: React.FunctionComponent<NotFoundProps> = ({ data }) => {
-  const siteTitle = data.site.siteMetadata.title;
-
+const NotFoundPage: React.FunctionComponent<NotFoundProps> = () => {
   return (
     <Layout>
       <SEO title="404: Not Found" />

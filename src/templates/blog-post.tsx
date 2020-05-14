@@ -142,8 +142,6 @@ export const pageQuery = graphql`
             }
           }
         }
-        coverAuthor
-        coverOriginalUrl
         keywords
         published
       }

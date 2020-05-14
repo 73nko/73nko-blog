@@ -77,10 +77,7 @@ Vamos a añadir un par más para poder jugar un poco!
         "type": "Point",
         "coordinates": [-3.703339, 40.416729]
     }
-}
-```
-
-```js
+},
 {
     "name": "Palacio Real",
     "location": {

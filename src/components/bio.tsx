@@ -51,11 +51,9 @@ const Bio: React.FunctionComponent<{}> = () => {
               }}
             />
             <p>
-              Written by <strong>{author}</strong> who lives and works in
-              Madrid, Spain.
-              {` `}
+              Escrito por <strong>{author}</strong>.{` `}
               <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow him on Twitter
+                Te invito a seguirme en Twitter
               </a>
             </p>
           </div>

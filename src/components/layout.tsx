@@ -10,7 +10,6 @@ interface LayoutProps {
 const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
   return (
     <>
-      <div className="bg" />
       <div
         style={{
           opacity: 1,
@@ -26,7 +25,6 @@ const Layout: React.FunctionComponent<LayoutProps> = ({ children }) => {
         <main
           style={{
             opacity: 1,
-            backgroundColor: `var(--white)`,
             boxShadow: `8px 8px 14px #01001`,
             borderRadius: `${rhythm(0.5)}`,
             marginLeft: `auto`,

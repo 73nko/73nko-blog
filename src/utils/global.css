@@ -250,6 +250,10 @@ a.squiggly:hover {
 .twitter-tweet {
   margin: 0 auto;
 }
+/* utils */
+.u-no-box-shadow {
+  box-shadow: none;
+}
 
 .u-full-width,
 .blog-post img {

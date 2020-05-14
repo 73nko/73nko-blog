@@ -18,7 +18,9 @@ cover: ./geosphere.png
 
 Este es el primer artículo de mi blog. Llevo más de un año con el sitio creado pero no tenía ni idea de qué escribir hasta que hoy me di cuenta de que había estado trabajando con una herramienta muy guay y poco conocida.  
   
-Vamos a ver las Consultas Geoespaciales y cómo usarlas en Node.
+Este será el primero de una serie de tres artículos en el que crearemos una app que nos permita buscar lugares cercanos en base a ciertas "tag" y distancia máxima. 
+
+Pero vamos por partes, lo primero, vamos a crear nuestra base de datos.
 
 ## GeoJSON Objets
 

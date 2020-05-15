@@ -107,7 +107,7 @@ Para ello vamos a utilizar el operador `$nearSphere`. Este operador nos permite 
 }
 ```
   
-Lanzamos la query y… <span style="font-size: 2.3rem; color: #D20000">ERROR!</span> La aplicación nos dice algo de que no puede encontrar un índice. Si vamos a la [documentación oficial](https://docs.mongodb.com/manual/reference/operator/query/nearSphere/#op._S_nearSphere) podemos ver que el operador `$nearSphere` necesita de un índice geo espacial. Este tipo especial de incides calcula geometrías en una esfera como es nuestro planeta (A ver como explicáis esto los terraplanistas).
+Lanzamos la query y… <span style="font-size: 2.3rem; color: #D20000">ERROR!</span> La aplicación nos dice algo de que no puede encontrar un índice. Si vamos a la [documentación oficial](https://docs.mongodb.com/manual/reference/operator/query/nearSphere/#op._S_nearSphere) podemos ver que el operador `$nearSphere` necesita de un índice geo espacial. Este tipo especial de índices calcula geometrías en una esfera como es nuestro planeta (A ver como explicáis esto los terraplanistas).
 
 Para crear esté índice es muy sencillo. Vamos a la pestaña de `Indexes` pulsamos en CREATE INDEX y añadimos
 

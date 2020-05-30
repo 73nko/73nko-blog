@@ -226,8 +226,8 @@ a.squiggly:hover {
   margin-left: 0;
 }
 /* carbon design tag colors */
-.pill--react {
-  background-color: #ffd4a0;
+.pill--nodejs {
+  background-color: #fabada;
   color: #a53725;
 }
 .pill--javascript {

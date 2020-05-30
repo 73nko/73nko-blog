@@ -25,7 +25,7 @@ Agarraos los machos porque nos ponemos serios. Este artículo es la continuació
 ![NodeJS App Structure](./estructura-proyecto.png)
 
 Esta es la estructura de ficheros con la que vamos a trabajar. Podemos verla en más detalle [aquí](https://github.com/73nko/places-api).
-Pero vamos por partes, en primer lugar vamos a crear una app node node a través del comando `npm init -y`. Le damos un nombre al proyecto, en mi caso ha sido `geospacial-mongodb-api` y dejamos todo lo demás por defecto.
+Pero vamos por partes, en primer lugar vamos a crear una app node a través del comando `npm init -y`. Le damos un nombre al proyecto, en mi caso ha sido `geospacial-mongodb-api`, dejamos todo lo demás por defecto.
 
 Nuestro siguiente paso será instalar las dependencias que vamos a utilizar. Para el servidor usaremos [express](https://expressjs.com/es/) uno de los frameworks más conocidos de NodeJS junto a [mongoose](https://mongoosejs.com/), que nos permitirá conectarnos a nuestra bbdd de MongoDB y trabajar con ella. Además utilizaremos algunas otras librerías de utilidades relacionadas.
 Vamos a instalarlas! Para ello, utilizamos el siguiente comando:
@@ -82,7 +82,7 @@ Esta es la configuración básica de express. No tiene nada en especial y, si co
 
 El siguiente paso es conectar nuestra base de datos de MongoDB a la aplicación de Node. Para ello utilizaremos `mongoose` pero, antes de eso, vamos a necesitar conocer los datos de conexión a la Base de Datos. Los que seguisteis el post anterior, recordaréis que la tenemos alojada en el servicio de mongo cloud llamado Atlas.
 
-Para encontrar los datos de conexión, vamos al [panel de administración de Atlas](https://cloud.mongodb.com/v2)y en el cluster que creamos, vemos un botón que dice `connect`, pulsamos y nos aparecerá un modal como el siguiente:
+Para encontrar los datos de conexión vamos al [panel de administración de Atlas](https://cloud.mongodb.com/v2) y, en el cluster que creamos, vemos un botón que dice `connect`, pulsamos y nos aparecerá un modal como el siguiente:
 
 ![Modal pantalla conexión atlas](./conectar.png)
 
@@ -92,7 +92,7 @@ Seleccionamos la segunda opción (`connect your application`) y nos copiamos la 
 
 En esta cadena he  sustituido los datos personales de `usuario`, `password` y `cluster` por datos fake para mantener la privacidad. En un caso real, estos datos privados deberíamos a guardarlos en un fichero .env y obtenerlos a través de variables de entorno.
 
-Con esta información vamos a actualizar nuestro fichero de `server.js` y conectarnos a  nuestro MongoDB.
+Con esta información vamos a actualizar nuestro fichero de `server.js` y conectarnos a nuestro MongoDB.
 
 const express = require("express");
 
@@ -160,7 +160,7 @@ Bastante fácil, no? Sólo nos quedan los últimos pasos, configurar el modelo d
 
 ## Creamos el Modelo de Datos
 
-Para el modelo de datos vamos a crear una estructura de datos muy sencilla ya que realmente, no necesitamos mucho más. Simplemente vamos a tener las propiedades de Name, tag y location, que debe tener la estructura que vimos en el artículo anterior de `GeoJSON type Point`. El código es bastante auto explicativo, así que simplemente lo dejo por aquí
+Para el modelo de datos vamos a crear una estructura muy sencilla ya que realmente, no necesitamos mucho más. Simplemente vamos a tener las propiedades de name, tag y location, que debe tener la estructura que vimos en el artículo anterior de `GeoJSON type Point`. El código es bastante auto explicativo, así que simplemente lo dejo por aquí
 
 ```js
 
@@ -212,7 +212,7 @@ const Place = (module.exports = mongoose.model("place", PlaceSchema));
 
 ```
 
-Esta será la estructura de nuestros `places` ni mas ni menos. Por último, vamos a crear el controlador que nos permita filtrar tanto por tag como por distancia. Y tranquilos, que también es muy fácil, no tiene más que pasar los filtros que vimos en el artículo anterior, a código.
+Esta será la estructura de nuestros `places` ni mas ni menos. Por último, vamos a crear el controlador que nos permita filtrar tanto por tag como por distancia. Y tranquilos, que también es muy fácil, no tiene más que pasar los filtros que vimos en el artículo anterior a código.
 
 ## Filtramos lugares por distancia
 

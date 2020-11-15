@@ -243,6 +243,11 @@ a.squiggly:hover {
   color: #452e23;
 }
 
+.pill--react {
+  background-color: #00D8FF;
+  color: #452e23;
+}
+
 /* embedded tweets */
 .twitter-tweet {
   margin: 0 auto;

@@ -15,7 +15,7 @@ published: true
 cover: ./windows.png
 ---
 
-Pues como cabría esperar de mi, después de dos artículos me he tirado meses sin escribir nada. La verdad que no soy muy imaginativo pensando temas sobre los que escribir pero, esta semana he tenido un problema en el trabajo que he resuelto de una forma bastante elegante y creo que puede ayudar.
+Pues como cabría esperar de mí, después de dos artículos me he tirado meses sin escribir nada. La verdad que no soy muy imaginativo pensando temas sobre los que escribir pero, esta semana he tenido un problema en el trabajo que he resuelto de una forma bastante elegante y creo que puede ayudar.
 
 ## Comunicar información entre ventanas
 

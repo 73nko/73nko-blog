@@ -1,7 +1,6 @@
 ---
 title: Introducción a las Geospatial Queries con MongoDB
-description: >-
-  Una primera introducción las GeosPatial Queries con MongoDB
+description: Una primera introducción las GeosPatial Queries con MongoDB
 date: '2020-05-13T08:17:13.024Z'
 categories:
   - JavaScript

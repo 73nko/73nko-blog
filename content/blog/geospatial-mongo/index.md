@@ -1,7 +1,6 @@
 ---
 title: Cómo usar Geospatial Queries en NodeJs
-description: >-
-  Creamos una API simple en node que nos permita filtrar por lugares cercanos
+description: Creamos una API simple en node que nos permita filtrar por lugares cercanos
 date: '2020-05-30T09:10:08.041Z'
 categories:
   - JavaScript

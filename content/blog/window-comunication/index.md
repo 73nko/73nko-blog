@@ -1,7 +1,6 @@
 ---
 title: Comunicación entre ventanas con react
-description: >-
-  Una forma sencilla de comunicar información entre dos ventanas con react.
+description: Una forma sencilla de comunicar información entre dos ventanas con react.
 date: '2020-11-15T20:00:00.000Z'
 categories:
   - JavaScript

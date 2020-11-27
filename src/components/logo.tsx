@@ -1,12 +1,12 @@
 import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import Image from 'gatsby-image';
 
 export const logoQuery = graphql`
-  query LogoQUery {
-    logo: file(absolutePath: { regex: "/logo/" }) {
+  query {
+    file(relativePath: { regex: "/logo.png/" }) {
       childImageSharp {
-        fixed(width: 50, height: 50, quality: 80) {
+        fixed(width: 200, quality: 100) {
           ...GatsbyImageSharpFixed
         }
       }
@@ -14,16 +14,14 @@ export const logoQuery = graphql`
   }
 `;
 const Logo: React.FunctionComponent<any> = () => {
+  const data = useStaticQuery(logoQuery);
+
   return (
     <div className="logo">
-      <StaticQuery
-        query={logoQuery}
-        render={(data) => {
-          console.log({ data });
-          return (
-            <Image fixed={data.logo.childImageSharp.fixed} alt="73nko blog" />
-          );
-        }}
+      <img
+        src={data.file.childImageSharp.fixed.src}
+        srcSet={data.file.childImageSharp.fixed.srcStet}
+        alt="73nko blog"
       />
     </div>
   );

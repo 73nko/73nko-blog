@@ -82,7 +82,7 @@ header {
   line-height: 0.2;
 }
 
-.logo img {
+.logo > img {
   width: 10rem;
   margin: 0;
 }

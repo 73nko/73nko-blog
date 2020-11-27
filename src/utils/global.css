@@ -91,6 +91,7 @@ header {
     var(--main-dark)
   );
   -webkit-background-clip: text;
+  background-clip: text;
   color: transparent;
   text-shadow: -3px -2px 3px rgba(255, 255, 255, 0.1);
 }

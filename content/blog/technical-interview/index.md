@@ -44,9 +44,9 @@ Por último expones **el resultado de tus acciones** y el aprendizaje que has te
 
 Recuerda que **tu objetivo es venderte**, pero no puede ser algo muy evidente porque corres el riesgo de sonar arrogante. Intenta siempre ser **específico en los datos**, de esta forma puedes remarcar tus cualidades sin sonar demasiado arrogante.
 
-Antes de esta entrevista, repasa técnicamente todos los proyectos en los que has trabajado, es probable que te pregunten detalles técnicos de alguno de ellos y es importante ser capaz de dar una explicación detallada de tu rol en el proyecto y de las tenologías que se usaron. Es común que te pregunten por tus **debilidades y fortalezas**. Por favor, no contestes la típica respuesta de: “mi mayor debilidad es que trabajo mucho”. Sé sincero, todos tenemos debilidades y no hay problema en encararlas, simplemente explica**cómo gestionas esa debilidad** y qué haces en tu día a día para minimizarla. 
+Antes de esta entrevista, repasa técnicamente todos los proyectos en los que has trabajado, es probable que te pregunten detalles técnicos de alguno de ellos y es importante ser capaz de dar una explicación detallada de tu rol en el proyecto y de las tenologías que se usaron. Es común que te pregunten por tus **debilidades y fortalezas**. Por favor, no contestes la típica respuesta de: “mi mayor debilidad es que trabajo mucho”. Sé sincero, todos tenemos debilidades y no hay problema en encararlas, simplemente explica **cómo gestionas esa debilidad** y qué haces en tu día a día para minimizarla. 
 
-Otra pregunta muy común con la que empezar la entrevista suele ser el típico: **_Bueno, cuéntame sobre ti._** 
+Otra pregunta muy común con la que empezar la entrevista suele ser el típico: **_"Bueno, cuéntame sobre ti."_** 
 
 Para esta pregunta lo más importante es **seguir una estructura**. Lo más común es empezar por tu puesto y situación actual. Después hablar sobre tus orígenes, como empezaste en esto, estudios, etc… Hacer un breve resumen de tus pasadas experiencias en orden cronológico para volver a tu situación actual donde puedes dar un poco más de contexto y detalle. Por último, comentar tus aficiones fuera del trabajo, sobre todo si están relacionadas con el puesto y un breve resumen de todo.
 
@@ -98,11 +98,11 @@ Los consejos y comentarios del punto anterior aplican exactamente igual en los e
 
 Una buena técnica para estos casos, puede ser utilizar la llamada Notación Húngara, que consiste en añadir un pequeño “tip” al principio de las variables para indicarnos que tipo de variable es, por ejemplo un IUser, nos diría que es una interface, un sNames nos puede indicar que se trata de un string, etc… Eso nos ayudará a saber que variable vamos a utilizar y no mezclarlas. Explica antes de hacerlo porqué lo estás haciendo para no llevar a confusión a tu entrevistador y piense que es algo que haces siempre ya que esta no es una buena práctica en el código real.
 
-Dentro de los whiteboards, otro tipo muy común de pruebas son las de **Diseño de un Sistema**. En este tipo de prueba te pedirán que diseñes la estructura de una aplicación tipo. Por ejemplo, *¿Sabrías como diseñar twitter?*
+Dentro de los whiteboards, otro tipo muy común de pruebas son las de **diseño de un sistema**. En este tipo de prueba te pedirán que diseñes la estructura de una aplicación tipo. Por ejemplo, *"¿Sabrías como diseñar twitter?"*
 
 Este tipo de preguntas son bastante complejas y se entrenan poco. Para ello lo más importante es **definir los requerimientos y acotar al máximo**. Por ejemplo en twitter, puedes definir que vas a necesitar un timeline de un usuario, los contactos, etc.. y obviar la parte de chat, para así quitar complejidad a la pregunta. 
 
-Pregunta sobre **detalles de producto**, cuántos usuarios se esperan? Esta vista va a interactuar en tiempo real? El contenido multimedia, van a ser sólo imágenes o también trataremos vídeos y audios?
+Pregunta sobre **detalles de producto**, ¿cuántos usuarios se esperan? Esta vista, ¿va a interactuar en tiempo real? El contenido multimedia, ¿van a ser sólo imágenes o también trataremos vídeos y audios?
 Lo cierto es que este tipo de prueba es muy abierta, no existe una única solución posible y necesita de muchos conocimientos por tu parte. Si quieres prepararla bien el mejor recurso que he encontrado por internet es este curso: 
 
 [Grokking the System Design Interview](https://www.educative.io/courses/grokking-the-system-design-interview)

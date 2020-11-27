@@ -63,15 +63,6 @@ module.exports = {
             },
           },
           `gatsby-remark-external-links`,
-          {
-            resolve: `gatsby-remark-twitter-cards`,
-            options: {
-              background: '#55c57a',
-              fontColor: '#ffffff', // defaults to white (#ffffff)
-              fontStyle: 'PT Serif', // default
-              useFrontmatterSlug: false, // default, if true it will use the slug defined in the post frontmatter
-            },
-          },
         ],
       },
     },

@@ -45,7 +45,8 @@ const SEO: React.FunctionComponent<SEOProps> = ({
   );
 
   const metaDescription = description || site.siteMetadata.description;
-  console.log({ file });
+  const image = document.location.origin + file.childImageSharp.fixed.src;
+
   return (
     <Helmet
       htmlAttributes={{
@@ -80,7 +81,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
         },
         {
           name: `twitter:image`,
-          content: file.childImageSharp.fixed.src,
+          content: image,
         },
         {
           name: `twitter:title`,

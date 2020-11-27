@@ -27,7 +27,7 @@ Primero de todo decir que no existe un sólo tipo de entrevista técnica. Existe
 
 Esto es una conversación que puede ser tanto presencial como telemática, en la que el entrevistador te irá preguntando, muchas veces apoyándose en tus experiencias previas, sobre tus conocimientos en distintos ámbitos del trabajo como desarrollador. 
 
-Es común que te pregunte por las tecnologías con las que has trabajado, con que te encuentras más cómodo, si haces testing, como resuelves problemas recurrentes relacionados con estas tecnologías, metodología de trabajo, etc… Este tipo de entrevistas son ideales para demostrar tu personalidad, cómo trabajas en equipo, tus capacidades de liderazgo y tus conocimientos técnicos de forma genérica. 
+Es común que te pregunte por las tecnologías con las que has trabajado, con qué te encuentras más cómodo, si haces testing, cómo resuelves problemas recurrentes relacionados con estas tecnologías, metodología de trabajo, etc… Este tipo de entrevistas son ideales para demostrar tu personalidad, cómo trabajas en equipo, tus capacidades de liderazgo y tus conocimientos técnicos de forma genérica. 
 
 Una buena forma de prepararse para ello es, por cada una de las experiencias de tu currículo, intentar hacerse una tabla en la que desarrolles:
 
@@ -52,11 +52,11 @@ Para esta pregunta lo más importante es **seguir una estructura**. Lo más com�
 
 Para terminar, es común que el entrevistador deje unos minutos para que **tú hagas preguntas**. 
 
-Podemos pensar en tres tipos de preguntas. Preguntas para demostrar **tus conocimientos técnicos**. Si conoces las tecnologías que la empresa usa, puedes aprovechar para preguntar sobre posibles dificultades que conozcas de ellas. Por ejemplo, si usan Redux, puedes preguntar como hacen para organizar el estado cuándo la aplicación crece. O por qué eligieron redux frente a la ApiContext de react. 
+Podemos pensar en tres tipos de preguntas: 
 
-También puedes mostrar **tu pasión por ciertas tecnologías**, por ejemplo si es una empresa que trate con un gran volumen de clientes puedes decir que te interesa mucho aprender sobre escalabilidad y preguntar si existe la oportunidad de aprender sobre ello en el puesto.
-
-Por último aprovecha para preguntar **cosas que realmente te interesen**. Pregunta sobre la formación que ofrece la empresa, plan de carrera, cuáles son las mayores dificultades del puesto, que se espera de tu rol, etc…
+- Preguntas para demostrar **tus conocimientos técnicos**. Si conoces las tecnologías que la empresa usa, puedes aprovechar para preguntar sobre posibles dificultades que conozcas de ellas. Por ejemplo, si usan Redux, puedes preguntar como hacen para organizar el estado cuándo la aplicación crece. O por qué eligieron redux frente a la ApiContext de react. 
+- También puedes mostrar **tu pasión por ciertas tecnologías**, por ejemplo si es una empresa que trate con un gran volumen de clientes puedes decir que te interesa mucho aprender sobre escalabilidad y preguntar si existe la oportunidad de aprender sobre ello en el puesto.
+- Por último aprovecha para preguntar **cosas que realmente te interesen**. Pregunta sobre la formación que ofrece la empresa, plan de carrera, cuáles son las mayores dificultades del puesto, que se espera de tu rol, etc…
 
 ### Prueba técnica
 

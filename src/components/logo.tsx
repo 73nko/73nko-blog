@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Logo: React.FunctionComponent<{}> = () => {
+const Logo: React.FunctionComponent<any> = () => {
   return (
     <div className="logo">
-      <span>73Nko</span>
+      <img src={'/logo.svg'} alt="73nko blog" />
     </div>
   );
 };

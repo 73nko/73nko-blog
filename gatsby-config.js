@@ -39,10 +39,9 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 590,
+              maxWidth: 680,
               backgroundColor: `transparent`,
               withWebp: true,
-              showCaptions: true,
               quality: 80,
             },
           },
@@ -85,7 +84,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#0d8044`,
         display: `minimal-ui`,
-        icon: `content/assets/logo-73.svg`,
+        icon: `content/assets/logo.svg`,
       },
     },
     `gatsby-plugin-offline`,

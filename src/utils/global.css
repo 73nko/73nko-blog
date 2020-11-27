@@ -77,23 +77,14 @@ header {
 }
 
 .logo {
-  font-family: 'Oracle Script';
-  font-size: 5rem;
   padding: 0;
   margin: 0;
-  line-height: 0.3;
+  line-height: 0.2;
 }
 
-.logo span {
-  background-image: linear-gradient(
-    to right,
-    var(--main-light),
-    var(--main-dark)
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: -3px -2px 3px rgba(255, 255, 255, 0.1);
+.logo img {
+  width: 10rem;
+  margin: 0;
 }
 
 /* main bio thing */

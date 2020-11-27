@@ -24,7 +24,7 @@ const bioQuery = graphql`
   }
 `;
 
-const Bio: React.FunctionComponent<{}> = () => {
+const Bio: React.FunctionComponent<any> = () => {
   return (
     <StaticQuery
       query={bioQuery}

@@ -1,5 +1,5 @@
 import Typography from 'typography';
-import oceanBeachTheme from 'typography-theme-ocean-beach';
+import Wordpress2016 from 'typography-theme-wordpress-2016';
 import './global.css';
 
 const HEADER_FONT_FAMILY = [
@@ -16,7 +16,7 @@ const HEADER_FONT_FAMILY = [
 ];
 const BODY_FONT_FAMILY = ['PT Serif', 'serif'];
 
-oceanBeachTheme.overrideThemeStyles = () => ({
+Wordpress2016.overrideThemeStyles = () => ({
   'h1, h2, h3, h4, h5, h6': {
     marginTop: `2.5rem`,
   },
@@ -70,13 +70,13 @@ oceanBeachTheme.overrideThemeStyles = () => ({
   },
 });
 
-delete oceanBeachTheme.googleFonts;
+delete Wordpress2016.googleFonts;
 
-oceanBeachTheme.baseFontSize = '18px';
-oceanBeachTheme.headerFontFamily = HEADER_FONT_FAMILY;
-oceanBeachTheme.bodyFontFamily = BODY_FONT_FAMILY;
+Wordpress2016.baseFontSize = '18px';
+Wordpress2016.headerFontFamily = HEADER_FONT_FAMILY;
+Wordpress2016.bodyFontFamily = BODY_FONT_FAMILY;
 
-const typography = new Typography(oceanBeachTheme);
+const typography = new Typography(Wordpress2016);
 
 // Hot reload typography in development.
 if (process.env.NODE_ENV !== `production`) {

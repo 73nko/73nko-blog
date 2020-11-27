@@ -1,8 +1,0 @@
-@font-face {
-  font-family: 'Oracle Script';
-  src: url('otf/Oraqle-Script.otf') format('otf'),
-    url('woff/Oraqle-Script.woff') format('woff'),
-    url('ttf/Oraqle-Script.ttf') format('truetype');
-  font-weight: 900;
-  font-style: normal;
-}

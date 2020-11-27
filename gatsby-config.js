@@ -4,6 +4,7 @@ module.exports = {
     author: `Álex Pérez`,
     description: `Blog sobre programación web, javascript, node, react, etc...`,
     siteUrl: `https://www.73nko.es`,
+    defaultImage: `${__dirname}/content/assets/logo.png`,
     social: {
       github: `73nko`,
       twitter: `73nko`,

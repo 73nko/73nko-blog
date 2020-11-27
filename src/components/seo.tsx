@@ -30,6 +30,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
             title
             description
             author
+            defaultImage
           }
         }
       }
@@ -71,6 +72,10 @@ const SEO: React.FunctionComponent<SEOProps> = ({
           content: site.siteMetadata.author,
         },
         {
+          name: `twitter:image`,
+          content: site.siteMetadata.defaultImage,
+        },
+        {
           name: `twitter:title`,
           content: title,
         },
@@ -82,9 +87,9 @@ const SEO: React.FunctionComponent<SEOProps> = ({
         .concat(
           keywords.length > 0
             ? {
-              name: 'keywords',
-              content: keywords.join(`, `),
-            }
+                name: 'keywords',
+                content: keywords.join(`, `),
+              }
             : []
         )
         .concat(meta)}

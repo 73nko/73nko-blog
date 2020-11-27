@@ -115,6 +115,7 @@ module.exports = {
         },
       },
     },
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-webpack-bundle-analyzer`,
     `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-preload-fonts`,

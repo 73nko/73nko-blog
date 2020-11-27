@@ -10,7 +10,7 @@ keywords:
   - Interview
   - Cómo hacer una entrevista técnica
 published: false
-cover: ./interview.png
+cover: ./interview.webp
 ---
 
 La entrevista técnica es una de las partes que más miedo puede dar a la hora de buscar nuevos trabajos cómo programador. Los que nos dedicamos a esto tendemos a subestimarnos con respecto a nuestras capacidades técnicas y sufrir el llamado “síndrome del impostor”. 
@@ -23,7 +23,7 @@ Primero de todo decir que no existe un sólo tipo de entrevista técnica. Existe
 
 ### Conversación técnica
 
-![Conversación técnica](./conversations.jpeg)
+![Conversación técnica](./conversations.webp)
 
 Esto es una conversación que puede ser tanto presencial como telemática, en la que el entrevistador te irá preguntando, muchas veces apoyándose en tus experiencias previas, sobre tus conocimientos en distintos ámbitos del trabajo como desarrollador. 
 
@@ -64,7 +64,7 @@ Otro tipo de entrevista es la prueba técnica pura y dura. Este tipo de entrevis
 
 #### Ejercicio para resolver desde casa
 
-![Prueba desde casa](./home-develop.png)
+![Prueba desde casa](./home-develop.webp)
 
 Si la prueba es un ejercicio que tengas que resolver en casa. En primer lugar te recomendaría conocer bien las tenologías que utilizan en la empresa y cómo va a ser tu rol. Si sabes que vas a trabajar haciendo una API rest con Django, utiliza este framework, si sabes que la empresa utiliza mongoDb como base de datos, no hagas tu proyecto en PostgreSQL. En el caso de tener dudas, pregunta a tu entrevistador. 
 **No reinventes la rueda**, si existe un generador, no intentes crear tú todo de cero a no ser que sepas que en el puesto vas a tener que realizar estas tareas. Por ejemplo si vas a montar un react, por regla general usa create-react-app. 
@@ -77,7 +77,7 @@ Añade un README.md al repositorio haciendo una breve descripción de que has he
 
 #### Pair programming
 
-![Pair programming](./pair-programming.jpeg)
+![Pair programming](./pair-programming.webp)
 
 Otro caso muy común de entrevista técnica es el pair programming. Este como hemos dicho, puede ser presencial o telemático. En ambos casos es parecido. Pueden ponerte un problema que resolver mediante un algoritmo o una situación “semi-real” en la que tengas que resolver una situación del día a día. 
 
@@ -92,7 +92,7 @@ Por último, si te bloqueas háblalo con naturalidad, es normal ponerse nervioso
 
 #### White boards
 
-![white Board](./white-board.jpeg)
+![white Board](./white-board.webp)
 
 Los consejos y comentarios del punto anterior aplican exactamente igual en los ejercicios de white board. Sobre todo en el caso de que sea una prueba de resolución algoritmos. Solamente añadir que, al no tener en este caso un IDE que nos autocomplete el código o nos avise de los errores, es más aceptable cometer pequeños bugs o errores gramaticales. Puedes ser un poco más abstracto, pero **sin caer en pseudocódigo**. 
 

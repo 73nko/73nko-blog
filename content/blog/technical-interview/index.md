@@ -13,7 +13,7 @@ published: false
 cover: ./interview.png
 ---
 
-La entrevista técnica es una de las partes que más miedo puede dar a la hora de buscar nuevos trabajos cómo programador. Los que nos dedicamos a esto tendemos a subestimarnos con respecto a nuestras capacidades técnicas y sufrir el llamado “síndrome del impostor”. Dentro del mundo del desarrollo hay millones de cosas que se supone debemos conocer, las ofertas de trabajo nos piden cientos de tecnologías, metodologías y skills que para conocerlas todas deberíamos disponer de días de 50 horas y aún así nos haría falta más tiempo. 
+La entrevista técnica es una de las partes que más miedo puede dar a la hora de buscar nuevos trabajos cómo programador. Los que nos dedicamos a esto tendemos a subestimarnos con respecto a nuestras capacidades técnicas y sufrir el llamado “síndrome del impostor”. 
 
 En este post me gustaría recoger un poco la información que he podido reunir según mi propia experiencia en el sector y lo que he aprendido sobre como prepararse y cómo actuar en la tan temida entrevista técnica. 
 
@@ -26,7 +26,9 @@ Primero de todo decir que no existe un sólo tipo de entrevista técnica. Existe
 ![Conversación técnica](./conversations.jpeg)
 
 Esto es una conversación que puede ser tanto presencial como telemática, en la que el entrevistador te irá preguntando, muchas veces apoyándose en tus experiencias previas, sobre tus conocimientos en distintos ámbitos del trabajo como desarrollador. 
-En esta entrevista es común que te pregunte por las tecnologías con las que has trabajado, con que te encuentras más cómodo, si haces testing, como resuelves problemas recurrentes relacionados con estas tecnologías, metodología de trabajo, etc… Este tipo de entrevistas son ideales para demostrar tu personalidad, cómo trabajas en equipo, tus capacidades de liderazgo y tus conocimientos técnicos de forma genérica. 
+
+Es común que te pregunte por las tecnologías con las que has trabajado, con que te encuentras más cómodo, si haces testing, como resuelves problemas recurrentes relacionados con estas tecnologías, metodología de trabajo, etc… Este tipo de entrevistas son ideales para demostrar tu personalidad, cómo trabajas en equipo, tus capacidades de liderazgo y tus conocimientos técnicos de forma genérica. 
+
 Una buena forma de prepararse para ello es, por cada una de las experiencias de tu currículo, intentar hacerse una tabla en la que desarrolles:
 
 - Cuáles han sido las dificultades a las que te has enfrentado. 
@@ -35,18 +37,18 @@ Una buena forma de prepararse para ello es, por cada una de las experiencias de 
 - Conflictos que te hayas encontrado y como los superaste. 
 - Un pequeño resumen de tu aprendizaje y que cambiarías después de todo esto.
 
-Para resolver este tipo de preguntas existen muchas estrategias, una que me parece realmente útil es la llamada [S.T.A.R](https://en.wikipedia.org/wiki/Situation,_task,_action,_result) (Situation, Task, Action, Result.) Esta técnica consiste en que en un primer momento describes **la situación** y el origen de ella. A partir de esta situación fijas `un objetivo` a cumplir. Después explicas **la forma en la que lo resolviste**, intentando mostrar de forma indirecta tus cualidades, por ejemplo si había un problema con un compañero, puedes mostrar tu empatía explicando como ayudaste a ese compañero, si había un problema de desorganización con las tareas puedes mostrar tu capacidad de gestión diciendo como organizaste para que el trabajo saliese adelante, etc…
+Para resolver este tipo de preguntas existen muchas estrategias, una que me parece realmente útil es la llamada [S.T.A.R](https://en.wikipedia.org/wiki/Situation,_task,_action,_result) (Situation, Task, Action, Result.) 
+
+Esta técnica consiste en que en un primer momento describes **la situación** y el origen de ella. A partir de esta situación fijas **un objetivo** a cumplir. Después explicas **la forma en la que lo resolviste**, intentando mostrar de forma indirecta tus cualidades, por ejemplo si había un problema con un compañero, puedes mostrar tu empatía explicando como ayudaste a ese compañero, si había un problema de desorganización con las tareas puedes mostrar tu capacidad de gestión diciendo como organizaste para que el trabajo saliese adelante, etc…
 Por último expones **el resultado de tus acciones** y el aprendizaje que has tenido de ello.
 
 Recuerda que **tu objetivo es venderte**, pero no puede ser algo muy evidente porque corres el riesgo de sonar arrogante. Intenta siempre ser **específico en los datos**, de esta forma puedes remarcar tus cualidades sin sonar demasiado arrogante.
 
 Antes de esta entrevista, repasa técnicamente todos los proyectos en los que has trabajado, es probable que te pregunten detalles técnicos de alguno de ellos y es importante ser capaz de dar una explicación detallada de tu rol en el proyecto y de las tenologías que se usaron. Es común que te pregunten por tus **debilidades y fortalezas**. Por favor, no contestes la típica respuesta de: “mi mayor debilidad es que trabajo mucho”. Sé sincero, todos tenemos debilidades y no hay problema en encararlas, simplemente explica**cómo gestionas esa debilidad** y qué haces en tu día a día para minimizarla. 
 
-Por ejemplo: yo como frontend, una debilidad es que no tengo mucho ojo para los detalles visuales. Se me escapan errores de diseño evidentes a otras personas. Lo que hago es trabajar siempre de forma muy estrecha al diseñador, pidiéndole feedback constante y requiriendo su validación antes de dar una tarea por finalizada. 
+Otra pregunta muy común con la que empezar la entrevista suele ser el típico: **_Bueno, cuéntame sobre ti._** 
 
-Otra pregunta muy común con la que empezar la entrevista suele ser el típico: *Bueno, cuéntame sobre ti.* 
-
-Para esta pregunta lo más importante es seguir una estructura. Lo más común es empezar por tu puesto y situación actual. Después hablar sobre tus orígenes, como empezaste en esto, estudios, etc… Hacer un breve resumen de tus pasadas experiencias en orden cronológico para volver a tu situación actual donde puedes dar un poco más de contexto y detalle. Por último, comentar tus aficiones fuera del trabajo, sobre todo si están relacionadas con el puesto y un breve resumen de todo.
+Para esta pregunta lo más importante es **seguir una estructura**. Lo más común es empezar por tu puesto y situación actual. Después hablar sobre tus orígenes, como empezaste en esto, estudios, etc… Hacer un breve resumen de tus pasadas experiencias en orden cronológico para volver a tu situación actual donde puedes dar un poco más de contexto y detalle. Por último, comentar tus aficiones fuera del trabajo, sobre todo si están relacionadas con el puesto y un breve resumen de todo.
 
 Para terminar, es común que el entrevistador deje unos minutos para que **tú hagas preguntas**. 
 
@@ -75,7 +77,7 @@ Añade un README.md al repositorio haciendo una breve descripción de que has he
 
 #### Pair programming
 
-![Pair programming](./algorithms.jpeg)
+![Pair programming](./pair-programming.jpeg)
 
 Otro caso muy común de entrevista técnica es el pair programming. Este como hemos dicho, puede ser presencial o telemático. En ambos casos es parecido. Pueden ponerte un problema que resolver mediante un algoritmo o una situación “semi-real” en la que tengas que resolver una situación del día a día. 
 
@@ -92,7 +94,7 @@ Por último, si te bloqueas háblalo con naturalidad, es normal ponerse nervioso
 
 ![white Board](./white-board.jpeg)
 
-La verdad que los consejos y comentarios del punto anterior aplican exactamente igual en los ejercicios de white board. Sobre todo en el caso de que sea una prueba de algoritmos. Solamente añadir que, al no tener en este caso un IDE que nos autocomplete el código o nos avise de los errores, es más aceptable cometer pequeños bugs o errores gramaticales. Puedes ser un poco más abstracto, pero **sin caer en pseudocódigo**. 
+Los consejos y comentarios del punto anterior aplican exactamente igual en los ejercicios de white board. Sobre todo en el caso de que sea una prueba de resolución algoritmos. Solamente añadir que, al no tener en este caso un IDE que nos autocomplete el código o nos avise de los errores, es más aceptable cometer pequeños bugs o errores gramaticales. Puedes ser un poco más abstracto, pero **sin caer en pseudocódigo**. 
 
 Una buena técnica para estos casos, puede ser utilizar la llamada Notación Húngara, que consiste en añadir un pequeño “tip” al principio de las variables para indicarnos que tipo de variable es, por ejemplo un IUser, nos diría que es una interface, un sNames nos puede indicar que se trata de un string, etc… Eso nos ayudará a saber que variable vamos a utilizar y no mezclarlas. Explica antes de hacerlo porqué lo estás haciendo para no llevar a confusión a tu entrevistador y piense que es algo que haces siempre ya que esta no es una buena práctica en el código real.
 

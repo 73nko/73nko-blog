@@ -234,7 +234,8 @@ a.squiggly:hover {
   background-color: #fde876;
   color: #735f00;
 }
-.pill--typescript {
+.pill--typescript,
+.pill--interview {
   background-color: #c0e6ff;
   color: #325c80;
 }
@@ -244,7 +245,7 @@ a.squiggly:hover {
 }
 
 .pill--react {
-  background-color: #00D8FF;
+  background-color: #00d8ff;
   color: #452e23;
 }
 

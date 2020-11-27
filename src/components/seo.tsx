@@ -21,9 +21,8 @@ const SEO: React.FunctionComponent<SEOProps> = ({
   meta = [],
   keywords = [],
   title,
-  image,
 }) => {
-  const { site } = useStaticQuery(
+  const { site, file } = useStaticQuery(
     graphql`
       query {
         site {
@@ -34,11 +33,19 @@ const SEO: React.FunctionComponent<SEOProps> = ({
             defaultImage
           }
         }
+        file(relativePath: { regex: "/logo.png/" }) {
+          childImageSharp {
+            fixed(width: 200, quality: 100) {
+              ...GatsbyImageSharpFixed
+            }
+          }
+        }
       }
     `
   );
 
   const metaDescription = description || site.siteMetadata.description;
+  console.log({ file });
   return (
     <Helmet
       htmlAttributes={{
@@ -73,7 +80,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
         },
         {
           name: `twitter:image`,
-          content: site.siteMetadata.defaultImage,
+          content: file.childImageSharp.fixed.src,
         },
         {
           name: `twitter:title`,

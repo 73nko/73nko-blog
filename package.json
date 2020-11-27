@@ -61,6 +61,7 @@
     "eslint-plugin-react": "^7.21.5",
     "gatsby-plugin-no-javascript": "^2.0.5",
     "gatsby-plugin-preload-fonts": "^1.4.0",
+    "gatsby-plugin-webpack-bundle-analyser-v2": "^1.1.17",
     "gatsby-plugin-webpack-bundle-analyzer": "^1.0.5",
     "lighthousebot": "https://github.com/GoogleChromeLabs/lighthousebot",
     "prettier": "^2.1.2",

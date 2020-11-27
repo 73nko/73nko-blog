@@ -115,11 +115,15 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+      options: {
+        devMode: true,
+      },
+    },
     `gatsby-plugin-sitemap`,
-    `gatsby-plugin-webpack-bundle-analyzer`,
-    `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-preload-fonts`,
-    `gatsby-plugin-no-javascript`,
+    `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-netlify`, // must be last
   ],
 };

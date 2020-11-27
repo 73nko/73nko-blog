@@ -21,7 +21,6 @@ const BlogPostTemplate: React.FunctionComponent<BlogPostTemplateProps> = ({
   const { markdownRemark: post } = data;
   const { previous, next } = pageContext;
   const publicUrl = `https://www.73nko.es${post.fields.slug}`;
-
   return (
     <Layout>
       <SEO

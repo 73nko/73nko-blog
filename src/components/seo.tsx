@@ -21,6 +21,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
   meta = [],
   keywords = [],
   title,
+  image,
 }) => {
   const { site } = useStaticQuery(
     graphql`
@@ -38,7 +39,6 @@ const SEO: React.FunctionComponent<SEOProps> = ({
   );
 
   const metaDescription = description || site.siteMetadata.description;
-
   return (
     <Helmet
       htmlAttributes={{

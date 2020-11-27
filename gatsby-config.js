@@ -119,7 +119,6 @@ module.exports = {
     `gatsby-plugin-webpack-bundle-analyzer`,
     `gatsby-plugin-netlify-cache`,
     `gatsby-plugin-preload-fonts`,
-    `gatsby-plugin-no-javascript`,
     `gatsby-plugin-netlify`, // must be last
   ],
 };

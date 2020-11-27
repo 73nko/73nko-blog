@@ -10,7 +10,7 @@ keywords:
   - Interview
   - Cómo hacer una entrevista técnica
 published: false
-cover: ./interview.webp
+cover: ./interview.png
 ---
 
 La entrevista técnica es una de las partes que más miedo puede dar a la hora de buscar nuevos trabajos cómo programador. Los que nos dedicamos a esto tendemos a subestimarnos con respecto a nuestras capacidades técnicas y sufrir el llamado “síndrome del impostor”. 

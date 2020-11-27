@@ -1,7 +1,6 @@
 ---
 title: La entrevista técnica
-description: >-
-  Qué tipos de entrevistas técnicas podemos encontrar y consejos sobre como superarlas.
+description: Qué tipos de entrevistas técnicas podemos encontrar y consejos sobre como hacer una entrevista técnica.
 date: '2020-11-27T22:00:00.000Z'
 categories:
   - JavaScript
@@ -9,6 +8,7 @@ categories:
 keywords:
   - JavaScript
   - Interview
+  - Cómo hacer una entrevista técnica
 published: false
 cover: ./interview.png
 ---

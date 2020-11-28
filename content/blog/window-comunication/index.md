@@ -106,7 +106,7 @@ import React from 'react';
 
 export const CompleteProccess = () => {
     
-    const [error, setError] = React.useEffect(false)
+    const [error, setError] = React.useState(false)
 
     React.useEffect(() => {
         const currentUrl = new URL(window?.location);
@@ -130,9 +130,9 @@ Para la otra parte, encargada de escuchar cuándo se va a escribir en el localSt
 
 ```js
 import React from 'react';
-export const useDetectStorageChange = (storageKey) => {
+export const useDetectStorageChange = (storageKey, initialValue = null) => {
 
-
+    const [value, setValue] = useState(initialValue);
     const detectChange = React.useCallback(() => {
         const code = localStorage.getItem(storageKey);
         if (code) {

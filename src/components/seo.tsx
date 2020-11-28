@@ -13,6 +13,7 @@ interface SEOProps {
   meta?: Meta[];
   keywords?: string[];
   title: string;
+  image?: string;
 }
 
 const SEO: React.FunctionComponent<SEOProps> = ({
@@ -21,6 +22,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
   meta = [],
   keywords = [],
   title,
+  image,
 }) => {
   const { site, file } = useStaticQuery(
     graphql`
@@ -45,7 +47,9 @@ const SEO: React.FunctionComponent<SEOProps> = ({
   );
 
   const metaDescription = description || site.siteMetadata.description;
-  const image = `https://73nko.es` + file.childImageSharp.fixed.src;
+  const twitterImage = `https://73nko.es${
+    image || file.childImageSharp.fixed.src
+  }`;
 
   return (
     <Helmet
@@ -73,7 +77,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
         },
         {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
         },
         {
           name: `twitter:creator`,
@@ -81,7 +85,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
         },
         {
           name: `twitter:image`,
-          content: image,
+          content: twitterImage,
         },
         {
           name: `twitter:title`,

@@ -21,12 +21,14 @@ const BlogPostTemplate: React.FunctionComponent<BlogPostTemplateProps> = ({
   const { markdownRemark: post } = data;
   const { previous, next } = pageContext;
   const publicUrl = `https://www.73nko.es${post.fields.slug}`;
+  const image = post.frontmatter.cover?.childImageSharp?.fluid?.src;
   return (
     <Layout>
       <SEO
         title={`${post.frontmatter.title}`}
         description={post.frontmatter.description || post.excerpt}
         keywords={post.frontmatter.keywords}
+        image={image}
       />
       <div className="blog-post">
         <h1 style={{ marginTop: 0 }}>

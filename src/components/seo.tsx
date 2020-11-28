@@ -24,15 +24,21 @@ const SEO: React.FunctionComponent<SEOProps> = ({
   title,
   image,
 }) => {
-  const { site, file } = useStaticQuery(
+  const { site, file, sitePage } = useStaticQuery(
     graphql`
       query {
+        sitePage {
+          path
+        }
         site {
           siteMetadata {
             title
             description
             author
             defaultImage
+            social {
+              twitter
+            }
           }
         }
         file(relativePath: { regex: "/logo.png/" }) {
@@ -51,6 +57,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
     image || file.childImageSharp.fixed.src
   }`;
 
+  const url = `https://73nko.es${sitePage.path}`;
   return (
     <Helmet
       htmlAttributes={{
@@ -64,6 +71,10 @@ const SEO: React.FunctionComponent<SEOProps> = ({
           content: metaDescription,
         },
         {
+          property: `og:site_name`,
+          content: site.siteMetadata.author,
+        },
+        {
           property: `og:title`,
           content: title,
         },
@@ -73,7 +84,11 @@ const SEO: React.FunctionComponent<SEOProps> = ({
         },
         {
           property: `og:type`,
-          content: `website`,
+          content: `article`,
+        },
+        {
+          property: `og:article:author`,
+          content: site.siteMetadata.author,
         },
         {
           name: `og:image`,
@@ -85,15 +100,31 @@ const SEO: React.FunctionComponent<SEOProps> = ({
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: `@` + site.siteMetadata.social.twitter,
+        },
+        {
+          name: `twitter:site`,
+          content: `@` + site.siteMetadata.social.twitter,
+        },
+        {
+          name: `twitter:domain`,
+          content: `73nko.es`,
         },
         {
           name: `twitter:image`,
           content: twitterImage,
         },
         {
+          name: `twitter:image:alt`,
+          content: title,
+        },
+        {
           name: `twitter:title`,
           content: title,
+        },
+        {
+          name: `twitter:url`,
+          content: url,
         },
         {
           name: `twitter:description`,

@@ -45,7 +45,7 @@ const SEO: React.FunctionComponent<SEOProps> = ({
   );
 
   const metaDescription = description || site.siteMetadata.description;
-  const image = document.location.origin + file.childImageSharp.fixed.src;
+  const image = `https://73nko.es` + file.childImageSharp.fixed.src;
 
   return (
     <Helmet

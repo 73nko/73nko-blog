@@ -18,18 +18,15 @@ interface SEOProps {
 
 const SEO: React.FunctionComponent<SEOProps> = ({
   description,
-  lang = 'en',
+  lang = 'es',
   meta = [],
   keywords = [],
   title,
   image,
 }) => {
-  const { site, file, sitePage } = useStaticQuery(
+  const { site, file } = useStaticQuery(
     graphql`
       query {
-        sitePage {
-          path
-        }
         site {
           siteMetadata {
             title
@@ -41,10 +38,10 @@ const SEO: React.FunctionComponent<SEOProps> = ({
             }
           }
         }
-        file(relativePath: { regex: "/logo.png/" }) {
+        file(relativePath: { regex: "/logo/" }) {
           childImageSharp {
-            fixed(width: 200, quality: 100) {
-              ...GatsbyImageSharpFixed
+            fixed(width: 600, quality: 100) {
+              srcWebp
             }
           }
         }
@@ -54,17 +51,16 @@ const SEO: React.FunctionComponent<SEOProps> = ({
 
   const metaDescription = description || site.siteMetadata.description;
   const twitterImage = `https://73nko.es${
-    image || file.childImageSharp.fixed.src
+    image || file.childImageSharp.fixed.srcWebp
   }`;
 
-  const url = `https://73nko.es${sitePage.path}`;
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title} - A blog by ${site.siteMetadata.author}`}
+      titleTemplate={`%s | ${site.siteMetadata.title} - Blog de ${site.siteMetadata.author}`}
       meta={[
         {
           name: `description`,
@@ -121,10 +117,6 @@ const SEO: React.FunctionComponent<SEOProps> = ({
         {
           name: `twitter:title`,
           content: title,
-        },
-        {
-          name: `twitter:url`,
-          content: url,
         },
         {
           name: `twitter:description`,

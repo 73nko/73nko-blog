@@ -21,6 +21,7 @@ const BlogPostTemplate: React.FunctionComponent<BlogPostTemplateProps> = ({
   const { markdownRemark: post } = data;
   const { previous, next } = pageContext;
   const publicUrl = `https://www.73nko.es${post.fields.slug}`;
+  console.log({ post });
   const image = post.frontmatter.cover?.childImageSharp?.fluid?.src;
   return (
     <Layout>

@@ -5,6 +5,9 @@
   "description": "Alex Pérez's personal site & interactive CV",
   "author": "Alex Pérez <apramos89@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

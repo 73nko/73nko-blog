@@ -1,5 +1,13 @@
 ---
 import { socialLinks } from '../data/social';
+import { Github, Linkedin, Twitter, Mail } from 'lucide-astro';
+
+const iconMap: Record<string, any> = {
+  github: Github,
+  linkedin: Linkedin,
+  twitter: Twitter,
+  mail: Mail,
+};
 ---
 
 <section id="hero" class="relative flex min-h-dvh flex-col items-start justify-center px-6 py-20 sm:px-12 lg:px-20">
@@ -36,21 +44,25 @@ import { socialLinks } from '../data/social';
 
     <!-- CTAs -->
     <div class="hero-animate flex flex-wrap gap-3">
-      {socialLinks.map((link) => (
-        <a
-          href={link.url}
-          target={link.url.startsWith('mailto') ? undefined : '_blank'}
-          rel={link.url.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-          class:list={[
-            'inline-flex cursor-pointer items-center gap-2 rounded-full px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] transition-all duration-200',
-            link.name === 'GitHub'
-              ? 'bg-sp-magenta text-sp-dusk hover:bg-sp-magenta-hi'
-              : 'border border-sp-turquoise-hi/25 bg-sp-turquoise-hi/[0.12] text-sp-turquoise-hi hover:bg-sp-turquoise-hi/20',
-          ]}
-        >
-          {link.name}{link.name === 'GitHub' ? ' →' : ''}
-        </a>
-      ))}
+      {socialLinks.map((link) => {
+        const Icon = iconMap[link.icon];
+        return (
+          <a
+            href={link.url}
+            target={link.url.startsWith('mailto') ? undefined : '_blank'}
+            rel={link.url.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+            class:list={[
+              'inline-flex cursor-pointer items-center gap-2 rounded-full px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] transition-all duration-200',
+              link.name === 'GitHub'
+                ? 'bg-sp-magenta text-sp-dusk hover:bg-sp-magenta-hi'
+                : 'border border-sp-turquoise-hi/25 bg-sp-turquoise-hi/[0.12] text-sp-turquoise-hi hover:bg-sp-turquoise-hi/20',
+            ]}
+          >
+            {Icon && <Icon size={14} />}
+            {link.name}{link.name === 'GitHub' ? ' →' : ''}
+          </a>
+        );
+      })}
     </div>
   </div>
 

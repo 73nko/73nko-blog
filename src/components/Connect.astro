@@ -1,5 +1,13 @@
 ---
 import { socialLinks } from '../data/social';
+import { Github, Linkedin, Twitter, Mail } from 'lucide-astro';
+
+const iconMap: Record<string, any> = {
+  github: Github,
+  linkedin: Linkedin,
+  twitter: Twitter,
+  mail: Mail,
+};
 ---
 
 <section id="connect" class="relative px-6 py-24 sm:px-12 lg:px-20">
@@ -15,23 +23,27 @@ import { socialLinks } from '../data/social';
         Open to interesting conversations and opportunities.
       </p>
 
-      <div class="relative flex flex-wrap justify-center gap-3">
-        {socialLinks.map((link) => (
-          <a
-            href={link.url}
-            target={link.url.startsWith('mailto') ? undefined : '_blank'}
-            rel={link.url.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-            class="inline-flex cursor-pointer items-center gap-2 rounded-full border border-sp-turquoise-hi/20 bg-sp-turquoise-hi/[0.08] px-6 py-3 font-mono text-xs font-medium text-sp-turquoise-hi transition-all duration-200 hover:bg-sp-turquoise-hi/20"
-          >
-            {link.name}
-          </a>
-        ))}
+      <div class="relative flex flex-wrap justify-center gap-4">
+        {socialLinks.map((link) => {
+          const Icon = iconMap[link.icon];
+          return (
+            <a
+              href={link.url}
+              target={link.url.startsWith('mailto') ? undefined : '_blank'}
+              rel={link.url.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+              class="inline-flex cursor-pointer items-center gap-2.5 rounded-full border border-sp-turquoise-hi/30 bg-sp-turquoise-hi/[0.12] px-6 py-3 font-mono text-sm font-medium text-sp-turquoise-hi transition-all duration-200 hover:border-sp-turquoise-hi/50 hover:bg-sp-turquoise-hi/20"
+            >
+              {Icon && <Icon size={16} />}
+              {link.name}
+            </a>
+          );
+        })}
       </div>
     </div>
 
     {/* Footer */}
     <footer class="mt-16 border-t border-[--sp-ink-line] pt-6 text-center font-mono text-xs text-[--sp-faint]">
-      <p>&copy; {new Date().getFullYear()} Alejandro Pérez. Built with Astro.</p>
+      <p>&copy; {new Date().getFullYear()} Alejandro Pérez.</p>
     </footer>
   </div>
 </section>

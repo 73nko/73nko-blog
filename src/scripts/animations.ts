@@ -57,27 +57,15 @@ function initAnimations() {
     delay: 0.2,
   });
 
-  // --- HERO: character split animation for name ---
-  document.querySelectorAll('[data-split-text]').forEach((el) => {
-    const text = el.textContent || '';
-    const parentStyles = window.getComputedStyle(el as Element);
-    const bg = parentStyles.backgroundImage;
-
-    el.innerHTML = text
-      .split('')
-      .map((char) =>
-        `<span style="display:inline-block;background-image:${bg};-webkit-background-clip:text;background-clip:text;color:transparent">${char === ' ' ? '&nbsp;' : char}</span>`
-      )
-      .join('');
-
-    gsap.from(el.querySelectorAll('span'), {
-      y: 40,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.03,
-      ease: 'power3.out',
-      delay: 0.4,
-    });
+  // --- HERO: name line reveal ---
+  const nameLines = gsap.utils.toArray('[data-split-text]') as HTMLElement[];
+  gsap.from(nameLines, {
+    y: 50,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.15,
+    ease: 'power3.out',
+    delay: 0.3,
   });
 
   // --- HERO: parallax fade on scroll ---

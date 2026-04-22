@@ -8,47 +8,49 @@ const navLinks = [
 
 <nav
   id="main-nav"
-  class="fixed inset-x-0 top-0 z-50 translate-y-[-100%] border-b border-[--sp-ink-line] bg-sp-dusk/70 backdrop-blur-xl transition-transform duration-300"
+  class="fixed inset-x-0 top-0 z-50 translate-y-[-100%] transition-transform duration-300"
   aria-label="Main navigation"
   data-nav
 >
-  <div class="mx-auto flex h-14 max-w-[1100px] items-center justify-between px-6 sm:px-12 lg:px-20">
-    <a href="#hero" class="gradient-text font-mono text-sm font-bold tracking-[-0.5px]">
-      73nko
-    </a>
+  <div class="mx-4 mt-3 rounded-2xl border border-sp-turquoise-hi/10 bg-sp-dusk-deep/80 shadow-[0_8px_32px_rgba(0,0,0,0.4)] backdrop-blur-2xl sm:mx-auto sm:max-w-[1100px]">
+    <div class="flex h-12 items-center justify-between px-5 sm:px-8">
+      <a href="#hero" class="gradient-text font-mono text-sm font-bold tracking-[-0.5px] no-underline">
+        73nko
+      </a>
 
-    {/* Desktop links */}
-    <div class="hidden gap-6 sm:flex">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          class="font-mono text-[11px] uppercase tracking-[1.5px] text-[--sp-muted] transition-colors duration-200 hover:text-sp-turquoise-hi"
-          data-nav-link
-        >
-          {link.name}
-        </a>
-      ))}
+      {/* Desktop links */}
+      <div class="hidden items-center gap-1 sm:flex">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="rounded-lg px-3 py-1.5 font-mono text-[11px] uppercase tracking-[1.5px] text-sp-rosegold/60 no-underline transition-all duration-200 hover:bg-sp-turquoise-hi/10 hover:text-sp-turquoise-hi"
+            data-nav-link
+          >
+            {link.name}
+          </a>
+        ))}
+      </div>
+
+      {/* Mobile hamburger */}
+      <button
+        class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg transition-colors duration-200 hover:bg-sp-turquoise-hi/10 sm:hidden"
+        aria-label="Toggle navigation menu"
+        data-nav-toggle
+      >
+        <svg class="h-4 w-4 text-sp-rosegold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
-
-    {/* Mobile hamburger */}
-    <button
-      class="flex h-10 w-10 cursor-pointer items-center justify-center sm:hidden"
-      aria-label="Toggle navigation menu"
-      data-nav-toggle
-    >
-      <svg class="h-5 w-5 text-sp-rosegold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
   </div>
 
   {/* Mobile menu */}
-  <div class="hidden border-t border-[--sp-ink-line] bg-sp-dusk/90 backdrop-blur-xl sm:hidden" data-nav-mobile>
-    <div class="flex flex-col gap-4 px-6 py-6">
+  <div class="mx-4 mt-1 hidden overflow-hidden rounded-xl border border-sp-turquoise-hi/10 bg-sp-dusk-deep/90 shadow-[0_8px_32px_rgba(0,0,0,0.4)] backdrop-blur-2xl sm:hidden" data-nav-mobile>
+    <div class="flex flex-col gap-1 p-2">
       {navLinks.map((link) => (
         <a
           href={link.href}
-          class="font-mono text-xs uppercase tracking-[1.5px] text-[--sp-muted] transition-colors duration-200 hover:text-sp-turquoise-hi"
+          class="rounded-lg px-4 py-2.5 font-mono text-xs uppercase tracking-[1.5px] text-sp-rosegold/60 no-underline transition-all duration-200 hover:bg-sp-turquoise-hi/10 hover:text-sp-turquoise-hi"
           data-nav-link
         >
           {link.name}

@@ -6,6 +6,8 @@ interface Props {
 
 const { title, description } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+import '../styles/global.css';
 ---
 
 <!doctype html>
@@ -29,9 +31,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@73nko" />
     <title>{title}</title>
-    <style>
-      @import '../styles/global.css';
-    </style>
   </head>
   <body>
     <slot />

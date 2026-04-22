@@ -135,13 +135,15 @@ function initAnimations() {
   });
 
   // --- CONNECT: fade in ---
+  const connectElements = gsap.utils.toArray('#connect h2, #connect p, #connect a') as HTMLElement[];
+  gsap.set(connectElements, { y: 20, opacity: 0 });
   ScrollTrigger.create({
     trigger: '#connect',
-    start: 'top 80%',
+    start: 'top 85%',
     onEnter: () => {
-      gsap.from('#connect h2, #connect p, #connect a', {
-        y: 20,
-        opacity: 0,
+      gsap.to(connectElements, {
+        y: 0,
+        opacity: 1,
         duration: 0.6,
         stagger: 0.08,
         ease: 'power2.out',

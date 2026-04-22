@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <defs>
+    <linearGradient id="lg" x1="0" y1="0" x2="200" y2="60" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#FFB8D5"/>
+      <stop offset="35%" stop-color="#FF3D8A"/>
+      <stop offset="60%" stop-color="#FF8A3D"/>
+      <stop offset="100%" stop-color="#7FE0EB"/>
+    </linearGradient>
+  </defs>
+  <!-- 7 -->
+  <path d="M8 12 L32 12 Q34 12 34 14 L34 16 Q34 17 33 18 L20 48 Q19 51 17 51 L14 51 Q12 51 13 48 L25 20 Q26 18 24 18 L10 18 Q8 18 8 16 Z" fill="url(#lg)"/>
+  <!-- 3 -->
+  <path d="M38 16 Q38 10 46 10 Q54 10 54 17 Q54 22 49 24 Q54 26 54 32 Q54 40 45 40 Q38 40 37 34 Q37 32 39 32 Q41 32 41 34 Q42 37 45 37 Q50 37 50 32 Q50 27 45 27 L43 27 Q41 27 41 25 Q41 23 43 23 L45 23 Q49 23 49 18 Q49 13 46 13 Q43 13 42 16 Q42 18 40 18 Q38 18 38 16 Z" fill="url(#lg)"/>
+  <!-- n -->
+  <path d="M62 24 L62 48 Q62 50 60 50 Q58 50 58 48 L58 26 Q58 22 62 22 Q64 22 66 24 Q70 20 76 20 Q82 20 82 28 L82 48 Q82 50 80 50 Q78 50 78 48 L78 28 Q78 24 75 24 Q70 24 66 28 L66 48 Q66 50 64 50 Q62 50 62 48 Z" fill="url(#lg)"/>
+  <!-- k -->
+  <path d="M90 8 L90 48 Q90 50 88 50 Q86 50 86 48 L86 10 Q86 8 88 8 Q90 8 90 8 Z M90 32 L102 22 Q104 20 106 22 Q107 24 105 26 L96 33 L106 46 Q108 49 105 50 Q103 51 102 48 L93 36 L90 38 Z" fill="url(#lg)"/>
+  <!-- o -->
+  <path d="M122 20 Q132 20 132 30 L132 38 Q132 50 122 50 Q112 50 112 38 L112 30 Q112 20 122 20 Z M122 24 Q116 24 116 30 L116 38 Q116 46 122 46 Q128 46 128 38 L128 30 Q128 24 122 24 Z" fill="url(#lg)"/>
+</svg>

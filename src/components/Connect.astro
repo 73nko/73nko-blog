@@ -1,0 +1,37 @@
+---
+import { socialLinks } from '../data/social';
+---
+
+<section id="connect" class="relative px-6 py-24 sm:px-12 lg:px-20">
+  <div class="mx-auto w-full max-w-[1100px]">
+    <div class="relative overflow-hidden rounded-2xl border border-[--sp-ink-line] bg-sp-ink px-6 py-16 text-center sm:px-10">
+      {/* Bottom glow — mirrors hero top glow */}
+      <div class="pointer-events-none absolute -bottom-24 left-1/2 h-[300px] w-[400px] -translate-x-1/2 rounded-full bg-sp-magenta/[0.08] blur-[100px]" aria-hidden="true"></div>
+
+      <h2 class="relative mb-3 text-4xl font-extrabold tracking-[-1px]">
+        <span class="gradient-text">Let's connect</span>
+      </h2>
+      <p class="relative mb-7 text-[15px] text-[--sp-muted]">
+        Open to interesting conversations and opportunities.
+      </p>
+
+      <div class="relative flex flex-wrap justify-center gap-3">
+        {socialLinks.map((link) => (
+          <a
+            href={link.url}
+            target={link.url.startsWith('mailto') ? undefined : '_blank'}
+            rel={link.url.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+            class="inline-flex cursor-pointer items-center gap-2 rounded-full border border-sp-turquoise-hi/20 bg-sp-turquoise-hi/[0.08] px-6 py-3 font-mono text-xs font-medium text-sp-turquoise-hi transition-all duration-200 hover:bg-sp-turquoise-hi/20"
+          >
+            {link.name}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    {/* Footer */}
+    <footer class="mt-16 border-t border-[--sp-ink-line] pt-6 text-center font-mono text-xs text-[--sp-faint]">
+      <p>&copy; {new Date().getFullYear()} Alejandro Pérez. Built with Astro.</p>
+    </footer>
+  </div>
+</section>

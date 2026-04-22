@@ -1,0 +1,76 @@
+---
+const navLinks = [
+  { name: 'Experience', href: '#experience' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Connect', href: '#connect' },
+];
+---
+
+<nav
+  id="main-nav"
+  class="fixed inset-x-0 top-0 z-50 translate-y-[-100%] border-b border-[--sp-ink-line] bg-sp-dusk/70 backdrop-blur-xl transition-transform duration-300"
+  aria-label="Main navigation"
+  data-nav
+>
+  <div class="mx-auto flex h-14 max-w-[1100px] items-center justify-between px-6 sm:px-12 lg:px-20">
+    <a href="#hero" class="gradient-text font-mono text-sm font-bold tracking-[-0.5px]">
+      73nko
+    </a>
+
+    {/* Desktop links */}
+    <div class="hidden gap-6 sm:flex">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="font-mono text-[11px] uppercase tracking-[1.5px] text-[--sp-muted] transition-colors duration-200 hover:text-sp-turquoise-hi"
+          data-nav-link
+        >
+          {link.name}
+        </a>
+      ))}
+    </div>
+
+    {/* Mobile hamburger */}
+    <button
+      class="flex h-10 w-10 cursor-pointer items-center justify-center sm:hidden"
+      aria-label="Toggle navigation menu"
+      data-nav-toggle
+    >
+      <svg class="h-5 w-5 text-sp-rosegold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </div>
+
+  {/* Mobile menu */}
+  <div class="hidden border-t border-[--sp-ink-line] bg-sp-dusk/90 backdrop-blur-xl sm:hidden" data-nav-mobile>
+    <div class="flex flex-col gap-4 px-6 py-6">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="font-mono text-xs uppercase tracking-[1.5px] text-[--sp-muted] transition-colors duration-200 hover:text-sp-turquoise-hi"
+          data-nav-link
+        >
+          {link.name}
+        </a>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Mobile toggle
+  const toggle = document.querySelector('[data-nav-toggle]');
+  const mobileMenu = document.querySelector('[data-nav-mobile]');
+
+  toggle?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+
+  // Close mobile menu on link click
+  document.querySelectorAll('[data-nav-mobile] [data-nav-link]').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+    });
+  });
+</script>

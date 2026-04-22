@@ -1,0 +1,58 @@
+---
+import { skillCategories } from '../data/skills';
+
+const accentStyles = {
+  warm: {
+    border: 'from-sp-magenta to-sp-tangerine',
+    label: 'text-sp-magenta',
+    tag: 'bg-sp-magenta/[0.08] border-sp-magenta/[0.12]',
+  },
+  cool: {
+    border: 'from-sp-turquoise to-sp-turquoise-hi',
+    label: 'text-sp-turquoise-hi',
+    tag: 'bg-sp-turquoise-hi/[0.08] border-sp-turquoise-hi/[0.12]',
+  },
+  gold: {
+    border: 'from-sp-tangerine to-sp-gold',
+    label: 'text-sp-tangerine',
+    tag: 'bg-sp-tangerine/[0.08] border-sp-tangerine/[0.12]',
+  },
+};
+---
+
+<section id="skills" class="relative px-6 py-24 sm:px-12 lg:px-20">
+  <div class="mx-auto w-full max-w-[1100px]">
+    <!-- Section header -->
+    <div class="mb-9 border-b border-[--sp-ink-line] pb-4">
+      <span class="font-mono text-[13px] font-medium tracking-[2px] text-sp-magenta">03</span>
+      <h2 class="mt-1 text-4xl font-bold tracking-[-0.6px]">
+        Technical <span class="text-sp-turquoise-hi">Stack</span>
+      </h2>
+    </div>
+
+    <!-- Skills grid -->
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {skillCategories.map((category) => {
+        const style = accentStyles[category.accent];
+        return (
+          <div class="skill-card relative overflow-hidden rounded-xl border border-[--sp-ink-line] bg-sp-ink p-5">
+            {/* Gradient top border */}
+            <div class={`absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r ${style.border}`}></div>
+
+            <span class={`font-mono text-[10px] font-medium uppercase tracking-[2px] ${style.label}`}>
+              {category.name}
+            </span>
+
+            <div class="mt-3 flex flex-wrap gap-1.5">
+              {category.skills.map((skill) => (
+                <span class={`rounded-md border px-2.5 py-1 font-mono text-[11px] text-sp-rosegold ${style.tag}`}>
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

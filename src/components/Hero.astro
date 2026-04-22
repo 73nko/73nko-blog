@@ -1,0 +1,62 @@
+---
+import { socialLinks } from '../data/social';
+---
+
+<section id="hero" class="relative flex min-h-dvh flex-col items-start justify-center px-6 py-20 sm:px-12 lg:px-20">
+  <!-- Background glows -->
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-sp-magenta/[0.08] blur-[120px]"></div>
+    <div class="absolute -bottom-32 -left-32 h-[400px] w-[400px] rounded-full bg-sp-turquoise-hi/[0.06] blur-[100px]"></div>
+  </div>
+
+  <div class="relative z-10 mx-auto w-full max-w-[1100px]">
+    <!-- Eyebrow -->
+    <span
+      class="hero-animate mb-6 inline-flex items-center gap-2 rounded-full border border-sp-turquoise-hi/20 bg-sp-turquoise-hi/[0.08] px-3 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[2px] text-sp-turquoise-hi"
+    >
+      Senior Software Engineer
+    </span>
+
+    <!-- Name -->
+    <h1 class="hero-animate mb-4 text-4xl font-extrabold tracking-[-2px] sm:text-5xl lg:text-[64px] lg:leading-[1.05]">
+      <span class="gradient-text" data-split-text>Alejandro</span>
+      <br />
+      <span class="gradient-text" data-split-text>Pérez</span>
+    </h1>
+
+    <!-- Tagline -->
+    <p class="hero-animate mb-2 text-lg text-sp-fg/85 sm:text-xl">
+      Building <em class="not-italic font-medium text-sp-magenta-hi">exceptional</em> web experiences
+    </p>
+
+    <!-- Bio -->
+    <p class="hero-animate mb-8 max-w-[520px] text-[15px] text-[--sp-muted]">
+      10+ years crafting performant, scalable applications — from YC-backed startups to global platforms like Eventbrite and EA. Currently building e-commerce infrastructure at Awtomic.
+    </p>
+
+    <!-- CTAs -->
+    <div class="hero-animate flex flex-wrap gap-3">
+      {socialLinks.map((link) => (
+        <a
+          href={link.url}
+          target={link.url.startsWith('mailto') ? undefined : '_blank'}
+          rel={link.url.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+          class:list={[
+            'inline-flex cursor-pointer items-center gap-2 rounded-full px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] transition-all duration-200',
+            link.name === 'GitHub'
+              ? 'bg-sp-magenta text-sp-dusk hover:bg-sp-magenta-hi'
+              : 'border border-sp-turquoise-hi/25 bg-sp-turquoise-hi/[0.12] text-sp-turquoise-hi hover:bg-sp-turquoise-hi/20',
+          ]}
+        >
+          {link.name}{link.name === 'GitHub' ? ' →' : ''}
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <!-- Scroll hint -->
+  <div class="absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5 font-mono text-[10px] uppercase tracking-[2px] text-[--sp-faint] motion-reduce:hidden" aria-hidden="true">
+    <span>Scroll</span>
+    <span class="animate-bounce text-base">↓</span>
+  </div>
+</section>

@@ -1,18 +1,21 @@
 ---
-import '../styles/global.css';
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Experience from '../components/Experience.astro';
+import Skills from '../components/Skills.astro';
+import Connect from '../components/Connect.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>73nko — Alex Pérez</title>
-  </head>
-  <body>
-    <main>
-      <h1 class="gradient-text">73nko</h1>
-    </main>
-  </body>
-</html>
+<Layout
+  title="Alejandro Pérez — Senior Software Engineer"
+  description="Senior Software Engineer with 10+ years of experience building impactful web applications. React, TypeScript, Node.js, AWS."
+>
+  <Nav />
+  <main>
+    <Hero />
+    <Experience />
+    <Skills />
+    <Connect />
+  </main>
+</Layout>

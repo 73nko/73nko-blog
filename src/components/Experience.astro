@@ -1,0 +1,47 @@
+---
+import { experience } from '../data/experience';
+---
+
+<section id="experience" class="relative px-6 py-24 sm:px-12 lg:px-20">
+  <div class="mx-auto w-full max-w-[1100px]">
+    <!-- Section header -->
+    <div class="mb-9 border-b border-[--sp-ink-line] pb-4">
+      <span class="font-mono text-[13px] font-medium tracking-[2px] text-sp-magenta">02</span>
+      <h2 class="mt-1 text-4xl font-bold tracking-[-0.6px]">
+        Career <span class="text-sp-turquoise-hi">Timeline</span>
+      </h2>
+    </div>
+
+    <!-- Timeline -->
+    <div class="relative pl-8">
+      <!-- Gradient line -->
+      <div
+        class="absolute bottom-0 left-0 top-0 w-0.5 rounded-full"
+        style="background: linear-gradient(180deg, var(--color-sp-magenta), var(--color-sp-tangerine), var(--color-sp-turquoise-hi))"
+        data-timeline-line
+      ></div>
+
+      <!-- Entries -->
+      {experience.map((entry) => (
+        <div class="timeline-card relative mb-4 rounded-xl border border-[--sp-ink-line] bg-sp-ink p-5 sm:p-6">
+          <!-- Dot -->
+          <div
+            class:list={[
+              'absolute -left-[38px] top-7 h-2.5 w-2.5 rounded-full border-2 border-sp-paper',
+              entry.current
+                ? 'bg-sp-turquoise-hi shadow-[0_0_12px_rgba(127,224,235,0.4)]'
+                : 'bg-sp-magenta',
+            ]}
+          ></div>
+
+          <span class="font-mono text-[11px] tracking-[1px] text-sp-turquoise-hi">
+            {entry.dateRange}
+          </span>
+          <h3 class="mt-1 text-[17px] font-semibold text-sp-fg">{entry.role}</h3>
+          <p class="text-[13px] font-medium text-sp-magenta-hi">{entry.company}</p>
+          <p class="mt-2 text-[13px] leading-relaxed text-[--sp-muted]">{entry.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

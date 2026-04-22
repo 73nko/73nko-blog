@@ -107,7 +107,7 @@ Single scrolling page with 4 sections + fixed navigation.
   - Eyebrow pill: "Senior Frontend Engineer" in JetBrains Mono, turquoise-hi on turquoise/8% bg
   - Name: "Alejandro Pérez Ramos" — large gradient text (64px+, Inter 800)
   - Tagline: "Building exceptional web experiences" — 20px, rosegold
-  - Brief bio: 1-2 sentences mentioning years of experience and key companies
+  - Brief bio: 1-2 sentences mentioning 10+ years of experience and key companies (Awtomic, Eventbrite, EA)
   - CTA buttons: "GitHub →" (magenta primary), "LinkedIn" and "Email" (turquoise secondary pills)
 - Scroll hint at bottom: "Scroll" + animated down arrow
 - Animation on load:
@@ -123,11 +123,13 @@ Single scrolling page with 4 sections + fixed navigation.
 - Vertical timeline with gradient line on the left (magenta → tangerine → turquoise)
 - Section header: "Career Timeline" with numbered label "02"
 - Timeline entries (from resume):
-  1. **2022 – Present:** Senior Frontend Engineer @ Wellhub (formerly Gympass) — current, glowing turquoise dot
-  2. **2020 – 2022:** Senior Frontend Engineer @ Plain Concepts
-  3. **2018 – 2020:** Frontend Developer @ Letgo
-  4. **2016 – 2018:** Frontend Developer @ Sngular
-  5. **2014 – 2016:** Web Developer @ Capgemini
+  1. **Jun 2021 – Present:** Senior Software Engineer @ Awtomic (YC-backed, Employee #7) — current, glowing turquoise dot
+  2. **Sep 2019 – Jun 2021:** Senior Software Engineer (Online Events) @ Eventbrite
+  3. **Dec 2018 – Aug 2019:** Senior Frontend Developer @ Electronic Arts (EA)
+  4. **Sep 2018 – Dec 2018:** Senior Software Engineering @ ING Bank
+  5. **Dec 2017 – Sep 2018:** JavaScript Engineer @ Solera Global Data & Content
+  6. **Feb 2016 – Sep 2017:** JavaScript Engineer @ Mediaset España
+  7. **Jan 2013 – Feb 2016:** Junior Software Engineer @ Babel
 - Each entry is a card (ink background, inkLine border, 12px radius) with:
   - Date range (JetBrains Mono, turquoise-hi)
   - Role title (17px, Inter 600)
@@ -142,9 +144,9 @@ Single scrolling page with 4 sections + fixed navigation.
 
 - Section header: "Technical Stack" with numbered label "03"
 - Three cards in a grid (3 columns desktop, 1 column mobile):
-  1. **Frontend** (warm accent — magenta border-top gradient): React, TypeScript, Next.js, Astro, HTML/CSS, Tailwind, Angular
-  2. **Backend & Infra** (cool accent — turquoise border-top gradient): Node.js, Express, MongoDB, PostgreSQL, Docker, AWS
-  3. **Tools & Practices** (gold accent — tangerine border-top gradient): Git, CI/CD, Testing, Agile, Design Systems, Accessibility
+  1. **Frontend** (warm accent — magenta border-top gradient): React, TypeScript, Next.js, HTML, CSS, JavaScript, Chakra UI, Emotion, React Query
+  2. **Backend & Infra** (cool accent — turquoise border-top gradient): Node.js, AWS Lambda, SQS, DynamoDB, Django, MySQL, Redis, Kafka
+  3. **Tools & Practices** (gold accent — tangerine border-top gradient): Shopify Integration, Design Systems, Serverless Architecture, Microservices, E-commerce
 - Skills displayed as tags/pills (JetBrains Mono, 11px) — no bars, no percentages
 - Each card has a 2px gradient top border matching its accent
 - Animation:
@@ -159,9 +161,9 @@ Single scrolling page with 4 sections + fixed navigation.
 - Subtitle: "Open to interesting conversations and opportunities."
 - Social links as pill buttons (turquoise secondary style):
   - GitHub (github.com/73nko)
-  - LinkedIn (linkedin.com/in/alejandroperezramos)
+  - LinkedIn (Alejandro Pérez)
   - Twitter/X (@73nko)
-  - Email
+  - Email (me@alejandroperez.dev)
 - Animation:
   - Title gradient text shimmers once on scroll-enter
   - Links slide up with stagger
@@ -218,8 +220,8 @@ All animations use GSAP + ScrollTrigger.
 
 ## SEO & Meta
 
-- Title: "Alejandro Pérez Ramos — Senior Frontend Engineer"
-- Description: "Senior Frontend Engineer with 10+ years of experience building performant web applications. React, TypeScript, Node.js."
+- Title: "Alejandro Pérez — Senior Software Engineer"
+- Description: "Senior Software Engineer with 10+ years of experience building impactful web applications. React, TypeScript, Node.js, AWS."
 - Open Graph image: static screenshot of hero section
 - Canonical URL: https://www.73nko.es
 - Sitemap generation via Astro integration

@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/Users/73nko/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.7/scripts/start-server.sh:*)",
+      "Bash(/Users/73nko/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.7/skills/brainstorming/scripts/start-server.sh:*)",
+      "Bash(python3:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "Bash(yes)",
+      "Bash(npm create:*)",
+      "Bash(npm install:*)",
+      "Bash(npm show:*)",
+      "Bash(npx astro:*)",
+      "Bash(git commit:*)",
+      "Bash(ls /Users/73nko/Projects/73nko-blog/gatsby-*.js /Users/73nko/Projects/73nko-blog/gatsby-*.ts)",
+      "Bash(ls /Users/73nko/Projects/73nko-blog/gatsby-*.js)",
+      "Bash(find src/pages -name '*.tsx' -delete)",
+      "Bash(find src/components -name '*.tsx' -delete)"
+    ]
+  }
+}

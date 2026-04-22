@@ -1,0 +1,535 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>73nko.es — Site Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dusk: #1a0a28;
+    --duskDeep: #0d0518;
+    --plum: #3a1550;
+    --wine: #6a2050;
+    --sunBurn: #c95a4a;
+    --sunSoft: #f2a070;
+    --magenta: #ff3d8a;
+    --magentaHi: #ffb8d5;
+    --peach: #ffb07a;
+    --tangerine: #ff8a3d;
+    --rosegold: #ffc6a0;
+    --gold: #ffd67a;
+    --turquoise: #4ec9d7;
+    --turquoiseHi: #7fe0eb;
+    --aqua: #8fe3e8;
+    --deepPool: #0d4858;
+    --cream: #f5ecd7;
+    --paper: #18101f;
+    --ink: #1f1630;
+    --inkLine: rgba(255,198,160,.14);
+    --fg: #efe2d2;
+    --muted: rgba(239,226,210,.62);
+    --faint: rgba(239,226,210,.35);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--fg);
+    font-family: 'Inter', -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page { max-width: 1100px; margin: 0 auto; padding: 60px 40px; }
+
+  /* Section labels */
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--magenta);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+  .section-title .accent { color: var(--turquoiseHi); }
+  .section-desc {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 32px;
+    max-width: 700px;
+  }
+
+  /* Dividers */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--inkLine), transparent);
+    margin: 56px 0;
+  }
+
+  /* ---- HERO MOCKUP ---- */
+  .hero-mockup {
+    background:
+      radial-gradient(ellipse 80% 50% at 50% 0%, rgba(255,61,138,.10) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 90% 30%, rgba(127,224,235,.06) 0%, transparent 70%),
+      linear-gradient(175deg, #1a0a28 0%, #0d0518 100%);
+    border: 1px solid var(--inkLine);
+    border-radius: 16px;
+    padding: 80px 60px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-mockup::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(255,61,138,.08), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--turquoiseHi);
+    padding: 5px 12px;
+    background: rgba(127,224,235,.08);
+    border: 1px solid rgba(127,224,235,.2);
+    border-radius: 999px;
+    margin-bottom: 24px;
+  }
+  .hero-name {
+    font-size: 64px;
+    font-weight: 800;
+    letter-spacing: -2.5px;
+    line-height: 1.05;
+    margin-bottom: 16px;
+    background: linear-gradient(100deg, var(--magentaHi) 0%, var(--magenta) 30%, var(--tangerine) 55%, var(--turquoiseHi) 95%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-role {
+    font-size: 20px;
+    color: var(--fg);
+    opacity: 0.85;
+    margin-bottom: 8px;
+  }
+  .hero-role em { font-style: normal; color: var(--magentaHi); font-weight: 500; }
+  .hero-sub {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 32px;
+  }
+  .hero-links {
+    display: flex;
+    gap: 12px;
+  }
+  .hero-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .hero-link.primary {
+    background: var(--magenta);
+    color: var(--dusk);
+  }
+  .hero-link.secondary {
+    background: rgba(127,224,235,.12);
+    color: var(--turquoiseHi);
+    border: 1px solid rgba(127,224,235,.25);
+  }
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--faint);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .hero-scroll-hint::after {
+    content: '↓';
+    font-size: 16px;
+    animation: bobDown 2s ease-in-out infinite;
+  }
+  @keyframes bobDown {
+    0%, 100% { transform: translateY(0); opacity: 0.4; }
+    50% { transform: translateY(6px); opacity: 1; }
+  }
+
+  /* ---- EXPERIENCE MOCKUP ---- */
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, var(--magenta), var(--tangerine), var(--turquoiseHi));
+    border-radius: 2px;
+  }
+  .timeline-item {
+    position: relative;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    background: var(--ink);
+    border: 1px solid var(--inkLine);
+    border-radius: 12px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -38px;
+    top: 28px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--magenta);
+    border: 2px solid var(--paper);
+  }
+  .timeline-item.current::before {
+    background: var(--turquoiseHi);
+    box-shadow: 0 0 12px rgba(127,224,235,.4);
+  }
+  .timeline-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--turquoiseHi);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .timeline-role {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--fg);
+    margin-bottom: 2px;
+  }
+  .timeline-company {
+    font-size: 13px;
+    color: var(--magentaHi);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .timeline-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* ---- SKILLS MOCKUP ---- */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .skill-card {
+    padding: 20px;
+    background: var(--ink);
+    border: 1px solid var(--inkLine);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    border-radius: 2px 2px 0 0;
+  }
+  .skill-card.warm::before { background: linear-gradient(90deg, var(--magenta), var(--tangerine)); }
+  .skill-card.cool::before { background: linear-gradient(90deg, var(--turquoise), var(--turquoiseHi)); }
+  .skill-card.gold::before { background: linear-gradient(90deg, var(--tangerine), var(--gold)); }
+  .skill-category {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--magenta);
+    margin-bottom: 10px;
+  }
+  .skill-card.cool .skill-category { color: var(--turquoiseHi); }
+  .skill-card.gold .skill-category { color: var(--tangerine); }
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .skill-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    background: rgba(255,61,138,.08);
+    color: var(--rosegold);
+    border: 1px solid rgba(255,61,138,.12);
+  }
+  .skill-card.cool .skill-tag {
+    background: rgba(127,224,235,.08);
+    border-color: rgba(127,224,235,.12);
+  }
+  .skill-card.gold .skill-tag {
+    background: rgba(255,138,61,.08);
+    border-color: rgba(255,138,61,.12);
+  }
+
+  /* ---- CONTACT / FOOTER MOCKUP ---- */
+  .contact-mockup {
+    text-align: center;
+    padding: 60px 40px;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 100%, rgba(255,61,138,.08) 0%, transparent 70%),
+      var(--ink);
+    border: 1px solid var(--inkLine);
+    border-radius: 16px;
+  }
+  .contact-title {
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 12px;
+    background: linear-gradient(100deg, var(--magentaHi), var(--turquoiseHi));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .contact-sub {
+    font-size: 15px;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 999px;
+    background: rgba(127,224,235,.08);
+    border: 1px solid rgba(127,224,235,.2);
+    color: var(--turquoiseHi);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  /* Annotations */
+  .annotation {
+    margin-top: 12px;
+    padding: 12px 16px;
+    background: rgba(127,224,235,.04);
+    border-left: 3px solid var(--turquoiseHi);
+    border-radius: 0 8px 8px 0;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .annotation strong { color: var(--turquoiseHi); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- INTRO -->
+  <div class="section-label">Site Design — 73nko.es</div>
+  <div class="section-title">Full Page <span class="accent">Wireframe</span></div>
+  <div class="section-desc">
+    Single-page interactive CV with scroll-driven animations. Sunset · Pool Splash palette.
+    Astro + GSAP/ScrollTrigger + Tailwind CSS. Deployed on Netlify.
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 1: HERO -->
+  <div class="section-label">Section 01 — Hero</div>
+  <div class="section-title">First <span class="accent">Impression</span></div>
+  <div class="section-desc">Full viewport height. Name animates in with staggered letter reveal. Role fades up. Social links slide in. Subtle gradient glow pulses behind the name.</div>
+
+  <div class="hero-mockup">
+    <div class="hero-eyebrow">Senior Frontend Engineer</div>
+    <div class="hero-name">Alejandro<br>Pérez Ramos</div>
+    <div class="hero-role">Building <em>exceptional</em> web experiences</div>
+    <div class="hero-sub">10+ years crafting performant, accessible, and beautiful interfaces. Currently at Wellhub, previously at Plain Concepts, Letgo, Sngular & Capgemini.</div>
+    <div class="hero-links">
+      <a class="hero-link primary" href="#">GitHub →</a>
+      <a class="hero-link secondary" href="#">LinkedIn</a>
+      <a class="hero-link secondary" href="#">Email</a>
+    </div>
+    <div class="hero-scroll-hint">Scroll</div>
+  </div>
+  <div class="annotation">
+    <strong>Animation:</strong> Name letters stagger in from below (GSAP SplitText), 30ms per char, ease-out.
+    Gradient glow behind name pulses subtly. Social links slide up with 100ms stagger.
+    On scroll, entire hero parallax-fades upward. <strong>prefers-reduced-motion:</strong> instant display, no parallax.
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 2: EXPERIENCE -->
+  <div class="section-label">Section 02 — Experience</div>
+  <div class="section-title">Career <span class="accent">Timeline</span></div>
+  <div class="section-desc">Vertical timeline with gradient line. Each card reveals on scroll with a slide-in from the left. The gradient line "draws" itself as you scroll down.</div>
+
+  <div class="timeline">
+    <div class="timeline-item current">
+      <div class="timeline-date">2022 — Present</div>
+      <div class="timeline-role">Senior Frontend Engineer</div>
+      <div class="timeline-company">Wellhub (formerly Gympass)</div>
+      <div class="timeline-desc">Leading frontend architecture for the partners platform. React, TypeScript, micro-frontends, design systems.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2020 — 2022</div>
+      <div class="timeline-role">Senior Frontend Engineer</div>
+      <div class="timeline-company">Plain Concepts</div>
+      <div class="timeline-desc">Built cloud-based enterprise applications. Azure, React, .NET integrations.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2018 — 2020</div>
+      <div class="timeline-role">Frontend Developer</div>
+      <div class="timeline-company">Letgo</div>
+      <div class="timeline-desc">Marketplace platform with millions of users. React Native, performance optimization.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2016 — 2018</div>
+      <div class="timeline-role">Frontend Developer</div>
+      <div class="timeline-company">Sngular</div>
+      <div class="timeline-desc">Consulting projects across fintech and retail. Angular, React, Node.js.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">2014 — 2016</div>
+      <div class="timeline-role">Web Developer</div>
+      <div class="timeline-company">Capgemini</div>
+      <div class="timeline-desc">Enterprise Java and frontend development. First steps into the JavaScript ecosystem.</div>
+    </div>
+  </div>
+  <div class="annotation">
+    <strong>Animation:</strong> The gradient line draws from top to bottom as user scrolls (GSAP ScrollTrigger scrub).
+    Each card fades in + slides right (translateX(-20px) → 0) with stagger. Current role dot glows with a pulse.
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 3: SKILLS -->
+  <div class="section-label">Section 03 — Skills</div>
+  <div class="section-title">Technical <span class="accent">Stack</span></div>
+  <div class="section-desc">Grouped by domain. Cards reveal on scroll with staggered entrance. No bars or percentages — just clean categorized tags.</div>
+
+  <div class="skills-grid">
+    <div class="skill-card warm">
+      <div class="skill-category">Frontend</div>
+      <div class="skill-tags">
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">TypeScript</span>
+        <span class="skill-tag">Next.js</span>
+        <span class="skill-tag">Astro</span>
+        <span class="skill-tag">HTML/CSS</span>
+        <span class="skill-tag">Tailwind</span>
+      </div>
+    </div>
+    <div class="skill-card cool">
+      <div class="skill-category">Backend & Infra</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Node.js</span>
+        <span class="skill-tag">Express</span>
+        <span class="skill-tag">MongoDB</span>
+        <span class="skill-tag">PostgreSQL</span>
+        <span class="skill-tag">Docker</span>
+        <span class="skill-tag">AWS</span>
+      </div>
+    </div>
+    <div class="skill-card gold">
+      <div class="skill-category">Tools & Practices</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Git</span>
+        <span class="skill-tag">CI/CD</span>
+        <span class="skill-tag">Testing</span>
+        <span class="skill-tag">Agile</span>
+        <span class="skill-tag">Design Systems</span>
+        <span class="skill-tag">A11y</span>
+      </div>
+    </div>
+  </div>
+  <div class="annotation">
+    <strong>Animation:</strong> Cards scale from 0.95 → 1 and fade in, staggered by 80ms. Tags within each card cascade in with a 30ms stagger.
+    <strong>Design choice:</strong> No skill bars or percentages — they're arbitrary and look cheap. Clean tags convey expertise without false precision.
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SECTION 4: CONTACT -->
+  <div class="section-label">Section 04 — Connect</div>
+  <div class="section-title">Get in <span class="accent">Touch</span></div>
+  <div class="section-desc">Final CTA. Social links as pill buttons. Subtle gradient glow at the bottom mirrors the hero's top glow — bookending the page.</div>
+
+  <div class="contact-mockup">
+    <div class="contact-title">Let's connect</div>
+    <div class="contact-sub">Open to interesting conversations and opportunities.</div>
+    <div class="contact-links">
+      <a class="contact-link" href="#">GitHub</a>
+      <a class="contact-link" href="#">LinkedIn</a>
+      <a class="contact-link" href="#">Twitter / X</a>
+      <a class="contact-link" href="#">Email</a>
+    </div>
+  </div>
+  <div class="annotation">
+    <strong>Animation:</strong> Title gradient text shimmers once on scroll-enter. Links slide up with stagger.
+    Footer mirrors hero glow — symmetrical bookend effect.
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- NAV -->
+  <div class="section-label">Navigation</div>
+  <div class="section-title">Fixed <span class="accent">Header</span></div>
+  <div class="section-desc">
+    Minimal fixed nav at top. Glassmorphic (backdrop-blur). Shows name on left, section links on right.
+    Appears after scrolling past hero. Active section highlighted via ScrollTrigger.
+    Mobile: hamburger → slide-in panel with the same glass effect.
+  </div>
+
+</div>
+</body>
+</html>

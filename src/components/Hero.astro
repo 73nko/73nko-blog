@@ -17,6 +17,11 @@ const iconMap: Record<string, any> = {
     <div class="absolute -bottom-32 -left-32 h-[400px] w-[400px] rounded-full bg-sp-turquoise-hi/[0.06] blur-[100px]"></div>
   </div>
 
+  <!-- Animated constellation -->
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <canvas id="hero-canvas" class="absolute inset-0 h-full w-full"></canvas>
+  </div>
+
   <div class="relative z-10 mx-auto w-full max-w-[1100px]">
     <!-- Eyebrow -->
     <span
@@ -72,3 +77,131 @@ const iconMap: Record<string, any> = {
     <span class="animate-bounce text-base">↓</span>
   </div>
 </section>
+
+<script>
+  const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement;
+  if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const ctx = canvas.getContext('2d')!;
+    let w = 0;
+    let h = 0;
+    let animId = 0;
+
+    const COLORS = {
+      magenta: [255, 61, 138],
+      tangerine: [255, 138, 61],
+      turquoise: [127, 224, 235],
+      gold: [255, 214, 122],
+    };
+    const colorKeys = Object.keys(COLORS) as (keyof typeof COLORS)[];
+
+    interface Node {
+      x: number;
+      y: number;
+      vx: number;
+      vy: number;
+      r: number;
+      color: keyof typeof COLORS;
+      phase: number;
+    }
+
+    let nodes: Node[] = [];
+    const CONNECT_DIST = 180;
+    const NODE_COUNT = 40;
+
+    function resize() {
+      const dpr = window.devicePixelRatio || 1;
+      w = canvas.clientWidth;
+      h = canvas.clientHeight;
+      canvas.width = w * dpr;
+      canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function init() {
+      resize();
+      nodes = [];
+      for (let i = 0; i < NODE_COUNT; i++) {
+        nodes.push({
+          x: Math.random() * w,
+          y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          r: Math.random() * 2 + 1,
+          color: colorKeys[Math.floor(Math.random() * colorKeys.length)],
+          phase: Math.random() * Math.PI * 2,
+        });
+      }
+    }
+
+    function draw(t: number) {
+      ctx.clearRect(0, 0, w, h);
+
+      // Update positions
+      for (const n of nodes) {
+        n.x += n.vx;
+        n.y += n.vy;
+
+        // Wrap around edges
+        if (n.x < -20) n.x = w + 20;
+        if (n.x > w + 20) n.x = -20;
+        if (n.y < -20) n.y = h + 20;
+        if (n.y > h + 20) n.y = -20;
+      }
+
+      // Draw connections
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < CONNECT_DIST) {
+            const alpha = (1 - dist / CONNECT_DIST) * 0.12;
+            const c = COLORS[nodes[i].color];
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.strokeStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+
+      // Draw nodes
+      for (const n of nodes) {
+        const pulse = Math.sin(t * 0.001 + n.phase) * 0.3 + 0.7;
+        const c = COLORS[n.color];
+        const alpha = 0.25 * pulse;
+
+        // Glow
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r * 4, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha * 0.3})`;
+        ctx.fill();
+
+        // Core
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha})`;
+        ctx.fill();
+      }
+
+      animId = requestAnimationFrame(draw);
+    }
+
+    init();
+    animId = requestAnimationFrame(draw);
+    window.addEventListener('resize', () => { resize(); });
+
+    // Stop when hero scrolls out
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        if (!animId) animId = requestAnimationFrame(draw);
+      } else {
+        cancelAnimationFrame(animId);
+        animId = 0;
+      }
+    });
+    observer.observe(canvas);
+  }
+</script>

@@ -60,9 +60,14 @@ function initAnimations() {
   // --- HERO: character split animation for name ---
   document.querySelectorAll('[data-split-text]').forEach((el) => {
     const text = el.textContent || '';
+    const parentStyles = window.getComputedStyle(el as Element);
+    const bg = parentStyles.backgroundImage;
+
     el.innerHTML = text
       .split('')
-      .map((char) => `<span class="inline-block">${char === ' ' ? '&nbsp;' : char}</span>`)
+      .map((char) =>
+        `<span style="display:inline-block;background-image:${bg};-webkit-background-clip:text;background-clip:text;color:transparent">${char === ' ' ? '&nbsp;' : char}</span>`
+      )
       .join('');
 
     gsap.from(el.querySelectorAll('span'), {

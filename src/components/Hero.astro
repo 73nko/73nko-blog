@@ -86,27 +86,54 @@ const iconMap: Record<string, any> = {
     let h = 0;
     let animId = 0;
 
-    const COLORS = {
-      magenta: [255, 61, 138],
-      tangerine: [255, 138, 61],
-      turquoise: [127, 224, 235],
-      gold: [255, 214, 122],
-    };
-    const colorKeys = Object.keys(COLORS) as (keyof typeof COLORS)[];
+    // Palette
+    const TURQUOISE = [127, 224, 235];
+    const MAGENTA = [255, 61, 138];
+    const TANGERINE = [255, 138, 61];
+    const ROSEGOLD = [255, 198, 160];
+    const GOLD = [255, 214, 122];
 
-    interface Node {
+    // Graph
+    interface GNode {
       x: number;
       y: number;
-      vx: number;
-      vy: number;
       r: number;
-      color: keyof typeof COLORS;
       phase: number;
     }
+    interface GEdge {
+      a: number;
+      b: number;
+      weight: number;
+    }
 
-    let nodes: Node[] = [];
-    const CONNECT_DIST = 180;
-    const NODE_COUNT = 40;
+    let nodes: GNode[] = [];
+    let edges: GEdge[] = [];
+    const NODE_COUNT = 50;
+    const EDGE_MAX_DIST = 200;
+
+    // Dijkstra state
+    type DState = 'idle' | 'exploring' | 'tracing' | 'glowing' | 'fading';
+    let dState: DState = 'idle';
+    let visited: Set<number> = new Set();
+    let explored: Set<string> = new Set(); // "a-b" edge keys
+    let dist: number[] = [];
+    let prev: number[] = [];
+    let queue: [number, number][] = []; // [node, dist]
+    let source = 0;
+    let target = 0;
+    let shortestPath: number[] = [];
+    let pathProgress = 0; // 0..1 for tracing animation
+    let glowTime = 0;
+    let stepTimer = 0;
+    const STEP_INTERVAL = 60; // ms between dijkstra steps
+    const TRACE_SPEED = 0.015;
+    const GLOW_DURATION = 3000;
+    const FADE_DURATION = 1500;
+    let fadeProgress = 0;
+
+    function edgeKey(a: number, b: number): string {
+      return a < b ? `${a}-${b}` : `${b}-${a}`;
+    }
 
     function resize() {
       const dpr = window.devicePixelRatio || 1;
@@ -117,83 +144,309 @@ const iconMap: Record<string, any> = {
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
 
-    function init() {
-      resize();
+    function buildGraph() {
       nodes = [];
+      edges = [];
+
+      // Place nodes with some spacing
       for (let i = 0; i < NODE_COUNT; i++) {
+        let x: number, y: number;
+        let attempts = 0;
+        do {
+          x = 40 + Math.random() * (w - 80);
+          y = 40 + Math.random() * (h - 80);
+          attempts++;
+        } while (
+          attempts < 50 &&
+          nodes.some((n) => Math.hypot(n.x - x, n.y - y) < 60)
+        );
         nodes.push({
-          x: Math.random() * w,
-          y: Math.random() * h,
-          vx: (Math.random() - 0.5) * 0.4,
-          vy: (Math.random() - 0.5) * 0.4,
-          r: Math.random() * 2 + 1,
-          color: colorKeys[Math.floor(Math.random() * colorKeys.length)],
+          x,
+          y,
+          r: Math.random() * 1.5 + 2,
           phase: Math.random() * Math.PI * 2,
         });
+      }
+
+      // Build edges between close nodes
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const d = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+          if (d < EDGE_MAX_DIST) {
+            edges.push({ a: i, b: j, weight: d });
+          }
+        }
+      }
+
+      // Ensure connectivity: connect orphans to nearest
+      const adjacency = new Map<number, number[]>();
+      for (const e of edges) {
+        if (!adjacency.has(e.a)) adjacency.set(e.a, []);
+        if (!adjacency.has(e.b)) adjacency.set(e.b, []);
+        adjacency.get(e.a)!.push(e.b);
+        adjacency.get(e.b)!.push(e.a);
+      }
+      for (let i = 0; i < nodes.length; i++) {
+        if (!adjacency.has(i) || adjacency.get(i)!.length === 0) {
+          let nearest = 0;
+          let nearDist = Infinity;
+          for (let j = 0; j < nodes.length; j++) {
+            if (i === j) continue;
+            const d = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
+            if (d < nearDist) {
+              nearDist = d;
+              nearest = j;
+            }
+          }
+          edges.push({ a: i, b: nearest, weight: nearDist });
+        }
+      }
+    }
+
+    function startDijkstra() {
+      // Pick two distant nodes for interesting paths
+      source = Math.floor(Math.random() * nodes.length);
+      let maxDist = 0;
+      target = 0;
+      for (let i = 0; i < nodes.length; i++) {
+        const d = Math.hypot(nodes[i].x - nodes[source].x, nodes[i].y - nodes[source].y);
+        if (d > maxDist) {
+          maxDist = d;
+          target = i;
+        }
+      }
+
+      visited = new Set();
+      explored = new Set();
+      dist = new Array(nodes.length).fill(Infinity);
+      prev = new Array(nodes.length).fill(-1);
+      dist[source] = 0;
+      queue = [[source, 0]];
+      shortestPath = [];
+      pathProgress = 0;
+      glowTime = 0;
+      fadeProgress = 0;
+      dState = 'exploring';
+      stepTimer = 0;
+    }
+
+    function dijkstraStep(): boolean {
+      if (queue.length === 0) return true;
+
+      // Sort by distance (simple priority queue)
+      queue.sort((a, b) => a[1] - b[1]);
+      const [u, d] = queue.shift()!;
+
+      if (visited.has(u)) return false;
+      visited.add(u);
+
+      if (u === target) return true; // found!
+
+      // Explore neighbors
+      for (const e of edges) {
+        let neighbor = -1;
+        if (e.a === u) neighbor = e.b;
+        else if (e.b === u) neighbor = e.a;
+        else continue;
+
+        if (visited.has(neighbor)) continue;
+
+        explored.add(edgeKey(u, neighbor));
+        const newDist = d + e.weight;
+        if (newDist < dist[neighbor]) {
+          dist[neighbor] = newDist;
+          prev[neighbor] = u;
+          queue.push([neighbor, newDist]);
+        }
+      }
+      return false;
+    }
+
+    function buildPath() {
+      shortestPath = [];
+      let cur = target;
+      while (cur !== -1) {
+        shortestPath.unshift(cur);
+        cur = prev[cur];
       }
     }
 
     function draw(t: number) {
       ctx.clearRect(0, 0, w, h);
 
-      // Update positions
-      for (const n of nodes) {
-        n.x += n.vx;
-        n.y += n.vy;
+      const globalFade = dState === 'fading' ? 1 - fadeProgress : 1;
 
-        // Wrap around edges
-        if (n.x < -20) n.x = w + 20;
-        if (n.x > w + 20) n.x = -20;
-        if (n.y < -20) n.y = h + 20;
-        if (n.y > h + 20) n.y = -20;
+      // --- Draw base edges ---
+      for (const e of edges) {
+        const a = nodes[e.a];
+        const b = nodes[e.b];
+        const isExplored = explored.has(edgeKey(e.a, e.b));
+        const alpha = (isExplored ? 0.12 : 0.04) * globalFade;
+        const c = isExplored ? TANGERINE : ROSEGOLD;
+
+        ctx.beginPath();
+        ctx.moveTo(a.x, a.y);
+        ctx.lineTo(b.x, b.y);
+        ctx.strokeStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha})`;
+        ctx.lineWidth = isExplored ? 1 : 0.5;
+        ctx.stroke();
       }
 
-      // Draw connections
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x;
-          const dy = nodes[i].y - nodes[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CONNECT_DIST) {
-            const alpha = (1 - dist / CONNECT_DIST) * 0.12;
-            const c = COLORS[nodes[i].color];
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha})`;
-            ctx.lineWidth = 0.5;
-            ctx.stroke();
+      // --- Draw shortest path with glow ---
+      if (shortestPath.length > 1 && (dState === 'tracing' || dState === 'glowing' || dState === 'fading')) {
+        // Calculate total path length
+        let totalLen = 0;
+        const segments: number[] = [0];
+        for (let i = 1; i < shortestPath.length; i++) {
+          const a = nodes[shortestPath[i - 1]];
+          const b = nodes[shortestPath[i]];
+          totalLen += Math.hypot(b.x - a.x, b.y - a.y);
+          segments.push(totalLen);
+        }
+
+        const drawLen = dState === 'tracing' ? pathProgress * totalLen : totalLen;
+        const pulseAlpha = dState === 'glowing'
+          ? 0.6 + Math.sin(t * 0.003) * 0.2
+          : dState === 'tracing' ? 0.5 : 0.5;
+
+        // Draw glow layer (thick, blurred)
+        ctx.save();
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        // Outer glow
+        ctx.beginPath();
+        ctx.moveTo(nodes[shortestPath[0]].x, nodes[shortestPath[0]].y);
+        let drawnLen = 0;
+        for (let i = 1; i < shortestPath.length; i++) {
+          const a = nodes[shortestPath[i - 1]];
+          const b = nodes[shortestPath[i]];
+          const segLen = Math.hypot(b.x - a.x, b.y - a.y);
+          if (drawnLen + segLen <= drawLen) {
+            ctx.lineTo(b.x, b.y);
+            drawnLen += segLen;
+          } else {
+            const remaining = drawLen - drawnLen;
+            const ratio = remaining / segLen;
+            ctx.lineTo(a.x + (b.x - a.x) * ratio, a.y + (b.y - a.y) * ratio);
+            break;
           }
         }
+        ctx.strokeStyle = `rgba(${TURQUOISE[0]},${TURQUOISE[1]},${TURQUOISE[2]},${0.08 * pulseAlpha * globalFade})`;
+        ctx.lineWidth = 16;
+        ctx.stroke();
+
+        // Mid glow
+        ctx.strokeStyle = `rgba(${TURQUOISE[0]},${TURQUOISE[1]},${TURQUOISE[2]},${0.2 * pulseAlpha * globalFade})`;
+        ctx.lineWidth = 6;
+        ctx.stroke();
+
+        // Core line
+        ctx.strokeStyle = `rgba(${TURQUOISE[0]},${TURQUOISE[1]},${TURQUOISE[2]},${0.7 * pulseAlpha * globalFade})`;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.restore();
       }
 
-      // Draw nodes
-      for (const n of nodes) {
-        const pulse = Math.sin(t * 0.001 + n.phase) * 0.3 + 0.7;
-        const c = COLORS[n.color];
-        const alpha = 0.25 * pulse;
+      // --- Draw nodes ---
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        const pulse = Math.sin(t * 0.0015 + n.phase) * 0.3 + 0.7;
+        const isVisited = visited.has(i);
+        const isSource = i === source && dState !== 'idle';
+        const isTarget = i === target && dState !== 'idle';
+        const isOnPath = shortestPath.includes(i) && (dState === 'tracing' || dState === 'glowing' || dState === 'fading');
 
-        // Glow
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r * 4, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha * 0.3})`;
-        ctx.fill();
+        let c = ROSEGOLD;
+        let alpha = 0.15 * pulse * globalFade;
+        let radius = n.r;
+
+        if (isOnPath) {
+          c = TURQUOISE;
+          alpha = 0.8 * globalFade;
+          radius = n.r * 1.5;
+        } else if (isSource || isTarget) {
+          c = MAGENTA;
+          alpha = 0.7 * globalFade;
+          radius = n.r * 1.8;
+        } else if (isVisited) {
+          c = TANGERINE;
+          alpha = 0.3 * globalFade;
+        }
+
+        // Glow for special nodes
+        if (isOnPath || isSource || isTarget) {
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, radius * 5, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha * 0.15})`;
+          ctx.fill();
+        }
 
         // Core
         ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+        ctx.arc(n.x, n.y, radius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha})`;
         ctx.fill();
+      }
+
+      // --- State machine ---
+      if (dState === 'exploring') {
+        stepTimer += 16; // ~60fps
+        while (stepTimer >= STEP_INTERVAL) {
+          stepTimer -= STEP_INTERVAL;
+          const done = dijkstraStep();
+          if (done) {
+            buildPath();
+            if (shortestPath.length > 1) {
+              dState = 'tracing';
+            } else {
+              // No path found, restart
+              startDijkstra();
+            }
+            break;
+          }
+        }
+      } else if (dState === 'tracing') {
+        pathProgress += TRACE_SPEED;
+        if (pathProgress >= 1) {
+          pathProgress = 1;
+          dState = 'glowing';
+          glowTime = 0;
+        }
+      } else if (dState === 'glowing') {
+        glowTime += 16;
+        if (glowTime >= GLOW_DURATION) {
+          dState = 'fading';
+          fadeProgress = 0;
+        }
+      } else if (dState === 'fading') {
+        fadeProgress += 16 / FADE_DURATION;
+        if (fadeProgress >= 1) {
+          dState = 'idle';
+          // Rebuild graph and start fresh
+          buildGraph();
+          startDijkstra();
+        }
+      } else if (dState === 'idle') {
+        buildGraph();
+        startDijkstra();
       }
 
       animId = requestAnimationFrame(draw);
     }
 
-    init();
+    resize();
+    buildGraph();
+    startDijkstra();
     animId = requestAnimationFrame(draw);
-    window.addEventListener('resize', () => { resize(); });
+    window.addEventListener('resize', () => {
+      resize();
+      buildGraph();
+      startDijkstra();
+    });
 
-    // Stop when hero scrolls out
+    // Pause when hero scrolls out
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         if (!animId) animId = requestAnimationFrame(draw);

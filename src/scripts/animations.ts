@@ -24,7 +24,7 @@ function initAnimations() {
 
   // --- NAV: active section tracking ---
   const navLinks = document.querySelectorAll('[data-nav-link]');
-  const sections = ['#experience', '#skills', '#connect'];
+  const sections = ['#services', '#experience', '#skills', '#contact'];
 
   sections.forEach((sectionId) => {
     ScrollTrigger.create({
@@ -127,14 +127,34 @@ function initAnimations() {
     },
   });
 
-  // --- CONNECT: fade in ---
-  const connectElements = gsap.utils.toArray('#connect h2, #connect p, #connect a') as HTMLElement[];
-  gsap.set(connectElements, { y: 20, opacity: 0 });
+  // --- SERVICES: fade in cards ---
+  const serviceElements = gsap.utils.toArray('.services-animate') as HTMLElement[];
+  if (serviceElements.length) {
+    gsap.set(serviceElements, { y: 20, opacity: 0 });
+    ScrollTrigger.create({
+      trigger: '#services',
+      start: 'top 80%',
+      onEnter: () => {
+        gsap.to(serviceElements, {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.1,
+          ease: 'power2.out',
+        });
+      },
+      once: true,
+    });
+  }
+
+  // --- CONTACT: fade in ---
+  const contactElements = gsap.utils.toArray('#contact h2, #contact p, #contact a') as HTMLElement[];
+  gsap.set(contactElements, { y: 20, opacity: 0 });
   ScrollTrigger.create({
-    trigger: '#connect',
+    trigger: '#contact',
     start: 'top 85%',
     onEnter: () => {
-      gsap.to(connectElements, {
+      gsap.to(contactElements, {
         y: 0,
         opacity: 1,
         duration: 0.6,

@@ -6,7 +6,7 @@ import { experience } from '../data/experience';
   <div class="mx-auto w-full max-w-[1100px]">
     <!-- Section header -->
     <div class="mb-9 border-b border-[--sp-ink-line] pb-4">
-      <span class="font-mono text-[13px] font-medium tracking-[2px] text-sp-magenta">02</span>
+      <span class="font-mono text-[13px] font-medium tracking-[2px] text-sp-magenta">03</span>
       <h2 class="mt-1 text-4xl font-bold tracking-[-0.6px]">
         Career <span class="text-sp-turquoise-hi">Timeline</span>
       </h2>
@@ -40,6 +40,16 @@ import { experience } from '../data/experience';
           <h3 class="mt-1 text-[17px] font-semibold text-sp-fg">{entry.role}</h3>
           <p class="text-[13px] font-medium text-sp-magenta-hi">{entry.company}</p>
           <p class="mt-2 text-[13px] leading-relaxed text-[--sp-muted]">{entry.description}</p>
+          {entry.bullets && (
+            <ul class="mt-3 flex flex-col gap-1.5">
+              {entry.bullets.map((bullet) => (
+                <li class="flex items-start gap-2 text-[13px] leading-relaxed text-[--sp-muted]">
+                  <span class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-sp-turquoise-hi/60"></span>
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       ))}
     </div>

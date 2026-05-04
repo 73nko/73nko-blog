@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18101F"/>
+      <stop offset="100%" stop-color="#0D0518"/>
+    </linearGradient>
+    <linearGradient id="nameGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFB8D5"/>
+      <stop offset="30%" stop-color="#FF3D8A"/>
+      <stop offset="55%" stop-color="#FF8A3D"/>
+      <stop offset="95%" stop-color="#7FE0EB"/>
+    </linearGradient>
+    <radialGradient id="glowMagenta" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF3D8A" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#FF3D8A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowTurquoise" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7FE0EB" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#7FE0EB" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Background glows -->
+  <circle cx="1050" cy="120" r="320" fill="url(#glowMagenta)"/>
+  <circle cx="150" cy="520" r="300" fill="url(#glowTurquoise)"/>
+
+  <!-- Eyebrow tag -->
+  <g transform="translate(80, 130)">
+    <rect width="240" height="36" rx="18" fill="#7FE0EB" fill-opacity="0.08" stroke="#7FE0EB" stroke-opacity="0.2"/>
+    <text x="120" y="23" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="500" fill="#7FE0EB" letter-spacing="2" text-anchor="middle">SENIOR ENGINEER</text>
+  </g>
+
+  <!-- Name -->
+  <text x="80" y="290" font-family="Inter, sans-serif" font-size="92" font-weight="800" fill="url(#nameGradient)" letter-spacing="-2">Alejandro Pérez</text>
+
+  <!-- Headline -->
+  <text x="80" y="370" font-family="Inter, sans-serif" font-size="36" font-weight="500" fill="#EFE2D2" xml:space="preserve"><tspan>Senior Engineer for </tspan><tspan fill="#FFB8D5" font-style="italic">ambitious</tspan><tspan> Shopify Builds</tspan></text>
+
+  <!-- Subline -->
+  <text x="80" y="430" font-family="Inter, sans-serif" font-size="22" font-weight="400" fill="#EFE2D2" fill-opacity="0.62">Founding engineer · YC-backed Shopify subscriptions · 200+ merchants</text>
+
+  <!-- Footer URL -->
+  <text x="80" y="560" font-family="'JetBrains Mono', monospace" font-size="20" font-weight="500" fill="#7FE0EB" letter-spacing="1">alejandroperez.dev</text>
+
+  <!-- Right corner mark -->
+  <text x="1120" y="560" font-family="'JetBrains Mono', monospace" font-size="20" font-weight="700" fill="url(#nameGradient)" letter-spacing="-0.5" text-anchor="end">73nko</text>
+</svg>

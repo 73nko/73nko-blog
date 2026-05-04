@@ -1,6 +1,7 @@
 ---
 import { socialLinks } from '../data/social';
-import { Github, Linkedin, Twitter, Mail } from 'lucide-astro';
+import { CAL_BOOKING_URL } from '../data/links';
+import { Github, Linkedin, Twitter, Mail, Calendar, ArrowDown } from 'lucide-astro';
 
 const iconMap: Record<string, any> = {
   github: Github,
@@ -47,16 +48,39 @@ const iconMap: Record<string, any> = {
 
     <!-- Tagline -->
     <p class="hero-animate mb-1 text-lg text-sp-fg/85 sm:text-xl">
-      Building <em class="not-italic font-medium text-sp-magenta-hi">exceptional</em> web experiences
+      Senior engineer for <em class="not-italic font-medium text-sp-magenta-hi">ambitious</em> Shopify builds
     </p>
 
     <!-- Bio -->
-    <p class="hero-animate mb-6 max-w-[520px] text-[15px] text-[--sp-muted]">
-      10+ years crafting performant, scalable applications — from YC-backed startups to global platforms like Eventbrite and EA. Currently building e-commerce infrastructure at Awtomic.
+    <p class="hero-animate mb-3 max-w-[560px] text-[15px] text-[--sp-muted]">
+      Founding engineer at a YC-backed Shopify subscriptions platform serving 200+ merchants. 10+ years shipping production commerce systems with React, TypeScript and Node.
+    </p>
+    <p class="hero-animate mb-6 max-w-[560px] text-[15px] text-[--sp-muted]">
+      Currently full-time at Awtomic. Available for limited consulting outside e-commerce subscriptions and bundles.
     </p>
 
-    <!-- CTAs -->
-    <div class="hero-animate flex flex-wrap gap-3">
+    <!-- Primary CTAs -->
+    <div class="hero-animate mb-4 flex flex-wrap gap-3">
+      <a
+        href={CAL_BOOKING_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex cursor-pointer items-center gap-2 rounded-full bg-sp-magenta px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-sp-dusk transition-all duration-200 hover:bg-sp-magenta-hi"
+      >
+        <Calendar size={14} />
+        Book a call →
+      </a>
+      <a
+        href="#services"
+        class="inline-flex cursor-pointer items-center gap-2 rounded-full border border-sp-turquoise-hi/25 bg-sp-turquoise-hi/[0.12] px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-sp-turquoise-hi transition-all duration-200 hover:bg-sp-turquoise-hi/20"
+      >
+        <ArrowDown size={14} />
+        What I do →
+      </a>
+    </div>
+
+    <!-- Social icons -->
+    <div class="hero-animate flex flex-wrap gap-2">
       {socialLinks.map((link) => {
         const Icon = iconMap[link.icon];
         return (
@@ -64,15 +88,10 @@ const iconMap: Record<string, any> = {
             href={link.url}
             target={link.url.startsWith('mailto') ? undefined : '_blank'}
             rel={link.url.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-            class:list={[
-              'inline-flex cursor-pointer items-center gap-2 rounded-full px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] transition-all duration-200',
-              link.name === 'GitHub'
-                ? 'bg-sp-magenta text-sp-dusk hover:bg-sp-magenta-hi'
-                : 'border border-sp-turquoise-hi/25 bg-sp-turquoise-hi/[0.12] text-sp-turquoise-hi hover:bg-sp-turquoise-hi/20',
-            ]}
+            aria-label={link.name}
+            class="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-sp-turquoise-hi/20 bg-sp-turquoise-hi/[0.06] text-sp-rosegold/80 transition-all duration-200 hover:border-sp-turquoise-hi/40 hover:bg-sp-turquoise-hi/15 hover:text-sp-turquoise-hi"
           >
             {Icon && <Icon size={14} />}
-            {link.name}{link.name === 'GitHub' ? ' →' : ''}
           </a>
         );
       })}

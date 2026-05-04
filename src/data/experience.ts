@@ -4,6 +4,7 @@ export interface ExperienceEntry {
   company: string;
   location: string;
   description: string;
+  bullets?: string[];
   current?: boolean;
 }
 
@@ -14,7 +15,12 @@ export const experience: ExperienceEntry[] = [
     company: 'Awtomic',
     location: 'Remote, Spain',
     description:
-      'Founding team member (#7) at YCombinator-backed startup. Architected scalable AWS serverless infrastructure (Lambda, SQS, DynamoDB) handling Shopify webhooks for 200+ businesses. Led creation of two React/Next.js frontend applications with custom design system.',
+      'Founding engineer (#7) at a YC-backed Shopify subscriptions platform.',
+    bullets: [
+      'Architected and operate the production backend processing Shopify webhooks for 200+ active merchants.',
+      'Built two production React/Next.js storefront integrations with shared design system.',
+      'Owned end-to-end delivery of features used in millions of customer transactions.',
+    ],
     current: true,
   },
   {

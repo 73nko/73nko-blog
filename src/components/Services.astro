@@ -1,0 +1,92 @@
+---
+import { CAL_BOOKING_URL } from '../data/links';
+import { Calendar, Check, X } from 'lucide-astro';
+
+const focusAreas = [
+  'Shopify Plus integrations: ERP, billing, data warehouse, marketing automation',
+  'Headless storefronts on Hydrogen or Next.js + Storefront API',
+  'Migrations: legacy theme to modern stack, monolith to headless, Basic to Plus',
+  'Custom checkout extensions and Shopify App development',
+  'Performance and observability for high-traffic stores',
+  'Architecture reviews before launch',
+];
+
+const outOfScope = [
+  'Subscription or bundle work (out of scope right now)',
+  'Theme customization or marketing site work',
+  'Long-term retainers or full-time placements',
+  'Greenfield projects without senior engineering on the client side',
+];
+---
+
+<section id="services" class="relative px-6 py-24 sm:px-12 lg:px-20">
+  <div class="mx-auto w-full max-w-[1100px]">
+    <!-- Section header -->
+    <div class="mb-9 border-b border-[--sp-ink-line] pb-4">
+      <span class="font-mono text-[13px] font-medium tracking-[2px] text-sp-magenta">02</span>
+      <h2 class="mt-1 text-4xl font-bold tracking-[-0.6px]">
+        What <span class="text-sp-turquoise-hi">I do</span>
+      </h2>
+    </div>
+
+    <!-- Lead -->
+    <p class="services-animate mb-10 max-w-[720px] text-[15px] leading-relaxed text-[--sp-muted]">
+      I take on small, scoped engagements (typically 5–30 hours) for agencies and merchants building serious Shopify systems.
+    </p>
+
+    <!-- Two-column lists -->
+    <div class="grid gap-4 sm:grid-cols-2">
+      <!-- Areas of focus -->
+      <div class="services-animate relative overflow-hidden rounded-xl border border-[--sp-ink-line] bg-sp-ink p-5 sm:p-6">
+        <div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-sp-turquoise to-sp-turquoise-hi"></div>
+        <span class="font-mono text-[10px] font-medium uppercase tracking-[2px] text-sp-turquoise-hi">
+          Areas of focus
+        </span>
+        <ul class="mt-4 flex flex-col gap-2.5">
+          {focusAreas.map((item) => (
+            <li class="flex items-start gap-2.5 text-[13px] leading-relaxed text-sp-fg/85">
+              <span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sp-turquoise-hi/15 text-sp-turquoise-hi">
+                <Check size={10} />
+              </span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- What I don't do -->
+      <div class="services-animate relative overflow-hidden rounded-xl border border-[--sp-ink-line] bg-sp-ink p-5 sm:p-6">
+        <div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-sp-magenta to-sp-tangerine opacity-40"></div>
+        <span class="font-mono text-[10px] font-medium uppercase tracking-[2px] text-sp-rosegold/70">
+          What I don't do
+        </span>
+        <ul class="mt-4 flex flex-col gap-2.5">
+          {outOfScope.map((item) => (
+            <li class="flex items-start gap-2.5 text-[13px] leading-relaxed text-[--sp-muted]">
+              <span class="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sp-rosegold/10 text-sp-rosegold/70">
+                <X size={10} />
+              </span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Closing line + CTA -->
+    <div class="services-animate mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <p class="text-[14px] text-sp-fg/85">
+        Engagements scoped upfront. Rates on request.
+      </p>
+      <a
+        href={CAL_BOOKING_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex cursor-pointer items-center gap-2 self-start rounded-full bg-sp-magenta px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-sp-dusk transition-all duration-200 hover:bg-sp-magenta-hi sm:self-auto"
+      >
+        <Calendar size={14} />
+        Book an intro call →
+      </a>
+    </div>
+  </div>
+</section>

@@ -6,6 +6,11 @@ interface Props {
 
 const { title, description } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = new URL('/og-image.png', Astro.site).toString();
+
+const ogTitle = 'Alejandro Pérez | Senior Engineer for Shopify Builds';
+const ogDescription =
+  'Founding engineer at a YC-backed Shopify subscriptions platform. Available for limited consulting.';
 
 import '../styles/global.css';
 ---
@@ -16,6 +21,10 @@ import '../styles/global.css';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="Shopify consultant, Shopify Plus, headless commerce, freelance engineer, Senior Software Engineer Madrid"
+    />
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -24,12 +33,24 @@ import '../styles/global.css';
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={ogTitle} />
+    <meta property="og:description" content={ogDescription} />
+    <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@73nko" />
+    <meta name="twitter:creator" content="@73nko" />
+    <meta name="twitter:title" content={ogTitle} />
+    <meta name="twitter:description" content={ogDescription} />
+    <meta name="twitter:image" content={ogImageURL} />
+
     <title>{title}</title>
   </head>
   <body>

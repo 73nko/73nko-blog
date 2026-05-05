@@ -15,7 +15,9 @@
       "Bash(ls /Users/73nko/Projects/73nko-blog/gatsby-*.js /Users/73nko/Projects/73nko-blog/gatsby-*.ts)",
       "Bash(ls /Users/73nko/Projects/73nko-blog/gatsby-*.js)",
       "Bash(find src/pages -name '*.tsx' -delete)",
-      "Bash(find src/components -name '*.tsx' -delete)"
+      "Bash(find src/components -name '*.tsx' -delete)",
+      "WebFetch(domain:73nko.es)",
+      "Bash(git push:*)"
     ]
   }
 }

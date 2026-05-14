@@ -1,7 +1,6 @@
 ---
 import { socialLinks } from '../data/social';
-import { CAL_BOOKING_URL } from '../data/links';
-import { Github, Linkedin, Twitter, Mail, Calendar, ArrowDown } from 'lucide-astro';
+import { Github, Linkedin, Twitter, Mail, BookOpen, Code2, ArrowDown } from 'lucide-astro';
 
 const iconMap: Record<string, any> = {
   github: Github,
@@ -32,50 +31,47 @@ const iconMap: Record<string, any> = {
 
   <div class="relative z-10 mx-auto w-full max-w-[1100px]">
     <div class="-ml-6 rounded-r-2xl border-r border-y border-sp-turquoise-hi/8 bg-sp-dusk-deep/30 py-8 pl-6 pr-10 shadow-[0_8px_32px_rgba(0,0,0,0.15)] backdrop-blur-md sm:-ml-12 sm:py-10 sm:pl-12 sm:pr-14 lg:-ml-20 lg:pl-20 lg:pr-16">
-    <!-- Eyebrow -->
-    <span
-      class="hero-animate mb-4 inline-flex items-center gap-2 rounded-full border border-sp-turquoise-hi/20 bg-sp-turquoise-hi/[0.08] px-3 py-1.5 font-mono text-[11px] font-medium uppercase tracking-[2px] text-sp-turquoise-hi"
-    >
-      Senior Software Engineer
-    </span>
-
     <!-- Name -->
-    <h1 class="hero-animate mb-4 text-5xl font-extrabold tracking-[-2px] sm:text-7xl lg:text-[86px] lg:leading-[1.02]">
+    <h1 class="hero-animate mb-5 text-5xl font-extrabold tracking-[-2px] sm:text-7xl lg:text-[86px] lg:leading-[1.02]">
       <span class="gradient-text" data-split-text>Alejandro</span>
       <br />
       <span class="gradient-text" data-split-text>Pérez</span>
     </h1>
 
-    <!-- Tagline -->
-    <p class="hero-animate mb-1 text-lg text-sp-fg/85 sm:text-xl">
-      Senior engineer for <em class="not-italic font-medium text-sp-magenta-hi">ambitious</em> Shopify builds
+    <!-- Thesis -->
+    <p class="hero-animate mb-3 max-w-[620px] text-lg leading-relaxed text-sp-fg/90 sm:text-xl">
+      Software engineer. I build the backend infrastructure that gets <em class="not-italic font-medium text-sp-magenta-hi">quieter</em>, not louder, as traffic grows.
     </p>
 
     <!-- Bio -->
-    <p class="hero-animate mb-3 max-w-[560px] text-[15px] text-[--sp-muted]">
-      Founding engineer at a YC-backed Shopify subscriptions platform serving 200+ merchants. 10+ years shipping production commerce systems with React, TypeScript and Node.
-    </p>
-    <p class="hero-animate mb-6 max-w-[560px] text-[15px] text-[--sp-muted]">
-      Currently full-time at Awtomic. Available for limited consulting outside e-commerce subscriptions and bundles.
+    <p class="hero-animate mb-6 max-w-[620px] text-[15px] leading-relaxed text-[--sp-muted]">
+      Founding engineer at <span class="text-sp-fg/85">Awtomic</span> (YC S20). 10+ years across Eventbrite, EA, ING. Currently going deep on distributed systems, observability, and the next wave of frontend.
     </p>
 
     <!-- Primary CTAs -->
     <div class="hero-animate mb-4 flex flex-wrap gap-3">
       <a
-        href={CAL_BOOKING_URL}
-        target="_blank"
-        rel="noopener noreferrer"
+        href="#now"
         class="inline-flex cursor-pointer items-center gap-2 rounded-full bg-sp-magenta px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-sp-dusk transition-all duration-200 hover:bg-sp-magenta-hi"
       >
-        <Calendar size={14} />
-        Book a call →
+        <BookOpen size={14} />
+        Read →
       </a>
       <a
-        href="#services"
+        href="https://github.com/73nko"
+        target="_blank"
+        rel="noopener noreferrer"
         class="inline-flex cursor-pointer items-center gap-2 rounded-full border border-sp-turquoise-hi/25 bg-sp-turquoise-hi/[0.12] px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-sp-turquoise-hi transition-all duration-200 hover:bg-sp-turquoise-hi/20"
       >
+        <Code2 size={14} />
+        Code →
+      </a>
+      <a
+        href="#contact"
+        class="inline-flex cursor-pointer items-center gap-2 rounded-full border border-sp-rosegold/20 bg-transparent px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-sp-rosegold/80 transition-all duration-200 hover:border-sp-rosegold/40 hover:text-sp-rosegold"
+      >
         <ArrowDown size={14} />
-        What I do →
+        Connect →
       </a>
     </div>
 

@@ -1,7 +1,7 @@
 ---
 import { socialLinks } from '../data/social';
 import { CAL_BOOKING_URL, CONTACT_EMAIL } from '../data/links';
-import { Github, Linkedin, Twitter, Mail, Calendar } from 'lucide-astro';
+import { Github, Linkedin, Twitter, Mail } from 'lucide-astro';
 
 const iconMap: Record<string, any> = {
   github: Github,
@@ -10,8 +10,6 @@ const iconMap: Record<string, any> = {
   mail: Mail,
 };
 
-// Section nav anchor is #contact; exclude email from the trailing social row
-// (it's already shown in plain text + as the mailto button).
 const trailingSocials = socialLinks.filter((link) => link.icon !== 'mail');
 ---
 
@@ -21,7 +19,7 @@ const trailingSocials = socialLinks.filter((link) => link.icon !== 'mail');
     <div class="mb-9 border-b border-[--sp-ink-line] pb-4">
       <span class="font-mono text-[13px] font-medium tracking-[2px] text-sp-magenta">05</span>
       <h2 class="mt-1 text-4xl font-bold tracking-[-0.6px]">
-        Work <span class="text-sp-turquoise-hi">with me</span>
+        Get in <span class="text-sp-turquoise-hi">touch</span>
       </h2>
     </div>
 
@@ -30,31 +28,27 @@ const trailingSocials = socialLinks.filter((link) => link.icon !== 'mail');
       <div class="pointer-events-none absolute -bottom-24 left-1/2 h-[300px] w-[400px] -translate-x-1/2 rounded-full bg-sp-magenta/[0.08] blur-[100px]" aria-hidden="true"></div>
 
       <p class="relative mb-7 max-w-[640px] text-[15px] leading-relaxed text-sp-fg/85">
-        The fastest way to gauge fit is a 20-minute intro call. I'll ask about your project, you'll ask about my approach. No commitment.
+        Best ways to reach me: email or LinkedIn. Roles, collaborations, and technical conversations all welcome.
       </p>
 
       <div class="relative mb-8 flex flex-wrap gap-3">
         <a
-          href={CAL_BOOKING_URL}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex cursor-pointer items-center gap-2 rounded-full bg-sp-magenta px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-sp-dusk transition-all duration-200 hover:bg-sp-magenta-hi"
-        >
-          <Calendar size={14} />
-          Book an intro call →
-        </a>
-        <a
           href={`mailto:${CONTACT_EMAIL}`}
-          class="inline-flex cursor-pointer items-center gap-2 rounded-full border border-sp-turquoise-hi/25 bg-sp-turquoise-hi/[0.12] px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-sp-turquoise-hi transition-all duration-200 hover:bg-sp-turquoise-hi/20"
+          class="inline-flex cursor-pointer items-center gap-2 rounded-full bg-sp-magenta px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-sp-dusk transition-all duration-200 hover:bg-sp-magenta-hi"
         >
           <Mail size={14} />
           {CONTACT_EMAIL}
         </a>
+        <a
+          href="https://www.linkedin.com/in/alejandroperez"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex cursor-pointer items-center gap-2 rounded-full border border-sp-turquoise-hi/25 bg-sp-turquoise-hi/[0.12] px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-sp-turquoise-hi transition-all duration-200 hover:bg-sp-turquoise-hi/20"
+        >
+          <Linkedin size={14} />
+          LinkedIn
+        </a>
       </div>
-
-      <p class="relative mb-6 max-w-[640px] text-[14px] leading-relaxed text-[--sp-muted]">
-        For everything else (collaborations, content, speaking), email is best.
-      </p>
 
       <div class="relative flex flex-wrap gap-3">
         {trailingSocials.map((link) => {
@@ -72,6 +66,18 @@ const trailingSocials = socialLinks.filter((link) => link.icon !== 'mail');
           );
         })}
       </div>
+
+      <p class="relative mt-8 text-[12px] text-[--sp-faint]">
+        Open to short coffee chats and mentoring conversations:
+        <a
+          href={CAL_BOOKING_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ml-1 underline decoration-sp-turquoise-hi/30 underline-offset-4 transition-colors hover:text-sp-turquoise-hi hover:decoration-sp-turquoise-hi"
+        >
+          book a 30-min coffee chat →
+        </a>
+      </p>
     </div>
 
     {/* Footer */}

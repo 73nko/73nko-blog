@@ -8,9 +8,9 @@ const { title, description } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL('/og-image.png', Astro.site).toString();
 
-const ogTitle = 'Alejandro Pérez | Senior Engineer for Shopify Builds';
+const ogTitle = 'Alejandro Pérez';
 const ogDescription =
-  'Founding engineer at a YC-backed Shopify subscriptions platform. Available for limited consulting.';
+  'Engineering notes on distributed systems, observability, and frontend at scale.';
 
 import '../styles/global.css';
 ---
@@ -21,10 +21,6 @@ import '../styles/global.css';
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta
-      name="keywords"
-      content="Shopify consultant, Shopify Plus, headless commerce, freelance engineer, Senior Software Engineer Madrid"
-    />
     <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

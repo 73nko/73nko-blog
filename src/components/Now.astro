@@ -1,0 +1,51 @@
+---
+const items = [
+  {
+    label: 'Building',
+    body: 'An open-source web performance SDK. Lightweight, browser-first, OpenTelemetry-compatible.',
+  },
+  {
+    label: 'Going deep on',
+    body: 'ClickHouse for analytics workloads and OpenTelemetry for end-to-end observability.',
+  },
+  {
+    label: 'Reading',
+    body: '“Designing Data-Intensive Applications” — second pass, this time with notes.',
+  },
+  {
+    label: 'Writing',
+    body: 'First technical post lands in June: lessons from running a multi-tenant Shopify pipeline at Awtomic.',
+  },
+];
+---
+
+<section id="now" class="relative px-6 py-24 sm:px-12 lg:px-20">
+  <div class="mx-auto w-full max-w-[1100px]">
+    <!-- Section header -->
+    <div class="mb-9 border-b border-[--sp-ink-line] pb-4">
+      <span class="font-mono text-[13px] font-medium tracking-[2px] text-sp-magenta">02</span>
+      <h2 class="mt-1 text-4xl font-bold tracking-[-0.6px]">
+        <span class="text-sp-turquoise-hi">Now</span>
+        <span class="ml-3 align-middle font-mono text-sm font-normal tracking-[1px] text-[--sp-faint]">May 2026</span>
+      </h2>
+    </div>
+
+    <!-- Lead -->
+    <p class="services-animate mb-10 max-w-[720px] text-[15px] leading-relaxed text-[--sp-muted]">
+      What I'm working on this quarter. A snapshot, kept honest. <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer" class="underline decoration-sp-turquoise-hi/30 underline-offset-4 transition-colors hover:text-sp-turquoise-hi hover:decoration-sp-turquoise-hi">Inspired by /now pages</a>.
+    </p>
+
+    <!-- Items -->
+    <div class="grid gap-4 sm:grid-cols-2">
+      {items.map((item) => (
+        <div class="services-animate relative overflow-hidden rounded-xl border border-[--sp-ink-line] bg-sp-ink p-5 sm:p-6">
+          <div class="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-sp-turquoise to-sp-turquoise-hi"></div>
+          <span class="font-mono text-[10px] font-medium uppercase tracking-[2px] text-sp-turquoise-hi">
+            {item.label}
+          </span>
+          <p class="mt-3 text-[14px] leading-relaxed text-sp-fg/85">{item.body}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

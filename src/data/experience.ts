@@ -6,69 +6,43 @@ export interface ExperienceEntry {
   description: string;
   bullets?: string[];
   current?: boolean;
+  collapsed?: boolean;
 }
 
 export const experience: ExperienceEntry[] = [
   {
-    dateRange: 'Jun 2021 — Present',
-    role: 'Senior Software Engineer',
-    company: 'Awtomic',
+    dateRange: '2021 — Present',
+    role: 'Founding Engineer',
+    company: 'Awtomic (YC S20)',
     location: 'Remote, Spain',
     description:
-      'Founding engineer (#7) at a YC-backed Shopify subscriptions platform.',
+      'Designed and own a multi-tenant, event-driven AWS pipeline (Lambda + SQS + DynamoDB) processing Shopify webhooks across 200+ merchants.',
     bullets: [
-      'Architected and operate the production backend processing Shopify webhooks for 200+ active merchants.',
-      'Built two production React/Next.js storefront integrations with shared design system.',
-      'Owned end-to-end delivery of features used in millions of customer transactions.',
+      'Idempotent retries and per-tenant queue isolation: a noisy merchant cannot starve the rest of the platform.',
+      'Observability that catches drift before customers do — structured logs, metrics, and synthetic checks across the webhook path.',
+      'Built two production React/Next.js storefront integrations on a shared design system, used in millions of customer transactions.',
     ],
     current: true,
   },
   {
-    dateRange: 'Sep 2019 — Jun 2021',
+    dateRange: '2019 — 2021',
     role: 'Senior Software Engineer',
     company: 'Eventbrite',
     location: 'Remote, Spain',
     description:
-      'Migrated critical high-traffic services from monolithic to service-oriented architecture. Integrated Zoom with Online Events, increasing online events from 6% to nearly 30%. Built with React, TypeScript, Django, MySQL, Redis, and Kafka.',
+      'Migrated critical high-traffic surfaces from a Python monolith into event-driven services (Kafka + Redis + MySQL).',
+    bullets: [
+      'Led the Zoom + Online Events integration that grew the share of online events from ~6% to ~30% of the catalog.',
+      'Owned frontend slices in React/TypeScript through the migration, keeping the user-facing path stable while the backend reshaped underneath.',
+    ],
   },
   {
-    dateRange: 'Dec 2018 — Aug 2019',
-    role: 'Senior Frontend Developer',
-    company: 'Electronic Arts (EA)',
+    dateRange: '2013 — 2019',
+    role: 'Previously',
+    company: 'EA · ING · Solera · Mediaset · Babel',
     location: 'Madrid, Spain',
     description:
-      'Senior frontend development for internal tools and gaming platforms.',
-  },
-  {
-    dateRange: 'Sep 2018 — Dec 2018',
-    role: 'Senior Software Engineer',
-    company: 'ING Bank',
-    location: 'Madrid, Spain',
-    description:
-      'Frontend engineering for banking applications.',
-  },
-  {
-    dateRange: 'Dec 2017 — Sep 2018',
-    role: 'JavaScript Engineer',
-    company: 'Solera Global Data & Content',
-    location: 'Madrid, Spain',
-    description:
-      'JavaScript development for data and content management platforms.',
-  },
-  {
-    dateRange: 'Feb 2016 — Sep 2017',
-    role: 'JavaScript Engineer',
-    company: 'Mediaset España',
-    location: 'Madrid, Spain',
-    description:
-      'Frontend development for media and broadcasting platforms.',
-  },
-  {
-    dateRange: 'Jan 2013 — Feb 2016',
-    role: 'Junior Software Engineer',
-    company: 'Babel',
-    location: 'Madrid, Spain',
-    description:
-      'Full-stack web development, database management, and server administration. First steps into the JavaScript ecosystem.',
+      '10+ years across gaming, banking, automotive data, broadcast media, and consultancy. Frontend engineering and JavaScript platforms — the foundation that the rest of this page is built on.',
+    collapsed: true,
   },
 ];

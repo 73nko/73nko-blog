@@ -4,20 +4,32 @@ export interface SkillCategory {
   skills: string[];
 }
 
-export const skillCategories: SkillCategory[] = [
-  {
-    name: 'Frontend',
-    accent: 'warm',
-    skills: ['React', 'TypeScript', 'Next.js', 'HTML', 'CSS', 'JavaScript', 'Chakra UI', 'Emotion', 'React Query'],
-  },
-  {
-    name: 'Backend & Infra',
-    accent: 'cool',
-    skills: ['Node.js', 'AWS Lambda', 'SQS', 'DynamoDB', 'Django', 'MySQL', 'Redis', 'Kafka'],
-  },
-  {
-    name: 'Tools & Practices',
-    accent: 'gold',
-    skills: ['Shopify Integration', 'Design Systems', 'Serverless', 'Microservices', 'E-commerce', 'Agile'],
-  },
-];
+export const investingIn: SkillCategory = {
+  name: 'Currently investing in',
+  accent: 'cool',
+  skills: [
+    'Distributed systems',
+    'OpenTelemetry',
+    'ClickHouse for analytics workloads',
+    'React Server Components',
+    'Edge runtimes',
+    'System design at scale',
+  ],
+};
+
+export const productionExperience: SkillCategory = {
+  name: 'Production experience',
+  accent: 'warm',
+  skills: [
+    'Node.js',
+    'TypeScript',
+    'React',
+    'Next.js',
+    'AWS (Lambda, SQS, DynamoDB)',
+    'Django',
+    'Kafka',
+    'Redis',
+    'MySQL',
+    'Design systems',
+  ],
+};

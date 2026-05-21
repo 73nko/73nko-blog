@@ -1,44 +1,46 @@
 @import 'tailwindcss';
 
 @theme {
-  /* Identity — warm */
-  --color-sp-magenta: #FF3D8A;
-  --color-sp-magenta-hi: #FFB8D5;
-  --color-sp-tangerine: #FF8A3D;
-  --color-sp-peach: #FFB07A;
-  --color-sp-gold: #FFD67A;
+  /* Ground — sky behind glass */
+  --color-vh-abyss: #06061a;
+  --color-vh-night: #0d0d2c;
+  --color-vh-indigo: #1a1745;
+  --color-vh-violet: #2c2766;
+  --color-vh-mauve: #4a3d95;
+  --color-vh-dawn: #6e5ec4;
+  --color-vh-horizon: #a78dff;
 
-  /* Structure — cool */
-  --color-sp-turquoise: #4EC9D7;
-  --color-sp-turquoise-hi: #7FE0EB;
-  --color-sp-aqua: #8FE3E8;
-  --color-sp-deep-pool: #0D4858;
+  /* Identity — orchid family */
+  --color-vh-orchid: #b39dff;
+  --color-vh-lilac: #d6c8ff;
+  --color-vh-rose-mist: #e2bcff;
+  --color-vh-bloom: #f0d2ff;
 
-  /* Ground */
-  --color-sp-dusk: #1A0A28;
-  --color-sp-dusk-deep: #0D0518;
-  --color-sp-plum: #3A1550;
-  --color-sp-wine: #6A2050;
-  --color-sp-sunburn: #C95A4A;
-  --color-sp-sunsoft: #F2A070;
-  --color-sp-rosegold: #FFC6A0;
-  --color-sp-cream: #F5ECD7;
+  /* Structure — cool counterweight */
+  --color-vh-periwinkle: #8da7ff;
+  --color-vh-ice: #a8c9ff;
+  --color-vh-cyan-mist: #b9e0ff;
+  --color-vh-skyline: #3c54a3;
 
-  /* Surfaces */
-  --color-sp-paper: #18101F;
-  --color-sp-ink: #1F1630;
-  --color-sp-fg: #EFE2D2;
+  /* Foreground */
+  --color-vh-star: #ece6ff;
+  --color-vh-silver: #c4bee0;
 
   /* Font families */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --font-mono: 'Monaspace Neon', 'JetBrains Mono', monospace;
 }
 
-/* Alpha colors (not supported in @theme) */
+/* Alpha tokens + glass surfaces (not supported in @theme) */
 :root {
-  --sp-ink-line: rgba(255, 198, 160, 0.14);
-  --sp-muted: rgba(239, 226, 210, 0.62);
-  --sp-faint: rgba(239, 226, 210, 0.35);
+  --vh-muted: rgba(196, 190, 224, 0.58);
+  --vh-faint: rgba(196, 190, 224, 0.32);
+  --vh-hairline: rgba(214, 200, 255, 0.10);
+  --vh-hairline-hi: rgba(168, 201, 255, 0.22);
+
+  --vh-glass-bg: rgba(14, 12, 38, 0.55);
+  --vh-glass-bg-hi: rgba(28, 23, 69, 0.62);
+  --vh-glass-tint: rgba(141, 167, 255, 0.04);
 }
 
 html {
@@ -46,16 +48,32 @@ html {
 }
 
 body {
-  background-color: var(--color-sp-paper);
-  color: var(--color-sp-fg);
+  background-color: var(--color-vh-abyss);
+  background-image:
+    radial-gradient(ellipse 90% 60% at 50% 0%, color-mix(in oklab, var(--color-vh-mauve), transparent 55%) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 40% at 100% 30%, color-mix(in oklab, var(--color-vh-periwinkle), transparent 80%) 0%, transparent 70%),
+    radial-gradient(ellipse 70% 50% at 0% 80%, color-mix(in oklab, var(--color-vh-orchid), transparent 82%) 0%, transparent 70%);
+  background-attachment: fixed;
+  color: var(--color-vh-star);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Gradient text utility */
+/* Glass surface primitive */
+.glass {
+  background: var(--vh-glass-bg);
+  backdrop-filter: blur(28px) saturate(140%);
+  -webkit-backdrop-filter: blur(28px) saturate(140%);
+  border: 1px solid var(--vh-hairline);
+  box-shadow:
+    0 1px 0 inset var(--vh-hairline-hi),
+    0 30px 60px -30px rgba(0, 0, 0, 0.5);
+}
+
+/* Gradient text utility — violet hour signature */
 .gradient-text {
-  background: linear-gradient(100deg, var(--color-sp-magenta-hi) 0%, var(--color-sp-magenta) 30%, var(--color-sp-tangerine) 55%, var(--color-sp-turquoise-hi) 95%);
+  background: linear-gradient(105deg, var(--color-vh-bloom) 0%, var(--color-vh-lilac) 25%, var(--color-vh-periwinkle) 60%, var(--color-vh-cyan-mist) 95%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

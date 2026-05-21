@@ -11,10 +11,10 @@ const iconMap: Record<string, any> = {
 ---
 
 <section id="hero" class="relative flex min-h-dvh flex-col items-start justify-center px-6 py-0 sm:px-12 lg:px-20">
-  <!-- Background glows -->
+  <!-- Background glows — orchid + periwinkle, sit on top of body sky -->
   <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-    <div class="absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-sp-magenta/[0.08] blur-[120px]"></div>
-    <div class="absolute -bottom-32 -left-32 h-[400px] w-[400px] rounded-full bg-sp-turquoise-hi/[0.06] blur-[100px]"></div>
+    <div class="absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-vh-orchid/[0.10] blur-[120px]"></div>
+    <div class="absolute -bottom-32 -left-32 h-[400px] w-[400px] rounded-full bg-vh-periwinkle/[0.08] blur-[100px]"></div>
   </div>
 
   <!-- Animated constellation -->
@@ -30,7 +30,7 @@ const iconMap: Record<string, any> = {
   </div>
 
   <div class="relative z-10 mx-auto w-full max-w-[1100px]">
-    <div class="-ml-6 rounded-r-2xl border-r border-y border-sp-turquoise-hi/8 bg-sp-dusk-deep/30 py-8 pl-6 pr-10 shadow-[0_8px_32px_rgba(0,0,0,0.15)] backdrop-blur-md sm:-ml-12 sm:py-10 sm:pl-12 sm:pr-14 lg:-ml-20 lg:pl-20 lg:pr-16">
+    <div class="glass -ml-6 rounded-r-2xl rounded-l-none border-l-0 py-8 pl-6 pr-10 sm:-ml-12 sm:py-10 sm:pl-12 sm:pr-14 lg:-ml-20 lg:pl-20 lg:pr-16">
     <!-- Name -->
     <h1 class="hero-animate mb-5 text-5xl font-extrabold tracking-[-2px] sm:text-7xl lg:text-[86px] lg:leading-[1.02]">
       <span class="gradient-text" data-split-text>Alejandro</span>
@@ -39,20 +39,20 @@ const iconMap: Record<string, any> = {
     </h1>
 
     <!-- Thesis -->
-    <p class="hero-animate mb-3 max-w-[620px] text-lg leading-relaxed text-sp-fg/90 sm:text-xl">
-      Software engineer. I build the backend infrastructure that gets <em class="not-italic font-medium text-sp-magenta-hi">quieter</em>, not louder, as traffic grows.
+    <p class="hero-animate mb-3 max-w-[620px] text-lg leading-relaxed text-vh-star/90 sm:text-xl">
+      Software engineer. I build the backend infrastructure that gets <em class="not-italic font-medium text-vh-lilac">quieter</em>, not louder, as traffic grows.
     </p>
 
     <!-- Bio -->
-    <p class="hero-animate mb-6 max-w-[620px] text-[15px] leading-relaxed text-[--sp-muted]">
-      Founding engineer at <span class="text-sp-fg/85">Awtomic</span> (YC S20). 10+ years across Eventbrite, EA, ING. Currently going deep on distributed systems, observability, and the next wave of frontend.
+    <p class="hero-animate mb-6 max-w-[620px] text-[15px] leading-relaxed text-[--vh-muted]">
+      Founding engineer at <span class="text-vh-star/85">Awtomic</span> (YC S20). 10+ years across Eventbrite, EA, ING. Currently going deep on distributed systems, observability, and the next wave of frontend.
     </p>
 
     <!-- Primary CTAs -->
     <div class="hero-animate mb-4 flex flex-wrap gap-3">
       <a
         href="#now"
-        class="inline-flex cursor-pointer items-center gap-2 rounded-full bg-sp-magenta px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-sp-dusk transition-all duration-200 hover:bg-sp-magenta-hi"
+        class="inline-flex cursor-pointer items-center gap-2 rounded-full bg-vh-orchid px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-vh-night transition-all duration-200 hover:bg-vh-lilac"
       >
         <BookOpen size={14} />
         Read →
@@ -61,14 +61,14 @@ const iconMap: Record<string, any> = {
         href="https://github.com/73nko"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-flex cursor-pointer items-center gap-2 rounded-full border border-sp-turquoise-hi/25 bg-sp-turquoise-hi/[0.12] px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-sp-turquoise-hi transition-all duration-200 hover:bg-sp-turquoise-hi/20"
+        class="inline-flex cursor-pointer items-center gap-2 rounded-full border border-vh-ice/25 bg-vh-ice/[0.12] px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-vh-ice transition-all duration-200 hover:bg-vh-ice/20"
       >
         <Code2 size={14} />
         Code →
       </a>
       <a
         href="#contact"
-        class="inline-flex cursor-pointer items-center gap-2 rounded-full border border-sp-rosegold/20 bg-transparent px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-sp-rosegold/80 transition-all duration-200 hover:border-sp-rosegold/40 hover:text-sp-rosegold"
+        class="inline-flex cursor-pointer items-center gap-2 rounded-full border border-vh-lilac/20 bg-transparent px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-vh-lilac/80 transition-all duration-200 hover:border-vh-lilac/40 hover:text-vh-lilac"
       >
         <ArrowDown size={14} />
         Connect →
@@ -85,7 +85,7 @@ const iconMap: Record<string, any> = {
             target={link.url.startsWith('mailto') ? undefined : '_blank'}
             rel={link.url.startsWith('mailto') ? undefined : 'noopener noreferrer'}
             aria-label={link.name}
-            class="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-sp-turquoise-hi/20 bg-sp-turquoise-hi/[0.06] text-sp-rosegold/80 transition-all duration-200 hover:border-sp-turquoise-hi/40 hover:bg-sp-turquoise-hi/15 hover:text-sp-turquoise-hi"
+            class="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-vh-ice/20 bg-vh-ice/[0.06] text-vh-lilac/80 transition-all duration-200 hover:border-vh-ice/40 hover:bg-vh-ice/15 hover:text-vh-ice"
           >
             {Icon && <Icon size={14} />}
           </a>
@@ -96,7 +96,7 @@ const iconMap: Record<string, any> = {
   </div>
 
   <!-- Scroll hint -->
-  <div class="absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5 font-mono text-[10px] uppercase tracking-[2px] text-[--sp-faint] motion-reduce:hidden" aria-hidden="true">
+  <div class="absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5 font-mono text-[10px] uppercase tracking-[2px] text-[--vh-faint] motion-reduce:hidden" aria-hidden="true">
     <span>Scroll</span>
     <span class="animate-bounce text-base">↓</span>
   </div>
@@ -110,12 +110,12 @@ const iconMap: Record<string, any> = {
     let h = 0;
     let animId = 0;
 
-    // Palette
-    const TURQUOISE = [127, 224, 235];
-    const MAGENTA = [255, 61, 138];
-    const TANGERINE = [255, 138, 61];
-    const ROSEGOLD = [255, 198, 160];
-    const GOLD = [255, 214, 122];
+    // Violet Hour palette
+    const ICE = [168, 201, 255];        // path & glow — was TURQUOISE
+    const ORCHID = [179, 157, 255];     // source / target — was MAGENTA
+    const PERIWINKLE = [141, 167, 255]; // explored edges — was TANGERINE
+    const LILAC = [214, 200, 255];      // idle nodes — was ROSEGOLD
+    const ROSE_MIST = [226, 188, 255];  // visited nodes — was GOLD
 
     // Graph
     interface GNode {
@@ -306,7 +306,7 @@ const iconMap: Record<string, any> = {
         const b = nodes[e.b];
         const isExplored = explored.has(edgeKey(e.a, e.b));
         const alpha = (isExplored ? 0.12 : 0.04) * globalFade;
-        const c = isExplored ? TANGERINE : ROSEGOLD;
+        const c = isExplored ? PERIWINKLE : LILAC;
 
         ctx.beginPath();
         ctx.moveTo(a.x, a.y);
@@ -356,17 +356,17 @@ const iconMap: Record<string, any> = {
             break;
           }
         }
-        ctx.strokeStyle = `rgba(${TURQUOISE[0]},${TURQUOISE[1]},${TURQUOISE[2]},${0.08 * pulseAlpha * globalFade})`;
+        ctx.strokeStyle = `rgba(${ICE[0]},${ICE[1]},${ICE[2]},${0.08 * pulseAlpha * globalFade})`;
         ctx.lineWidth = 16;
         ctx.stroke();
 
         // Mid glow
-        ctx.strokeStyle = `rgba(${TURQUOISE[0]},${TURQUOISE[1]},${TURQUOISE[2]},${0.2 * pulseAlpha * globalFade})`;
+        ctx.strokeStyle = `rgba(${ICE[0]},${ICE[1]},${ICE[2]},${0.2 * pulseAlpha * globalFade})`;
         ctx.lineWidth = 6;
         ctx.stroke();
 
         // Core line
-        ctx.strokeStyle = `rgba(${TURQUOISE[0]},${TURQUOISE[1]},${TURQUOISE[2]},${0.7 * pulseAlpha * globalFade})`;
+        ctx.strokeStyle = `rgba(${ICE[0]},${ICE[1]},${ICE[2]},${0.7 * pulseAlpha * globalFade})`;
         ctx.lineWidth = 2;
         ctx.stroke();
 
@@ -382,20 +382,20 @@ const iconMap: Record<string, any> = {
         const isTarget = i === target && dState !== 'idle';
         const isOnPath = shortestPath.includes(i) && (dState === 'tracing' || dState === 'glowing' || dState === 'fading');
 
-        let c = ROSEGOLD;
+        let c = LILAC;
         let alpha = 0.15 * pulse * globalFade;
         let radius = n.r;
 
         if (isOnPath) {
-          c = TURQUOISE;
+          c = ICE;
           alpha = 0.8 * globalFade;
           radius = n.r * 1.5;
         } else if (isSource || isTarget) {
-          c = MAGENTA;
+          c = ORCHID;
           alpha = 0.7 * globalFade;
           radius = n.r * 1.8;
         } else if (isVisited) {
-          c = TANGERINE;
+          c = ROSE_MIST;
           alpha = 0.3 * globalFade;
         }
 

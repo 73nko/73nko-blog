@@ -36,9 +36,9 @@ function initAnimations() {
           navLinks.forEach((link) => {
             const href = link.getAttribute('href');
             if (href === sectionId) {
-              link.classList.add('!text-sp-turquoise-hi');
+              link.classList.add('!text-vh-ice');
             } else {
-              link.classList.remove('!text-sp-turquoise-hi');
+              link.classList.remove('!text-vh-ice');
             }
           });
         }

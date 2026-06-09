@@ -46,7 +46,17 @@ function initAnimations() {
     });
   });
 
-  // --- HERO: staggered entrance ---
+  // --- HERO: name lines slide up out of overflow wrappers ---
+  const nameLines = gsap.utils.toArray('[data-split-text]') as HTMLElement[];
+  gsap.from(nameLines, {
+    yPercent: 110,
+    duration: 0.9,
+    stagger: 0.12,
+    ease: 'power4.out',
+    delay: 0.25,
+  });
+
+  // --- HERO: staggered entrance for eyebrow / thesis / bio / socials ---
   const heroElements = gsap.utils.toArray('.hero-animate') as HTMLElement[];
   gsap.from(heroElements, {
     y: 30,
@@ -54,18 +64,7 @@ function initAnimations() {
     duration: 0.8,
     stagger: 0.12,
     ease: 'power3.out',
-    delay: 0.2,
-  });
-
-  // --- HERO: name line reveal ---
-  const nameLines = gsap.utils.toArray('[data-split-text]') as HTMLElement[];
-  gsap.from(nameLines, {
-    y: 50,
-    opacity: 0,
-    duration: 0.8,
-    stagger: 0.15,
-    ease: 'power3.out',
-    delay: 0.3,
+    delay: 0.5,
   });
 
   // --- HERO: parallax fade on scroll ---
@@ -81,87 +80,57 @@ function initAnimations() {
     },
   });
 
-  // --- EXPERIENCE: timeline line draw ---
-  const timelineLine = document.querySelector('[data-timeline-line]');
-  if (timelineLine) {
-    gsap.from(timelineLine, {
-      scaleY: 0,
-      transformOrigin: 'top center',
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '#experience',
-        start: 'top 80%',
-        end: 'bottom 60%',
-        scrub: true,
-      },
-    });
-  }
-
-  // --- EXPERIENCE: card reveals ---
-  gsap.utils.toArray('.timeline-card').forEach((card) => {
-    gsap.from(card as HTMLElement, {
-      x: -20,
+  // --- SECTIONS: editorial row reveals ---
+  gsap.utils.toArray('.reveal-row').forEach((row) => {
+    gsap.from(row as HTMLElement, {
+      y: 24,
       opacity: 0,
       duration: 0.6,
       ease: 'power2.out',
       scrollTrigger: {
-        trigger: card as HTMLElement,
-        start: 'top 85%',
+        trigger: row as HTMLElement,
+        start: 'top 88%',
         toggleActions: 'play none none none',
       },
     });
   });
 
-  // --- SKILLS: card reveals with stagger ---
-  const skillCards = gsap.utils.toArray('.skill-card') as HTMLElement[];
-  gsap.from(skillCards, {
-    scale: 0.95,
-    opacity: 0,
-    duration: 0.6,
-    stagger: 0.08,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: '#skills',
-      start: 'top 80%',
-      toggleActions: 'play none none none',
-    },
+  // --- SECTIONS: ghost number parallax ---
+  gsap.utils.toArray('.ghost-num').forEach((num) => {
+    const el = num as HTMLElement;
+    gsap.fromTo(
+      el,
+      { y: 50 },
+      {
+        y: -50,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: el.parentElement,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: true,
+        },
+      },
+    );
   });
 
-  // --- NOW: fade in cards ---
-  const nowElements = gsap.utils.toArray('.services-animate') as HTMLElement[];
-  if (nowElements.length) {
-    gsap.set(nowElements, { y: 20, opacity: 0 });
+  // --- CONTACT: fade in ---
+  const contactElements = gsap.utils.toArray('#contact h2, #contact > div a') as HTMLElement[];
+  if (contactElements.length) {
+    gsap.set(contactElements, { y: 20, opacity: 0 });
     ScrollTrigger.create({
-      trigger: '#now',
-      start: 'top 80%',
+      trigger: '#contact',
+      start: 'top 85%',
       onEnter: () => {
-        gsap.to(nowElements, {
+        gsap.to(contactElements, {
           y: 0,
           opacity: 1,
           duration: 0.6,
-          stagger: 0.1,
+          stagger: 0.08,
           ease: 'power2.out',
         });
       },
       once: true,
     });
   }
-
-  // --- CONTACT: fade in ---
-  const contactElements = gsap.utils.toArray('#contact h2, #contact p, #contact a') as HTMLElement[];
-  gsap.set(contactElements, { y: 20, opacity: 0 });
-  ScrollTrigger.create({
-    trigger: '#contact',
-    start: 'top 85%',
-    onEnter: () => {
-      gsap.to(contactElements, {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        stagger: 0.08,
-        ease: 'power2.out',
-      });
-    },
-    once: true,
-  });
 }

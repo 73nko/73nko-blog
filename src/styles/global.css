@@ -79,6 +79,16 @@ body {
   color: transparent;
 }
 
+/* Outlined ghost section numbers — editorial layout */
+.ghost-num {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(168, 201, 255, 0.1);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -6px;
+  user-select: none;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

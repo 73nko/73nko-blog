@@ -10,7 +10,7 @@ const items = [
   },
   {
     label: 'Reading',
-    body: '“Designing Data-Intensive Applications” — second pass, this time with notes.',
+    body: '"Designing Data-Intensive Applications" — second pass, this time with notes.',
   },
   {
     label: 'Writing',
@@ -19,33 +19,34 @@ const items = [
 ];
 ---
 
-<section id="now" class="relative px-6 py-24 sm:px-12 lg:px-20">
-  <div class="mx-auto w-full max-w-[1100px]">
-    <!-- Section header -->
-    <div class="mb-9 border-b border-[--vh-hairline] pb-4">
-      <span class="font-mono text-[13px] font-medium tracking-[2px] text-vh-orchid">02</span>
-      <h2 class="mt-1 text-4xl font-bold tracking-[-0.6px]">
-        <span class="text-vh-ice">Now</span>
-        <span class="ml-3 align-middle font-mono text-sm font-normal tracking-[1px] text-[--vh-faint]">May 2026</span>
-      </h2>
-    </div>
+<section id="now" class="relative px-6 py-28 sm:px-12 lg:px-20">
+  <div class="relative mx-auto w-full max-w-[1100px] border-t border-[--vh-hairline] pt-14">
+    <div class="ghost-num pointer-events-none absolute -top-3 right-0 hidden text-[150px] lg:block" aria-hidden="true">01</div>
 
-    <!-- Lead -->
-    <p class="services-animate mb-10 max-w-[720px] text-[15px] leading-relaxed text-[--vh-muted]">
-      What I'm working on this quarter. A snapshot, kept honest. <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer" class="underline decoration-vh-ice/30 underline-offset-4 transition-colors hover:text-vh-ice hover:decoration-vh-ice">Inspired by /now pages</a>.
-    </p>
+    <div class="relative grid gap-10 lg:grid-cols-[200px_1fr]">
+      <!-- Sticky label -->
+      <div>
+        <h2 class="font-mono text-[11px] uppercase tracking-[2.5px] text-vh-orchid lg:sticky lg:top-24">
+          01 / Now
+          <span class="mt-1.5 block normal-case tracking-[1.5px] text-[--vh-faint]">May 2026</span>
+        </h2>
+      </div>
 
-    <!-- Items -->
-    <div class="grid gap-4 sm:grid-cols-2">
-      {items.map((item) => (
-        <div class="services-animate glass relative overflow-hidden rounded-xl p-5 sm:p-6">
-          <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-vh-ice to-transparent opacity-70"></div>
-          <span class="font-mono text-[10px] font-medium uppercase tracking-[2px] text-vh-ice">
-            {item.label}
-          </span>
-          <p class="mt-3 text-[14px] leading-relaxed text-vh-star/85">{item.body}</p>
-        </div>
-      ))}
+      <!-- Content -->
+      <div>
+        <p class="reveal-row mb-8 max-w-[620px] text-[15px] leading-relaxed text-[--vh-muted]">
+          What I'm working on this quarter. A snapshot, kept honest. <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer" class="underline decoration-vh-ice/30 underline-offset-4 transition-colors hover:text-vh-ice hover:decoration-vh-ice">Inspired by /now pages</a>.
+        </p>
+
+        {items.map((item) => (
+          <div class="reveal-row grid gap-2 border-b border-[--vh-hairline] py-4 last:border-b-0 sm:grid-cols-[150px_1fr] sm:gap-5">
+            <span class="pt-0.5 font-mono text-[10.5px] font-medium uppercase tracking-[2px] text-vh-ice">
+              {item.label}
+            </span>
+            <p class="text-[14.5px] leading-relaxed text-vh-star/85">{item.body}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </section>

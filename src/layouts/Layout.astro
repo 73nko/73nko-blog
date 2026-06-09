@@ -50,6 +50,13 @@ import '../styles/global.css';
     <title>{title}</title>
   </head>
   <body>
+    <canvas
+      id="aurora-canvas"
+      class="pointer-events-none fixed inset-0 -z-10 h-full w-full"
+      aria-hidden="true"></canvas>
     <slot />
+    <script>
+      import '../scripts/aurora';
+    </script>
   </body>
 </html>

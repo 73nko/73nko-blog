@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Redesign directions — Violet Hour</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --abyss: #06061a; --night: #0d0d2c; --indigo: #1a1745; --mauve: #4a3d95;
+    --orchid: #b39dff; --lilac: #d6c8ff; --rose: #e2bcff; --bloom: #f0d2ff;
+    --peri: #8da7ff; --ice: #a8c9ff; --cyan: #b9e0ff;
+    --star: #ece6ff; --silver: #c4bee0;
+    --muted: rgba(196,190,224,.58); --faint: rgba(196,190,224,.32);
+    --hairline: rgba(214,200,255,.10); --hairline-hi: rgba(168,201,255,.22);
+    --glass: rgba(14,12,38,.55);
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 48px 40px 80px; background: var(--abyss); color: var(--star);
+    font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  h1.page-title { font-size: 32px; font-weight: 800; letter-spacing: -1px; margin: 0 0 8px;
+    background: linear-gradient(105deg, var(--bloom), var(--lilac), var(--peri), var(--cyan));
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .page-sub { color: var(--silver); font-size: 14px; margin-bottom: 40px; max-width: 760px; line-height: 1.6; }
+  .demo { max-width: 1040px; margin: 0 auto 48px; }
+  .demo-head { display: flex; gap: 16px; align-items: baseline; margin-bottom: 14px; }
+  .letter { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--orchid);
+    border: 1px solid rgba(179,157,255,.35); border-radius: 999px; width: 28px; height: 28px;
+    display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; align-self: center; }
+  .demo-head h3 { margin: 0; font-size: 18px; }
+  .demo-head p { margin: 2px 0 0; font-size: 13px; color: var(--silver); }
+  .hint { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--faint); margin-left: auto; align-self: center; }
+
+  .frame { height: 680px; overflow-y: auto; border-radius: 16px;
+    border: 1px solid var(--hairline); box-shadow: 0 30px 60px -30px rgba(0,0,0,.6);
+    position: relative; background: var(--abyss); }
+  .frame canvas.bg { position: sticky; top: 0; width: 100%; height: 680px; display: block; }
+  .frame .content { margin-top: -680px; position: relative; }
+
+  .glassbox { background: var(--glass); backdrop-filter: blur(28px) saturate(140%);
+    -webkit-backdrop-filter: blur(28px) saturate(140%); border: 1px solid var(--hairline);
+    box-shadow: 0 1px 0 inset var(--hairline-hi), 0 30px 60px -30px rgba(0,0,0,.5); }
+  .gtext { background: linear-gradient(105deg, var(--bloom) 0%, var(--lilac) 25%, var(--peri) 60%, var(--cyan) 95%);
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* ================= EDITORIAL ================= */
+  .ed { padding: 0 56px 100px; }
+  .ed-nav { display: flex; justify-content: space-between; align-items: center; padding: 28px 0 0;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; }
+  .ed-nav .logo { font-size: 15px; font-weight: 700; letter-spacing: -.5px; text-transform: none; }
+  .ed-nav .links { display: flex; gap: 26px; color: var(--muted); }
+  .ed-nav .links span:hover { color: var(--ice); }
+  .ed-hero { padding: 120px 0 110px; position: relative; }
+  .ed-eyebrow { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--ice); display: flex; align-items: center; gap: 12px; }
+  .ed-eyebrow::before { content: ''; width: 36px; height: 1px; background: var(--ice); opacity: .5; }
+  .ed-name { font-size: 108px; font-weight: 900; letter-spacing: -5px; line-height: .95; margin: 22px 0 30px; }
+  .ed-name .ln2 { display: block; padding-left: 110px; }
+  .ed-thesis { font-size: 21px; line-height: 1.55; max-width: 560px; color: var(--star); opacity: .9;
+    margin-left: 110px; }
+  .ed-thesis em { font-style: normal; color: var(--lilac); }
+  .ed-meta { margin: 26px 0 0 110px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px;
+    color: var(--muted); display: flex; gap: 26px; }
+  .ed-meta b { color: var(--ice); font-weight: 500; }
+  .ed-sec { display: grid; grid-template-columns: 200px 1fr; gap: 40px; padding: 72px 0;
+    border-top: 1px solid var(--hairline); position: relative; }
+  .ed-sec .ghost { position: absolute; right: -10px; top: 28px; font-size: 150px; font-weight: 900;
+    letter-spacing: -6px; color: transparent; -webkit-text-stroke: 1px rgba(168,201,255,.10);
+    line-height: 1; pointer-events: none; }
+  .ed-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2.5px;
+    text-transform: uppercase; color: var(--orchid); }
+  .ed-label small { display: block; color: var(--faint); margin-top: 6px; letter-spacing: 1.5px; }
+  .ed-now-item { display: grid; grid-template-columns: 150px 1fr; gap: 20px; padding: 16px 0;
+    border-bottom: 1px solid var(--hairline); font-size: 14.5px; }
+  .ed-now-item:last-child { border-bottom: 0; }
+  .ed-now-item .k { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--ice); padding-top: 3px; }
+  .ed-now-item .v { color: var(--star); opacity: .85; line-height: 1.6; }
+  .ed-job { padding: 26px 0; border-bottom: 1px solid var(--hairline); }
+  .ed-job:last-child { border-bottom: 0; }
+  .ed-job .date { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--ice); letter-spacing: 1px; }
+  .ed-job h4 { margin: 8px 0 2px; font-size: 19px; font-weight: 700; letter-spacing: -.3px; }
+  .ed-job h4 span { color: var(--lilac); font-weight: 500; }
+  .ed-job p { margin: 8px 0 0; font-size: 14px; color: var(--muted); line-height: 1.65; max-width: 560px; }
+  .ed-tags { display: flex; flex-wrap: wrap; gap: 10px 22px; font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px; color: var(--lilac); }
+  .ed-tags span::before { content: '◦ '; color: var(--ice); }
+  .ed-contact { padding: 100px 0 0; text-align: left; }
+  .ed-contact .big { font-size: 64px; font-weight: 900; letter-spacing: -3px; line-height: 1.05; margin: 14px 0 26px; }
+  .ed-contact a.mail { font-family: 'JetBrains Mono', monospace; font-size: 16px; color: var(--ice);
+    text-decoration: none; border-bottom: 1px solid rgba(168,201,255,.35); padding-bottom: 4px; }
+
+  /* ================= BENTO ================= */
+  .be { padding: 0 44px 90px; }
+  .be-nav { margin: 18px auto 0; max-width: 880px; border-radius: 16px; height: 48px;
+    display: flex; align-items: center; justify-content: space-between; padding: 0 24px;
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; }
+  .be-nav .logo { font-size: 14px; font-weight: 700; letter-spacing: -.5px; text-transform: none; }
+  .be-nav .links { display: flex; gap: 20px; color: var(--muted); }
+  .be-hero { padding: 90px 0 56px; max-width: 880px; margin: 0 auto; }
+  .be-name { font-size: 84px; font-weight: 900; letter-spacing: -3.5px; line-height: .98; margin: 0 0 20px; }
+  .be-thesis { font-size: 18px; line-height: 1.6; max-width: 540px; color: var(--star); opacity: .88; margin: 0 0 26px; }
+  .be-thesis em { font-style: normal; color: var(--lilac); }
+  .be-ctas { display: flex; gap: 12px; }
+  .be-cta { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: .5px;
+    padding: 10px 20px; border-radius: 999px; }
+  .be-cta.primary { background: var(--orchid); color: var(--night); font-weight: 500; }
+  .be-cta.ghost { border: 1px solid rgba(168,201,255,.25); background: rgba(168,201,255,.12); color: var(--ice); }
+  .be-grid { max-width: 880px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .be-tile { border-radius: 16px; padding: 22px; position: relative; overflow: hidden; }
+  .be-tile::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--ice), transparent); opacity: .6; }
+  .be-tile .k { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--ice); }
+  .be-tile.orchid .k { color: var(--orchid); }
+  .be-tile.orchid::before { background: linear-gradient(90deg, transparent, var(--orchid), transparent); }
+  .be-tile p { margin: 10px 0 0; font-size: 13px; line-height: 1.6; color: var(--star); opacity: .85; }
+  .be-tile .big-num { font-size: 40px; font-weight: 800; letter-spacing: -2px; margin: 8px 0 2px; }
+  .be-tile .sub { font-size: 11.5px; color: var(--muted); }
+  .be-tile h4 { margin: 10px 0 0; font-size: 16px; font-weight: 700; }
+  .be-tile h4 span { color: var(--lilac); font-weight: 500; }
+  .be-tile .date { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--ice); }
+  .be-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .be-chips span { font-family: 'JetBrains Mono', monospace; font-size: 10.5px; color: var(--lilac);
+    border: 1px solid rgba(168,201,255,.18); background: rgba(168,201,255,.08);
+    border-radius: 6px; padding: 4px 9px; }
+  .be-tile.contact { display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+  .be-tile.contact .mailbtn { margin-top: 14px; background: var(--orchid); color: var(--night);
+    font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500;
+    border-radius: 999px; padding: 9px 18px; }
+  .span2 { grid-column: span 2; }
+  .span4 { grid-column: span 4; }
+</style>
+</head>
+<body>
+
+<h1 class="page-title">Two redesign directions</h1>
+<p class="page-sub">
+  Both sit on the full-page Aurora Silk background you picked (running live behind each — scroll inside the frames).
+  Same content, two very different attitudes. Reply in the terminal: <span class="mono" style="color:var(--ice)">A</span> or
+  <span class="mono" style="color:var(--ice)">B</span>, or tell me what to mix.
+</p>
+
+<!-- ============ OPTION A: EDITORIAL ============ -->
+<div class="demo">
+  <div class="demo-head">
+    <span class="letter">A</span>
+    <div>
+      <h3>Editorial — type leads, glass retreats</h3>
+      <p>Magazine attitude: huge offset typography, ghost section numbers, hairline rules instead of cards. The aurora shows everywhere; glass only where it earns its place.</p>
+    </div>
+    <span class="hint">scroll inside ↓</span>
+  </div>
+  <div class="frame" id="frame-a">
+    <canvas class="bg" id="aurora-a"></canvas>
+    <div class="content ed">
+      <div class="ed-nav">
+        <span class="logo gtext">73nko</span>
+        <div class="links"><span>Now</span><span>Work</span><span>Stack</span><span>Contact</span></div>
+      </div>
+
+      <div class="ed-hero">
+        <div class="ed-eyebrow">Software Engineer · Madrid</div>
+        <div class="ed-name gtext">Alejandro<span class="ln2">Pérez</span></div>
+        <p class="ed-thesis">I build the backend infrastructure that gets <em>quieter</em>, not louder, as traffic grows.</p>
+        <div class="ed-meta"><span>Founding eng <b>Awtomic (YC S20)</b></span><span>Prev <b>Eventbrite · EA · ING</b></span></div>
+      </div>
+
+      <div class="ed-sec">
+        <div class="ghost">01</div>
+        <div class="ed-label">01 / Now<small>May 2026</small></div>
+        <div>
+          <div class="ed-now-item"><span class="k">Building</span><span class="v">An open-source web performance SDK. Lightweight, browser-first, OpenTelemetry-compatible.</span></div>
+          <div class="ed-now-item"><span class="k">Going deep on</span><span class="v">ClickHouse for analytics workloads and OpenTelemetry for end-to-end observability.</span></div>
+          <div class="ed-now-item"><span class="k">Reading</span><span class="v">"Designing Data-Intensive Applications" — second pass, this time with notes.</span></div>
+          <div class="ed-now-item"><span class="k">Writing</span><span class="v">First technical post lands in June: lessons from a multi-tenant Shopify pipeline.</span></div>
+        </div>
+      </div>
+
+      <div class="ed-sec">
+        <div class="ghost">02</div>
+        <div class="ed-label">02 / Selected work</div>
+        <div>
+          <div class="ed-job">
+            <span class="date">2021 — Present</span>
+            <h4>Founding Engineer <span>· Awtomic (YC S20)</span></h4>
+            <p>Multi-tenant, event-driven AWS pipeline processing Shopify webhooks across 200+ merchants. Idempotent retries, per-tenant queue isolation, observability that catches drift before customers do.</p>
+          </div>
+          <div class="ed-job">
+            <span class="date">2019 — 2021</span>
+            <h4>Senior Software Engineer <span>· Eventbrite</span></h4>
+            <p>Migrated critical high-traffic surfaces from a Python monolith into event-driven services. Led the Zoom integration that grew online events from ~6% to ~30% of the catalog.</p>
+          </div>
+          <div class="ed-job">
+            <span class="date">2013 — 2019</span>
+            <h4>Previously <span>· EA · ING · Solera · Mediaset</span></h4>
+            <p>10+ years across gaming, banking, automotive data and broadcast media.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="ed-sec">
+        <div class="ghost">03</div>
+        <div class="ed-label">03 / Stack</div>
+        <div>
+          <div class="ed-tags" style="margin-bottom:22px">
+            <span>Distributed systems</span><span>OpenTelemetry</span><span>ClickHouse</span><span>React Server Components</span><span>Edge runtimes</span>
+          </div>
+          <div class="ed-tags" style="opacity:.7">
+            <span>Node.js</span><span>TypeScript</span><span>React</span><span>Next.js</span><span>AWS</span><span>Kafka</span><span>Redis</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ed-contact">
+        <div class="ed-label">04 / Contact</div>
+        <div class="big gtext">Let's talk.</div>
+        <a class="mail" href="#">hello@73nko.dev →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ OPTION B: BENTO GLASS ============ -->
+<div class="demo">
+  <div class="demo-head">
+    <span class="letter">B</span>
+    <div>
+      <h3>Bento Glass — floating panels over the sky</h3>
+      <p>Everything is a glass tile in a bento grid: now items, work, stack, contact. Denser, app-like, heavy glass aesthetic. The aurora glows between the tiles.</p>
+    </div>
+    <span class="hint">scroll inside ↓</span>
+  </div>
+  <div class="frame" id="frame-b">
+    <canvas class="bg" id="aurora-b"></canvas>
+    <div class="content be">
+      <div class="be-nav glassbox">
+        <span class="logo gtext">73nko</span>
+        <div class="links"><span>Now</span><span>Work</span><span>Stack</span><span>Contact</span></div>
+      </div>
+
+      <div class="be-hero">
+        <h2 class="be-name gtext">Alejandro<br>Pérez</h2>
+        <p class="be-thesis">Software engineer. I build the backend infrastructure that gets <em>quieter</em>, not louder, as traffic grows.</p>
+        <div class="be-ctas"><span class="be-cta primary">Read →</span><span class="be-cta ghost">Code →</span></div>
+      </div>
+
+      <div class="be-grid">
+        <div class="be-tile glassbox span2">
+          <span class="k">Building</span>
+          <p>An open-source web performance SDK. Lightweight, browser-first, OpenTelemetry-compatible.</p>
+        </div>
+        <div class="be-tile glassbox orchid">
+          <span class="k">Reading</span>
+          <p>"Designing Data-Intensive Applications" — second pass.</p>
+        </div>
+        <div class="be-tile glassbox">
+          <span class="k">Going deep on</span>
+          <p>ClickHouse + OpenTelemetry.</p>
+        </div>
+
+        <div class="be-tile glassbox span2 orchid">
+          <span class="k">Now · Awtomic (YC S20)</span>
+          <h4>Founding Engineer</h4>
+          <p>Multi-tenant event-driven AWS pipeline. Shopify webhooks, 200+ merchants, per-tenant isolation.</p>
+          <div class="be-chips"><span>Lambda</span><span>SQS</span><span>DynamoDB</span></div>
+        </div>
+        <div class="be-tile glassbox span2">
+          <span class="k">2019—21 · Eventbrite</span>
+          <h4>Senior Software Engineer</h4>
+          <p>Monolith → event-driven services. Online events ~6% → ~30% of catalog.</p>
+          <div class="be-chips"><span>Kafka</span><span>React</span><span>Python</span></div>
+        </div>
+
+        <div class="be-tile glassbox span2">
+          <span class="k">Investing in</span>
+          <div class="be-chips"><span>Distributed systems</span><span>OpenTelemetry</span><span>ClickHouse</span><span>RSC</span><span>Edge runtimes</span></div>
+        </div>
+        <div class="be-tile glassbox span2 orchid">
+          <span class="k">Production</span>
+          <div class="be-chips"><span>Node.js</span><span>TypeScript</span><span>React</span><span>Next.js</span><span>AWS</span><span>Kafka</span><span>Redis</span></div>
+        </div>
+
+        <div class="be-tile glassbox span4 contact">
+          <span class="k">Contact</span>
+          <h4 style="font-size:26px;letter-spacing:-1px">Roles, collaborations, technical conversations — all welcome.</h4>
+          <span class="mailbtn">hello@73nko.dev</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function aurora(canvasId, frameId) {
+  const c = document.getElementById(canvasId);
+  const frame = document.getElementById(frameId);
+  const ctx = c.getContext('2d');
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function size() {
+    c.width = c.clientWidth * dpr; c.height = c.clientHeight * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  size();
+  const W = () => c.clientWidth, H = () => c.clientHeight;
+  const ribbons = [
+    { col: [179, 157, 255], yBase: .26, amp: 46, speed: .00010, width: 90, ph: 0 },
+    { col: [141, 167, 255], yBase: .46, amp: 60, speed: .00014, width: 110, ph: 2 },
+    { col: [168, 201, 255], yBase: .60, amp: 38, speed: .00008, width: 70, ph: 4 },
+    { col: [226, 188, 255], yBase: .80, amp: 52, speed: .00012, width: 95, ph: 1 },
+  ];
+  function frameDraw(t) {
+    const w = W(), h = H();
+    ctx.clearRect(0, 0, w, h);
+    // sky gradient base
+    const sky = ctx.createLinearGradient(0, 0, 0, h);
+    sky.addColorStop(0, 'rgba(74,61,149,.20)');
+    sky.addColorStop(.6, 'rgba(26,23,69,.10)');
+    sky.addColorStop(1, 'rgba(6,6,26,0)');
+    ctx.fillStyle = sky; ctx.fillRect(0, 0, w, h);
+    ctx.globalCompositeOperation = 'lighter';
+    for (const rb of ribbons) {
+      const [r, g, b] = rb.col;
+      for (let layer = 0; layer < 5; layer++) {
+        ctx.beginPath();
+        for (let x = -20; x <= w + 20; x += 12) {
+          const y = h * rb.yBase
+            + Math.sin(x * .006 + t * rb.speed * 9 + rb.ph) * rb.amp
+            + Math.sin(x * .0023 - t * rb.speed * 5 + rb.ph * 2) * rb.amp * .7
+            + (layer - 2) * rb.width * .16;
+          x === -20 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = `rgba(${r},${g},${b},.030)`;
+        ctx.lineWidth = rb.width * (1 - layer * .14);
+        ctx.lineCap = 'round';
+        ctx.stroke();
+      }
+      ctx.beginPath();
+      for (let x = -20; x <= w + 20; x += 12) {
+        const y = h * rb.yBase
+          + Math.sin(x * .006 + t * rb.speed * 9 + rb.ph) * rb.amp
+          + Math.sin(x * .0023 - t * rb.speed * 5 + rb.ph * 2) * rb.amp * .7;
+        x === -20 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = `rgba(${r},${g},${b},.10)`;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+    requestAnimationFrame(frameDraw);
+  }
+  requestAnimationFrame(frameDraw);
+}
+aurora('aurora-a', 'frame-a');
+aurora('aurora-b', 'frame-b');
+</script>
+</body>
+</html>

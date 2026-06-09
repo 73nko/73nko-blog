@@ -1,97 +1,56 @@
 ---
 import { socialLinks } from '../data/social';
-import { Github, Linkedin, Twitter, Mail, BookOpen, Code2, ArrowDown } from 'lucide-astro';
-
-const iconMap: Record<string, any> = {
-  github: Github,
-  linkedin: Linkedin,
-  twitter: Twitter,
-  mail: Mail,
-};
 ---
 
-<section id="hero" class="relative flex min-h-dvh flex-col items-start justify-center px-6 py-0 sm:px-12 lg:px-20">
-  <!-- Background glows — orchid + periwinkle, sit on top of body sky -->
-  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-    <div class="absolute -right-32 -top-32 h-[500px] w-[500px] rounded-full bg-vh-orchid/[0.10] blur-[120px]"></div>
-    <div class="absolute -bottom-32 -left-32 h-[400px] w-[400px] rounded-full bg-vh-periwinkle/[0.08] blur-[100px]"></div>
-  </div>
-
-  <!-- Animated constellation -->
-  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
-    <canvas id="hero-canvas" class="absolute inset-0 h-full w-full"></canvas>
-  </div>
-
+<section id="hero" class="relative flex min-h-dvh flex-col justify-center px-6 py-0 sm:px-12 lg:px-20">
   <!-- Logo — top left -->
   <div class="absolute left-6 top-6 z-20 sm:left-12 lg:left-20">
-    <a href="#hero" class="gradient-text font-mono text-2xl font-bold tracking-[-1px] no-underline sm:text-3xl">
+    <a href="#hero" aria-label="73nko — back to top" class="gradient-text font-mono text-2xl font-bold tracking-[-1px] no-underline sm:text-3xl">
       73nko
     </a>
   </div>
 
   <div class="relative z-10 mx-auto w-full max-w-[1100px]">
-    <div class="glass -ml-6 rounded-r-2xl rounded-l-none border-l-0 py-8 pl-6 pr-10 sm:-ml-12 sm:py-10 sm:pl-12 sm:pr-14 lg:-ml-20 lg:pl-20 lg:pr-16">
-    <!-- Name -->
-    <h1 class="hero-animate mb-5 text-5xl font-extrabold tracking-[-2px] sm:text-7xl lg:text-[86px] lg:leading-[1.02]">
-      <span class="gradient-text" data-split-text>Alejandro</span>
-      <br />
-      <span class="gradient-text" data-split-text>Pérez</span>
-    </h1>
-
-    <!-- Thesis -->
-    <p class="hero-animate mb-3 max-w-[620px] text-lg leading-relaxed text-vh-star/90 sm:text-xl">
-      Software engineer. I build the backend infrastructure that gets <em class="not-italic font-medium text-vh-lilac">quieter</em>, not louder, as traffic grows.
-    </p>
-
-    <!-- Bio -->
-    <p class="hero-animate mb-6 max-w-[620px] text-[15px] leading-relaxed text-[--vh-muted]">
-      Founding engineer at <span class="text-vh-star/85">Awtomic</span> (YC S20). 10+ years across Eventbrite, EA, ING. Currently going deep on distributed systems, observability, and the next wave of frontend.
-    </p>
-
-    <!-- Primary CTAs -->
-    <div class="hero-animate mb-4 flex flex-wrap gap-3">
-      <a
-        href="#now"
-        class="inline-flex cursor-pointer items-center gap-2 rounded-full bg-vh-orchid px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-vh-night transition-all duration-200 hover:bg-vh-lilac"
-      >
-        <BookOpen size={14} />
-        Read →
-      </a>
-      <a
-        href="https://github.com/73nko"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex cursor-pointer items-center gap-2 rounded-full border border-vh-ice/25 bg-vh-ice/[0.12] px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-vh-ice transition-all duration-200 hover:bg-vh-ice/20"
-      >
-        <Code2 size={14} />
-        Code →
-      </a>
-      <a
-        href="#contact"
-        class="inline-flex cursor-pointer items-center gap-2 rounded-full border border-vh-lilac/20 bg-transparent px-5 py-2.5 font-mono text-xs font-medium tracking-[0.5px] text-vh-lilac/80 transition-all duration-200 hover:border-vh-lilac/40 hover:text-vh-lilac"
-      >
-        <ArrowDown size={14} />
-        Connect →
-      </a>
+    <!-- Eyebrow -->
+    <div class="hero-animate flex items-center gap-3 font-mono text-[11px] uppercase tracking-[3px] text-vh-ice">
+      <span class="h-px w-9 bg-vh-ice/50" aria-hidden="true"></span>
+      Software Engineer · Madrid
     </div>
 
-    <!-- Social icons -->
-    <div class="hero-animate flex flex-wrap gap-2">
-      {socialLinks.map((link) => {
-        const Icon = iconMap[link.icon];
-        return (
+    <!-- Name -->
+    <h1 class="my-6 text-[clamp(64px,12vw,130px)] font-black leading-[0.95] tracking-[-0.04em]">
+      <span class="block overflow-hidden">
+        <span class="gradient-text block" data-split-text>Alejandro</span>
+      </span>
+      <span class="block overflow-hidden lg:pl-[110px]">
+        <span class="gradient-text block" data-split-text>Pérez</span>
+      </span>
+    </h1>
+
+    <div class="lg:pl-[110px]">
+      <!-- Thesis -->
+      <p class="hero-animate mb-3 max-w-[560px] text-lg leading-relaxed text-vh-star/90 sm:text-[21px]">
+        I build the backend infrastructure that gets <em class="not-italic font-medium text-vh-lilac">quieter</em>, not louder, as traffic grows.
+      </p>
+
+      <!-- Bio -->
+      <p class="hero-animate mb-7 max-w-[560px] text-[15px] leading-relaxed text-[--vh-muted]">
+        Founding engineer at <span class="text-vh-star/85">Awtomic</span> (YC S20). 10+ years across Eventbrite, EA, ING. Currently going deep on distributed systems, observability, and the next wave of frontend.
+      </p>
+
+      <!-- Social links — mono text row -->
+      <div class="hero-animate flex flex-wrap gap-x-7 gap-y-2 font-mono text-[12px] tracking-[0.5px]">
+        {socialLinks.map((link) => (
           <a
             href={link.url}
             target={link.url.startsWith('mailto') ? undefined : '_blank'}
             rel={link.url.startsWith('mailto') ? undefined : 'noopener noreferrer'}
-            aria-label={link.name}
-            class="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-vh-ice/20 bg-vh-ice/[0.06] text-vh-lilac/80 transition-all duration-200 hover:border-vh-ice/40 hover:bg-vh-ice/15 hover:text-vh-ice"
+            class="text-vh-lilac/70 no-underline transition-colors duration-200 hover:text-vh-ice"
           >
-            {Icon && <Icon size={14} />}
+            {link.name}{link.url.startsWith('mailto') ? '' : <span aria-hidden="true"> ↗</span>}
           </a>
-        );
-      })}
-    </div>
+        ))}
+      </div>
     </div>
   </div>
 
@@ -101,384 +60,3 @@ const iconMap: Record<string, any> = {
     <span class="animate-bounce text-base">↓</span>
   </div>
 </section>
-
-<script>
-  const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement;
-  if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const ctx = canvas.getContext('2d')!;
-    let w = 0;
-    let h = 0;
-    let animId = 0;
-
-    // Violet Hour palette
-    const ICE = [168, 201, 255];        // path & glow — was TURQUOISE
-    const ORCHID = [179, 157, 255];     // source / target — was MAGENTA
-    const PERIWINKLE = [141, 167, 255]; // explored edges — was TANGERINE
-    const LILAC = [214, 200, 255];      // idle nodes — was ROSEGOLD
-    const ROSE_MIST = [226, 188, 255];  // visited nodes — was GOLD
-
-    // Graph
-    interface GNode {
-      x: number;
-      y: number;
-      r: number;
-      phase: number;
-    }
-    interface GEdge {
-      a: number;
-      b: number;
-      weight: number;
-    }
-
-    let nodes: GNode[] = [];
-    let edges: GEdge[] = [];
-    const NODE_COUNT = 50;
-    const EDGE_MAX_DIST = 200;
-
-    // Dijkstra state
-    type DState = 'idle' | 'exploring' | 'tracing' | 'glowing' | 'fading';
-    let dState: DState = 'idle';
-    let visited: Set<number> = new Set();
-    let explored: Set<string> = new Set(); // "a-b" edge keys
-    let dist: number[] = [];
-    let prev: number[] = [];
-    let queue: [number, number][] = []; // [node, dist]
-    let source = 0;
-    let target = 0;
-    let shortestPath: number[] = [];
-    let pathProgress = 0; // 0..1 for tracing animation
-    let glowTime = 0;
-    let stepTimer = 0;
-    const STEP_INTERVAL = 60; // ms between dijkstra steps
-    const TRACE_SPEED = 0.015;
-    const GLOW_DURATION = 3000;
-    const FADE_DURATION = 1500;
-    let fadeProgress = 0;
-
-    function edgeKey(a: number, b: number): string {
-      return a < b ? `${a}-${b}` : `${b}-${a}`;
-    }
-
-    function resize() {
-      const dpr = window.devicePixelRatio || 1;
-      w = canvas.clientWidth;
-      h = canvas.clientHeight;
-      canvas.width = w * dpr;
-      canvas.height = h * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-
-    function buildGraph() {
-      nodes = [];
-      edges = [];
-
-      // Place nodes with some spacing
-      for (let i = 0; i < NODE_COUNT; i++) {
-        let x: number, y: number;
-        let attempts = 0;
-        do {
-          x = 40 + Math.random() * (w - 80);
-          y = 40 + Math.random() * (h - 80);
-          attempts++;
-        } while (
-          attempts < 50 &&
-          nodes.some((n) => Math.hypot(n.x - x, n.y - y) < 60)
-        );
-        nodes.push({
-          x,
-          y,
-          r: Math.random() * 1.5 + 2,
-          phase: Math.random() * Math.PI * 2,
-        });
-      }
-
-      // Build edges between close nodes
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const d = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
-          if (d < EDGE_MAX_DIST) {
-            edges.push({ a: i, b: j, weight: d });
-          }
-        }
-      }
-
-      // Ensure connectivity: connect orphans to nearest
-      const adjacency = new Map<number, number[]>();
-      for (const e of edges) {
-        if (!adjacency.has(e.a)) adjacency.set(e.a, []);
-        if (!adjacency.has(e.b)) adjacency.set(e.b, []);
-        adjacency.get(e.a)!.push(e.b);
-        adjacency.get(e.b)!.push(e.a);
-      }
-      for (let i = 0; i < nodes.length; i++) {
-        if (!adjacency.has(i) || adjacency.get(i)!.length === 0) {
-          let nearest = 0;
-          let nearDist = Infinity;
-          for (let j = 0; j < nodes.length; j++) {
-            if (i === j) continue;
-            const d = Math.hypot(nodes[i].x - nodes[j].x, nodes[i].y - nodes[j].y);
-            if (d < nearDist) {
-              nearDist = d;
-              nearest = j;
-            }
-          }
-          edges.push({ a: i, b: nearest, weight: nearDist });
-        }
-      }
-    }
-
-    function startDijkstra() {
-      // Pick two distant nodes for interesting paths
-      source = Math.floor(Math.random() * nodes.length);
-      let maxDist = 0;
-      target = 0;
-      for (let i = 0; i < nodes.length; i++) {
-        const d = Math.hypot(nodes[i].x - nodes[source].x, nodes[i].y - nodes[source].y);
-        if (d > maxDist) {
-          maxDist = d;
-          target = i;
-        }
-      }
-
-      visited = new Set();
-      explored = new Set();
-      dist = new Array(nodes.length).fill(Infinity);
-      prev = new Array(nodes.length).fill(-1);
-      dist[source] = 0;
-      queue = [[source, 0]];
-      shortestPath = [];
-      pathProgress = 0;
-      glowTime = 0;
-      fadeProgress = 0;
-      dState = 'exploring';
-      stepTimer = 0;
-    }
-
-    function dijkstraStep(): boolean {
-      if (queue.length === 0) return true;
-
-      // Sort by distance (simple priority queue)
-      queue.sort((a, b) => a[1] - b[1]);
-      const [u, d] = queue.shift()!;
-
-      if (visited.has(u)) return false;
-      visited.add(u);
-
-      if (u === target) return true; // found!
-
-      // Explore neighbors
-      for (const e of edges) {
-        let neighbor = -1;
-        if (e.a === u) neighbor = e.b;
-        else if (e.b === u) neighbor = e.a;
-        else continue;
-
-        if (visited.has(neighbor)) continue;
-
-        explored.add(edgeKey(u, neighbor));
-        const newDist = d + e.weight;
-        if (newDist < dist[neighbor]) {
-          dist[neighbor] = newDist;
-          prev[neighbor] = u;
-          queue.push([neighbor, newDist]);
-        }
-      }
-      return false;
-    }
-
-    function buildPath() {
-      shortestPath = [];
-      let cur = target;
-      while (cur !== -1) {
-        shortestPath.unshift(cur);
-        cur = prev[cur];
-      }
-    }
-
-    function draw(t: number) {
-      ctx.clearRect(0, 0, w, h);
-
-      const globalFade = dState === 'fading' ? 1 - fadeProgress : 1;
-
-      // --- Draw base edges ---
-      for (const e of edges) {
-        const a = nodes[e.a];
-        const b = nodes[e.b];
-        const isExplored = explored.has(edgeKey(e.a, e.b));
-        const alpha = (isExplored ? 0.12 : 0.04) * globalFade;
-        const c = isExplored ? PERIWINKLE : LILAC;
-
-        ctx.beginPath();
-        ctx.moveTo(a.x, a.y);
-        ctx.lineTo(b.x, b.y);
-        ctx.strokeStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha})`;
-        ctx.lineWidth = isExplored ? 1 : 0.5;
-        ctx.stroke();
-      }
-
-      // --- Draw shortest path with glow ---
-      if (shortestPath.length > 1 && (dState === 'tracing' || dState === 'glowing' || dState === 'fading')) {
-        // Calculate total path length
-        let totalLen = 0;
-        const segments: number[] = [0];
-        for (let i = 1; i < shortestPath.length; i++) {
-          const a = nodes[shortestPath[i - 1]];
-          const b = nodes[shortestPath[i]];
-          totalLen += Math.hypot(b.x - a.x, b.y - a.y);
-          segments.push(totalLen);
-        }
-
-        const drawLen = dState === 'tracing' ? pathProgress * totalLen : totalLen;
-        const pulseAlpha = dState === 'glowing'
-          ? 0.6 + Math.sin(t * 0.003) * 0.2
-          : dState === 'tracing' ? 0.5 : 0.5;
-
-        // Draw glow layer (thick, blurred)
-        ctx.save();
-        ctx.lineCap = 'round';
-        ctx.lineJoin = 'round';
-
-        // Outer glow
-        ctx.beginPath();
-        ctx.moveTo(nodes[shortestPath[0]].x, nodes[shortestPath[0]].y);
-        let drawnLen = 0;
-        for (let i = 1; i < shortestPath.length; i++) {
-          const a = nodes[shortestPath[i - 1]];
-          const b = nodes[shortestPath[i]];
-          const segLen = Math.hypot(b.x - a.x, b.y - a.y);
-          if (drawnLen + segLen <= drawLen) {
-            ctx.lineTo(b.x, b.y);
-            drawnLen += segLen;
-          } else {
-            const remaining = drawLen - drawnLen;
-            const ratio = remaining / segLen;
-            ctx.lineTo(a.x + (b.x - a.x) * ratio, a.y + (b.y - a.y) * ratio);
-            break;
-          }
-        }
-        ctx.strokeStyle = `rgba(${ICE[0]},${ICE[1]},${ICE[2]},${0.08 * pulseAlpha * globalFade})`;
-        ctx.lineWidth = 16;
-        ctx.stroke();
-
-        // Mid glow
-        ctx.strokeStyle = `rgba(${ICE[0]},${ICE[1]},${ICE[2]},${0.2 * pulseAlpha * globalFade})`;
-        ctx.lineWidth = 6;
-        ctx.stroke();
-
-        // Core line
-        ctx.strokeStyle = `rgba(${ICE[0]},${ICE[1]},${ICE[2]},${0.7 * pulseAlpha * globalFade})`;
-        ctx.lineWidth = 2;
-        ctx.stroke();
-
-        ctx.restore();
-      }
-
-      // --- Draw nodes ---
-      for (let i = 0; i < nodes.length; i++) {
-        const n = nodes[i];
-        const pulse = Math.sin(t * 0.0015 + n.phase) * 0.3 + 0.7;
-        const isVisited = visited.has(i);
-        const isSource = i === source && dState !== 'idle';
-        const isTarget = i === target && dState !== 'idle';
-        const isOnPath = shortestPath.includes(i) && (dState === 'tracing' || dState === 'glowing' || dState === 'fading');
-
-        let c = LILAC;
-        let alpha = 0.15 * pulse * globalFade;
-        let radius = n.r;
-
-        if (isOnPath) {
-          c = ICE;
-          alpha = 0.8 * globalFade;
-          radius = n.r * 1.5;
-        } else if (isSource || isTarget) {
-          c = ORCHID;
-          alpha = 0.7 * globalFade;
-          radius = n.r * 1.8;
-        } else if (isVisited) {
-          c = ROSE_MIST;
-          alpha = 0.3 * globalFade;
-        }
-
-        // Glow for special nodes
-        if (isOnPath || isSource || isTarget) {
-          ctx.beginPath();
-          ctx.arc(n.x, n.y, radius * 5, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha * 0.15})`;
-          ctx.fill();
-        }
-
-        // Core
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${c[0]},${c[1]},${c[2]},${alpha})`;
-        ctx.fill();
-      }
-
-      // --- State machine ---
-      if (dState === 'exploring') {
-        stepTimer += 16; // ~60fps
-        while (stepTimer >= STEP_INTERVAL) {
-          stepTimer -= STEP_INTERVAL;
-          const done = dijkstraStep();
-          if (done) {
-            buildPath();
-            if (shortestPath.length > 1) {
-              dState = 'tracing';
-            } else {
-              // No path found, restart
-              startDijkstra();
-            }
-            break;
-          }
-        }
-      } else if (dState === 'tracing') {
-        pathProgress += TRACE_SPEED;
-        if (pathProgress >= 1) {
-          pathProgress = 1;
-          dState = 'glowing';
-          glowTime = 0;
-        }
-      } else if (dState === 'glowing') {
-        glowTime += 16;
-        if (glowTime >= GLOW_DURATION) {
-          dState = 'fading';
-          fadeProgress = 0;
-        }
-      } else if (dState === 'fading') {
-        fadeProgress += 16 / FADE_DURATION;
-        if (fadeProgress >= 1) {
-          dState = 'idle';
-          // Rebuild graph and start fresh
-          buildGraph();
-          startDijkstra();
-        }
-      } else if (dState === 'idle') {
-        buildGraph();
-        startDijkstra();
-      }
-
-      animId = requestAnimationFrame(draw);
-    }
-
-    resize();
-    buildGraph();
-    startDijkstra();
-    animId = requestAnimationFrame(draw);
-    window.addEventListener('resize', () => {
-      resize();
-      buildGraph();
-      startDijkstra();
-    });
-
-    // Pause when hero scrolls out
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        if (!animId) animId = requestAnimationFrame(draw);
-      } else {
-        cancelAnimationFrame(animId);
-        animId = 0;
-      }
-    });
-    observer.observe(canvas);
-  }
-</script>

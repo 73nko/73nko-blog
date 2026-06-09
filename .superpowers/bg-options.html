@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Background effect options — Violet Hour</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --abyss: #06061a; --night: #0d0d2c; --indigo: #1a1745; --mauve: #4a3d95;
+    --orchid: #b39dff; --lilac: #d6c8ff; --rose: #e2bcff; --bloom: #f0d2ff;
+    --peri: #8da7ff; --ice: #a8c9ff; --cyan: #b9e0ff;
+    --star: #ece6ff; --silver: #c4bee0;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 48px 40px 80px; background: var(--abyss); color: var(--star);
+    font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(ellipse 90% 60% at 50% 0%, rgba(74,61,149,.4) 0%, transparent 65%);
+  }
+  h1 { font-size: 32px; font-weight: 800; letter-spacing: -1px; margin: 0 0 8px;
+    background: linear-gradient(105deg, var(--bloom), var(--lilac), var(--peri), var(--cyan));
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .sub { color: var(--silver); font-size: 14px; margin-bottom: 40px; max-width: 720px; line-height: 1.6; }
+  .sub code { font-family: 'JetBrains Mono', monospace; color: var(--ice); font-size: 12.5px; }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 36px; max-width: 1000px; margin: 0 auto; }
+  .card { border: 1px solid rgba(214,200,255,.10); border-radius: 16px; overflow: hidden;
+    background: rgba(14,12,38,.55); box-shadow: 0 30px 60px -30px rgba(0,0,0,.5); }
+  .stage { position: relative; aspect-ratio: 16/9; background: var(--abyss); }
+  .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .stage .overlay { position: absolute; inset: 0; display: flex; flex-direction: column;
+    justify-content: center; padding: 0 8%; pointer-events: none; }
+  .overlay .name { font-size: 38px; font-weight: 800; letter-spacing: -1.5px; line-height: 1.05;
+    background: linear-gradient(105deg, var(--bloom), var(--lilac), var(--peri));
+    -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .overlay .tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 2px;
+    text-transform: uppercase; color: rgba(196,190,224,.58); margin-top: 8px; }
+  .meta { padding: 18px 24px 20px; display: flex; gap: 18px; align-items: baseline; }
+  .letter { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 500;
+    color: var(--orchid); border: 1px solid rgba(179,157,255,.35); border-radius: 999px;
+    width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center;
+    flex-shrink: 0; align-self: center; }
+  .meta h3 { margin: 0 0 4px; font-size: 17px; letter-spacing: -.2px; }
+  .meta p { margin: 0; font-size: 13.5px; color: var(--silver); line-height: 1.55; }
+</style>
+</head>
+<body>
+
+<h1>Pick a background direction</h1>
+<p class="sub">
+  Three ambient, self-running effects — all in the Violet Hour palette, all rendered live below
+  with your hero text mocked on top so you can judge legibility. None react to the mouse.
+  Reply in the terminal with <code>A</code>, <code>B</code> or <code>C</code> (or a mix, e.g. “B but with A's pulses”).
+</p>
+
+<div class="grid">
+
+  <div class="card">
+    <div class="stage"><canvas id="cv-a"></canvas>
+      <div class="overlay"><div class="name">Alejandro<br>Pérez</div><div class="tag">A · Signal — the network breathes</div></div>
+    </div>
+    <div class="meta"><span class="letter">A</span>
+      <div><h3>Signal — Dijkstra, reborn</h3>
+      <p>A deep 3D node field with parallax drift. Light pulses travel the graph like packets finding a route — comet heads, glowing trails, soft blooms on arrival. The algorithm is still there, but now it feels like watching a living network at night instead of a CS demo.</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="stage"><canvas id="cv-b"></canvas>
+      <div class="overlay"><div class="name">Alejandro<br>Pérez</div><div class="tag">B · Aurora — twilight curtains</div></div>
+    </div>
+    <div class="meta"><span class="letter">B</span>
+      <div><h3>Aurora Silk</h3>
+      <p>Layered translucent ribbons of orchid, periwinkle and ice drifting like aurora curtains. Pure twilight mood — the most literal reading of “Violet Hour”. Zero tech metaphor, maximum atmosphere.</p></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="stage"><canvas id="cv-c"></canvas>
+      <div class="overlay"><div class="name">Alejandro<br>Pérez</div><div class="tag">C · Star trails — long exposure</div></div>
+    </div>
+    <div class="meta"><span class="letter">C</span>
+      <div><h3>Star Trails</h3>
+      <p>Particles ride an invisible flow field, leaving long-exposure light trails that slowly curl and fade — like a time-lapse of stars over the violet hour sky. Hypnotic, painterly, very quiet.</p></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function setup(id) {
+  const c = document.getElementById(id);
+  const ctx = c.getContext('2d');
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  function size() {
+    c.width = c.clientWidth * dpr; c.height = c.clientHeight * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  size();
+  return { c, ctx, get w() { return c.clientWidth; }, get h() { return c.clientHeight; }, size };
+}
+
+/* ============ A — SIGNAL ============ */
+(() => {
+  const { ctx, ...s } = setup('cv-a');
+  const N = 70;
+  let nodes = [], edges = [], pulses = [];
+  function build() {
+    nodes = []; edges = [];
+    for (let i = 0; i < N; i++) {
+      nodes.push({
+        x: Math.random() * s.w, y: Math.random() * s.h,
+        z: Math.random(),                       // depth 0 far .. 1 near
+        vx: (Math.random() - .5) * .08, vy: (Math.random() - .5) * .08,
+        phase: Math.random() * Math.PI * 2,
+      });
+    }
+    for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) {
+      const a = nodes[i], b = nodes[j];
+      if (Math.abs(a.z - b.z) > .35) continue;
+      const d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (d < 150) edges.push([i, j]);
+    }
+  }
+  function adj(u) {
+    const out = [];
+    for (const [a, b] of edges) { if (a === u) out.push(b); else if (b === u) out.push(a); }
+    return out;
+  }
+  function spawnPulse() {
+    // random walk path through graph, no immediate backtracking
+    let u = Math.floor(Math.random() * N);
+    const path = [u]; let prev = -1;
+    for (let k = 0; k < 14; k++) {
+      const ns = adj(u).filter(v => v !== prev);
+      if (!ns.length) break;
+      prev = u; u = ns[Math.floor(Math.random() * ns.length)];
+      path.push(u);
+    }
+    if (path.length > 3) pulses.push({ path, t: 0, speed: .0035 + Math.random() * .003, hue: Math.random() < .5 ? [168,201,255] : [179,157,255] });
+  }
+  build();
+  let last = 0;
+  function frame(t) {
+    const dt = Math.min(t - last, 50); last = t;
+    ctx.clearRect(0, 0, s.w, s.h);
+    // drift
+    for (const n of nodes) {
+      n.x += n.vx * dt * (.4 + n.z); n.y += n.vy * dt * (.4 + n.z);
+      if (n.x < -20) n.x = s.w + 20; if (n.x > s.w + 20) n.x = -20;
+      if (n.y < -20) n.y = s.h + 20; if (n.y > s.h + 20) n.y = -20;
+    }
+    // edges
+    ctx.lineWidth = 1;
+    for (const [a, b] of edges) {
+      const A = nodes[a], B = nodes[b];
+      const d = Math.hypot(A.x - B.x, A.y - B.y);
+      if (d > 170) continue;
+      const z = (A.z + B.z) / 2;
+      ctx.strokeStyle = `rgba(141,167,255,${(.05 + z * .06) * (1 - d / 170)})`;
+      ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); ctx.stroke();
+    }
+    // nodes
+    for (const n of nodes) {
+      const tw = .6 + Math.sin(t * .0012 + n.phase) * .4;
+      const r = .8 + n.z * 1.8;
+      ctx.beginPath(); ctx.arc(n.x, n.y, r, 0, 7);
+      ctx.fillStyle = `rgba(214,200,255,${(.10 + n.z * .25) * tw})`;
+      ctx.fill();
+    }
+    // pulses
+    ctx.globalCompositeOperation = 'lighter';
+    for (const p of pulses) {
+      p.t += p.speed * dt;
+      const segs = p.path.length - 1;
+      const pos = Math.min(p.t, 1) * segs;
+      const i = Math.min(Math.floor(pos), segs - 1);
+      const f = pos - i;
+      const A = nodes[p.path[i]], B = nodes[p.path[i + 1]];
+      const hx = A.x + (B.x - A.x) * f, hy = A.y + (B.y - A.y) * f;
+      const [r, g, b] = p.hue;
+      // trail along visited segments
+      ctx.lineCap = 'round';
+      for (let k = 0; k <= i; k++) {
+        const a = nodes[p.path[k]], bn = nodes[p.path[k + 1]];
+        const ex = k === i ? hx : bn.x, ey = k === i ? hy : bn.y;
+        const fade = Math.max(0, 1 - (pos - k) / 5) * (p.t > 1 ? Math.max(0, 1 - (p.t - 1) * 3) : 1);
+        if (fade <= 0) continue;
+        ctx.strokeStyle = `rgba(${r},${g},${b},${.30 * fade})`;
+        ctx.lineWidth = 1.6;
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(ex, ey); ctx.stroke();
+        ctx.strokeStyle = `rgba(${r},${g},${b},${.07 * fade})`;
+        ctx.lineWidth = 6;
+        ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(ex, ey); ctx.stroke();
+      }
+      if (p.t <= 1) {
+        const grad = ctx.createRadialGradient(hx, hy, 0, hx, hy, 14);
+        grad.addColorStop(0, `rgba(${r},${g},${b},.9)`);
+        grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
+        ctx.fillStyle = grad;
+        ctx.beginPath(); ctx.arc(hx, hy, 14, 0, 7); ctx.fill();
+      } else {
+        // arrival bloom
+        const e = nodes[p.path[p.path.length - 1]];
+        const bloomT = (p.t - 1) * 3;
+        if (bloomT < 1) {
+          const R = 10 + bloomT * 30;
+          const grad = ctx.createRadialGradient(e.x, e.y, 0, e.x, e.y, R);
+          grad.addColorStop(0, `rgba(${r},${g},${b},${.5 * (1 - bloomT)})`);
+          grad.addColorStop(1, `rgba(${r},${g},${b},0)`);
+          ctx.fillStyle = grad;
+          ctx.beginPath(); ctx.arc(e.x, e.y, R, 0, 7); ctx.fill();
+        }
+      }
+    }
+    ctx.globalCompositeOperation = 'source-over';
+    pulses = pulses.filter(p => p.t < 1.4);
+    if (pulses.length < 3 && Math.random() < .02) spawnPulse();
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+/* ============ B — AURORA SILK ============ */
+(() => {
+  const { ctx, ...s } = setup('cv-b');
+  const ribbons = [
+    { c: [179, 157, 255], yBase: .30, amp: 46, speed: .00010, width: 90, ph: 0 },
+    { c: [141, 167, 255], yBase: .48, amp: 60, speed: .00014, width: 110, ph: 2 },
+    { c: [168, 201, 255], yBase: .62, amp: 38, speed: .00008, width: 70, ph: 4 },
+    { c: [226, 188, 255], yBase: .80, amp: 52, speed: .00012, width: 95, ph: 1 },
+  ];
+  function frame(t) {
+    ctx.clearRect(0, 0, s.w, s.h);
+    ctx.globalCompositeOperation = 'lighter';
+    for (const rb of ribbons) {
+      const [r, g, b] = rb.c;
+      // ribbon = stacked translucent strokes for soft body
+      for (let layer = 0; layer < 5; layer++) {
+        ctx.beginPath();
+        for (let x = -20; x <= s.w + 20; x += 12) {
+          const y = s.h * rb.yBase
+            + Math.sin(x * .006 + t * rb.speed * 9 + rb.ph) * rb.amp
+            + Math.sin(x * .0023 - t * rb.speed * 5 + rb.ph * 2) * rb.amp * .7
+            + (layer - 2) * rb.width * .16;
+          x === -20 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = `rgba(${r},${g},${b},${.030})`;
+        ctx.lineWidth = rb.width * (1 - layer * .14);
+        ctx.lineCap = 'round';
+        ctx.stroke();
+      }
+      // bright spine
+      ctx.beginPath();
+      for (let x = -20; x <= s.w + 20; x += 12) {
+        const y = s.h * rb.yBase
+          + Math.sin(x * .006 + t * rb.speed * 9 + rb.ph) * rb.amp
+          + Math.sin(x * .0023 - t * rb.speed * 5 + rb.ph * 2) * rb.amp * .7;
+        x === -20 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.strokeStyle = `rgba(${r},${g},${b},.10)`;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+    ctx.globalCompositeOperation = 'source-over';
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+/* ============ C — STAR TRAILS ============ */
+(() => {
+  const { c, ctx, ...s } = setup('cv-c');
+  const P = 220;
+  const parts = [];
+  const palette = [[168,201,255],[179,157,255],[141,167,255],[226,188,255]];
+  for (let i = 0; i < P; i++) {
+    parts.push({
+      x: Math.random() * s.w, y: Math.random() * s.h,
+      c: palette[Math.floor(Math.random() * palette.length)],
+      sp: .25 + Math.random() * .55,
+      life: Math.random() * 600,
+    });
+  }
+  ctx.fillStyle = '#06061a';
+  ctx.fillRect(0, 0, s.w, s.h);
+  function field(x, y, t) {
+    const a = Math.sin(x * .0035 + t * .00012) + Math.cos(y * .0042 - t * .00009);
+    return a * Math.PI;
+  }
+  function frame(t) {
+    // fade pass = long exposure
+    ctx.fillStyle = 'rgba(6,6,26,0.045)';
+    ctx.fillRect(0, 0, s.w, s.h);
+    for (const p of parts) {
+      const ang = field(p.x, p.y, t);
+      const nx = p.x + Math.cos(ang) * p.sp;
+      const ny = p.y + Math.sin(ang) * p.sp;
+      const [r, g, b] = p.c;
+      ctx.strokeStyle = `rgba(${r},${g},${b},.22)`;
+      ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(nx, ny); ctx.stroke();
+      p.x = nx; p.y = ny;
+      p.life -= 1;
+      if (p.life <= 0 || p.x < -5 || p.x > s.w + 5 || p.y < -5 || p.y > s.h + 5) {
+        p.x = Math.random() * s.w; p.y = Math.random() * s.h;
+        p.life = 300 + Math.random() * 500;
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

@@ -9,45 +9,43 @@ const navLinks = [
 
 <nav
   id="main-nav"
-  class="fixed inset-x-0 top-0 z-50 translate-y-[-100%] transition-transform duration-300"
+  class="fixed inset-x-0 top-0 z-50 translate-y-[-100%] border-b border-[--vh-hairline] bg-vh-abyss/60 backdrop-blur-xl transition-transform duration-300"
   aria-label="Main navigation"
   data-nav
 >
-  <div class="glass mx-4 mt-3 rounded-2xl sm:mx-auto sm:max-w-[1100px]">
-    <div class="flex h-12 items-center justify-between px-5 sm:px-8">
-      <a href="#hero" class="gradient-text font-mono text-sm font-bold tracking-[-0.5px] no-underline">
-        73nko
-      </a>
+  <div class="mx-auto flex h-12 w-full max-w-[1100px] items-center justify-between px-6 sm:px-12 lg:px-20">
+    <a href="#hero" class="gradient-text font-mono text-sm font-bold tracking-[-0.5px] no-underline">
+      73nko
+    </a>
 
-      {/* Desktop links */}
-      <div class="hidden items-center gap-1 sm:flex">
-        {navLinks.map((link) => (
-          <a
-            href={link.href}
-            class="rounded-lg px-3 py-1.5 font-mono text-[11px] uppercase tracking-[1.5px] text-vh-lilac/60 no-underline transition-all duration-200 hover:bg-vh-ice/10 hover:text-vh-ice"
-            data-nav-link
-          >
-            {link.name}
-          </a>
-        ))}
-      </div>
-
-      {/* Mobile hamburger */}
-      <button
-        class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg transition-colors duration-200 hover:bg-vh-ice/10 sm:hidden"
-        aria-label="Toggle navigation menu"
-        data-nav-toggle
-      >
-        <svg class="h-4 w-4 text-vh-lilac" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
+    {/* Desktop links */}
+    <div class="hidden items-center gap-7 sm:flex">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="font-mono text-[11px] uppercase tracking-[1.5px] text-vh-lilac/60 no-underline transition-colors duration-200 hover:text-vh-ice"
+          data-nav-link
+        >
+          {link.name}
+        </a>
+      ))}
     </div>
+
+    {/* Mobile hamburger */}
+    <button
+      class="flex h-9 w-9 cursor-pointer items-center justify-center rounded-lg transition-colors duration-200 hover:bg-vh-ice/10 sm:hidden"
+      aria-label="Toggle navigation menu"
+      data-nav-toggle
+    >
+      <svg class="h-4 w-4 text-vh-lilac" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
   </div>
 
   {/* Mobile menu */}
-  <div class="glass mx-4 mt-1 hidden overflow-hidden rounded-xl sm:hidden" data-nav-mobile>
-    <div class="flex flex-col gap-1 p-2">
+  <div class="hidden border-t border-[--vh-hairline] bg-vh-abyss/80 backdrop-blur-xl sm:hidden" data-nav-mobile>
+    <div class="flex flex-col gap-1 p-3">
       {navLinks.map((link) => (
         <a
           href={link.href}

@@ -6,7 +6,7 @@ export interface SocialLink {
 
 export const socialLinks: SocialLink[] = [
   { name: 'GitHub', url: 'https://github.com/73nko', icon: 'github' },
-  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/alejandroperez', icon: 'linkedin' },
-  { name: 'Twitter', url: 'https://twitter.com/73nko', icon: 'twitter' },
+  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/alejandroperezramos', icon: 'linkedin' },
+  { name: 'Twitter', url: 'https://twitter.com/Alex73nk', icon: 'twitter' },
   { name: 'Email', url: 'mailto:me@alejandroperez.dev', icon: 'mail' },
 ];

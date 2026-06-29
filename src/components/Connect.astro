@@ -1,6 +1,6 @@
 ---
 import { socialLinks } from '../data/social';
-import { CAL_BOOKING_URL, CONTACT_EMAIL } from '../data/links';
+import { CONTACT_EMAIL } from '../data/links';
 
 const trailingSocials = socialLinks.filter((link) => link.icon !== 'mail');
 ---
@@ -29,15 +29,7 @@ const trailingSocials = socialLinks.filter((link) => link.icon !== 'mail');
         </a>
 
         <p class="mt-7 max-w-[620px] text-[15px] leading-relaxed text-[--vh-muted]">
-          Roles, collaborations, and technical conversations all welcome. Open to short coffee chats and mentoring:
-          <a
-            href={CAL_BOOKING_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="ml-1 underline decoration-vh-ice/30 underline-offset-4 transition-colors hover:text-vh-ice hover:decoration-vh-ice"
-          >
-            book a 30-min coffee chat →
-          </a>
+          Roles, collaborations, and technical conversations all welcome. Open to short coffee chats and mentoring.
         </p>
 
         <div class="mt-7 flex flex-wrap gap-x-7 gap-y-2 font-mono text-[12px] tracking-[0.5px]">
